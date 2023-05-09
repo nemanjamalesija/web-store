@@ -1,0 +1,21 @@
+Provicia di Lecce, Italy
+273 kilometres away
+4.83
+Puglia, Italy
+16+ voyageurs
+11 chambres
+18 lits
+12 salles de bain
+info: {
+general: "n the heart of Salento, immersed in a centuries-old olive grove, the "Masseria Quadrelli" 
+is located just 10 km from Otranto and a few km from Santa Cesarea Terme, a well-known resort known for its spa and the beautiful sea. It is immersed in a centuries-old garden of typical Mediterranean trees and essences, such as olive trees, oleanders, strawberries, figs, bucanville, broom, which perfume the environment around the spectacular pool of irregular shape, with built-in whirlpool."
+space: {
+Exclusive and private place, ideal for a group of friends or a family who want to live a unique, authentic holiday, in the heart of ancient Salento. You will feel at home, without sacrificing the comfort and exclusive services of a luxury hotel. Enjoy maximum intimacy, having the exclusivity of the farm and its large spaces that allow the independence of each guest, while being together.
+
+},
+guest access: {
+Here you can enjoy the privilege of a visit to the past, living in close contact with nature, discovering the scents, flavors and authentic colors of Salento. Once the center of vast plots of land, destined for cultivation and grazing, homes of workers and summer residences of owners, today the farm has become a luxury residence, the best solution to live our land in its authenticity.
+}
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////
+

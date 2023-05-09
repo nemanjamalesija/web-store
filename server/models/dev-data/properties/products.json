@@ -115,5 +115,33 @@
     },
     "labels": ["High-protein, Kid-friendly"],
     "reviews": [""]
+  },
+  {
+    "name": "Grazer",
+    "price": 8.97,
+    "image": "",
+    "calories": 490,
+    "nubriSore": 74,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.8,
+    "ingredients": {
+      "bases": ["White rice", "Brown rice", "Noodles"],
+      "proteins": [""],
+      "mixinsAndToppings": [
+        "Cucumber",
+        "Edamme",
+        "Carrot",
+        "Alfalfa Sprouts",
+        "Corn",
+        "Onion",
+        "Mango",
+        "Pineaple",
+        "Chia seeds",
+        "Wonton Crispss"
+      ],
+      "sauces": ["Sesame Waina"]
+    },
+    "labels": ["Vegan, Gluten-free"],
+    "reviews": [""]
   }
 ]

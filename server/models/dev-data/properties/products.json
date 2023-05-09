@@ -5,37 +5,68 @@
     "image": "",
     "calories": 650,
     "nubriSore": 75,
-    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venJmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
     "rating": 4.9,
-    "ingredients": [
-      "Avocado",
-      "Edamame",
-      "Mixed Greens",
-      "Shredded Nori",
-      "Onion",
-      "Sesame Seeds"
-    ],
+    "ingredients": {
+      "bases": ["Pasta", "Potato", "White Rice"],
+      "proteins": ["Chicken", "Beef"],
+      "mixinsAndToppings": [
+        "Avocado",
+        "Mixed Greens",
+        "Pickles",
+        "Red Onions",
+        "Sesame Seeds"
+      ],
+      "sauces": ["BBQ, Ranch, Spicey Mayo"]
+    },
     "labels": ["Vegetarian"],
     "reviews": [""]
   },
   {
-    "name": "Golden Hour.",
+    "name": "Golden Hour",
     "price": 9.99,
     "image": "",
     "calories": 600,
     "nubriSore": 80,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
     "rating": 4.9,
-    "ingredients": [
-      "Sushi Rice",
-      "Brown Rice",
-      "Noodles",
-      "Mixed Greens",
-      "Proteins",
-      "Salmon",
-      "Krab"
-    ],
+    "ingredients": {
+      "bases": ["Sushi Rice", "Brown Rice", "Noodles"],
+      "proteins": ["Salmon", "Krab, Shrim"],
+      "mixinsAndToppings": [
+        "Avocado",
+        "Edamame",
+        "Mixed Greens",
+        "Shredded Nori",
+        "Onion",
+        "Sesame Seeds"
+      ],
+      "sauces": ["Poke Classic"]
+    },
     "labels": ["High-protein"],
+    "reviews": [""]
+  },
+  {
+    "name": "Ring of fire",
+    "price": 8.97,
+    "image": "",
+    "calories": 550,
+    "nubriSore": 69,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.8,
+    "ingredients": {
+      "bases": ["Sushi Rice", "Brown Rice", "Noodles"],
+      "proteins": ["Spicey Tuna", "Krab"],
+      "mixinsAndToppings": [
+        "Avocado",
+        "Green salat leafs",
+        "Mixed Greens",
+        "Zucchini",
+        "Sesame Seeds"
+      ],
+      "sauces": ["Fire Water"]
+    },
+    "labels": ["High-protein, Spicey"],
     "reviews": [""]
   }
 ]

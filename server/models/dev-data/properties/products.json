@@ -17,5 +17,25 @@
     ],
     "labels": ["Vegetarian"],
     "reviews": [""]
+  },
+  {
+    "name": "Golden Hour.",
+    "price": 9.99,
+    "image": "",
+    "calories": 600,
+    "nubriSore": 80,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.9,
+    "ingredients": [
+      "Sushi Rice",
+      "Brown Rice",
+      "Noodles",
+      "Mixed Greens",
+      "Proteins",
+      "Salmon",
+      "Krab"
+    ],
+    "labels": ["High-protein"],
+    "reviews": [""]
   }
 ]

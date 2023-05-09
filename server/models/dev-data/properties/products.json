@@ -8,18 +8,42 @@
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
     "rating": 4.9,
     "ingredients": {
-      "bases": ["Sushi Rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "bases": ["Sushi rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Tuna"],
       "mixinsAndToppings": [
         "Avocado",
         "Mixed Greens",
-        "Pickles",
-        "Red Onions",
+        "Cilantro",
+        "Scallion",
         "Sesame Seeds"
       ],
       "sauces": ["Poke Classic"]
     },
     "labels": ["Fiber-rich"],
+    "reviews": [""]
+  },
+  {
+    "name": "Island BBQ",
+    "price": 9.39,
+    "image": "",
+    "calories": 820,
+    "nubriSore": 68,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
+    "rating": 4.8,
+    "ingredients": {
+      "bases": ["Sushi rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "proteins": ["Tuna"],
+      "mixinsAndToppings": [
+        "Corn",
+        "Carrot",
+        "Hawaiian Salsa",
+        "Slaw",
+        "Sesame Seeds",
+        "Jalapeno"
+      ],
+      "sauces": ["Avocado lime"]
+    },
+    "labels": ["Classic", "Spicey"],
     "reviews": [""]
   },
   {

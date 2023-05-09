@@ -4,7 +4,7 @@
     "price": 8.99,
     "image": "",
     "calories": 650,
-    "nubriSore": 75,
+    "nutriScore": 75,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
     "rating": 4.9,
     "ingredients": {
@@ -27,7 +27,7 @@
     "price": 9.39,
     "image": "",
     "calories": 820,
-    "nubriSore": 68,
+    "nutriScore": 68,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
     "rating": 4.8,
     "ingredients": {
@@ -51,11 +51,11 @@
     "price": 9.99,
     "image": "",
     "calories": 600,
-    "nubriSore": 80,
+    "nutriScore": 80,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
     "rating": 4.9,
     "ingredients": {
-      "bases": ["Sushi Rice", "Brown rice", "Noodles"],
+      "bases": ["Sushi Rice", "Brown rice", "Noodles, Mixed Greens"],
       "proteins": ["Salmon", "Krab, Shrim"],
       "mixinsAndToppings": [
         "Avocado",
@@ -71,15 +71,40 @@
     "reviews": [""]
   },
   {
+    "name": "Trippy",
+    "price": 7.99,
+    "image": "",
+    "calories": 480,
+    "nutriScore": 81,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.7,
+    "ingredients": {
+      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
+      "proteins": ["Shrooms"],
+      "mixinsAndToppings": [
+        "Avocado",
+        "Seaweed salad",
+        "Carrot",
+        "Edamme",
+        "Cucumber",
+        "Garlic crisps",
+        "Furikake"
+      ],
+      "sauces": ["Citrus Ponzu"]
+    },
+    "labels": ["Vegan, Gluten-free"],
+    "reviews": [""]
+  },
+  {
     "name": "Over the rainbow",
     "price": 9.97,
     "image": "",
     "calories": 500,
-    "nubriSore": 77,
+    "nutriScore": 77,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
     "rating": 4.7,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles"],
+      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
       "proteins": ["Spicey tuna", "Shrimp", "Krab"],
       "mixinsAndToppings": [
         "Cucumber",
@@ -97,7 +122,7 @@
     "price": 9.97,
     "image": "",
     "calories": 500,
-    "nubriSore": 77,
+    "nutriScore": 77,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
     "rating": 4.7,
     "ingredients": {
@@ -120,12 +145,12 @@
     "name": "Grazer",
     "price": 8.97,
     "image": "",
-    "calories": 490,
-    "nubriSore": 74,
+    "calories": 460,
+    "nutriScore": 74,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
     "rating": 4.8,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles"],
+      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
       "proteins": [""],
       "mixinsAndToppings": [
         "Cucumber",

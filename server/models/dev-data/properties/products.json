@@ -8,8 +8,8 @@
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
     "rating": 4.9,
     "ingredients": {
-      "bases": ["Pasta", "Potato", "White Rice"],
-      "proteins": ["Chicken", "Beef"],
+      "bases": ["Sushi Rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "proteins": ["Tuna"],
       "mixinsAndToppings": [
         "Avocado",
         "Mixed Greens",
@@ -17,9 +17,9 @@
         "Red Onions",
         "Sesame Seeds"
       ],
-      "sauces": ["BBQ, Ranch, Spicey Mayo"]
+      "sauces": ["Poke Classic"]
     },
-    "labels": ["Vegetarian"],
+    "labels": ["Fiber-rich"],
     "reviews": [""]
   },
   {
@@ -31,42 +31,65 @@
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
     "rating": 4.9,
     "ingredients": {
-      "bases": ["Sushi Rice", "Brown Rice", "Noodles"],
+      "bases": ["Sushi Rice", "Brown rice", "Noodles"],
       "proteins": ["Salmon", "Krab, Shrim"],
       "mixinsAndToppings": [
         "Avocado",
-        "Edamame",
-        "Mixed Greens",
+        "Scallion",
+        "Carrot",
         "Shredded Nori",
-        "Onion",
-        "Sesame Seeds"
+        "Cucumber",
+        "Masago"
       ],
-      "sauces": ["Poke Classic"]
+      "sauces": ["Counter Sauce"]
     },
-    "labels": ["High-protein"],
+    "labels": ["Fiber-rich", "Gluten-free"],
     "reviews": [""]
   },
   {
-    "name": "Ring of fire",
-    "price": 8.97,
+    "name": "Over the rainbow",
+    "price": 9.97,
     "image": "",
-    "calories": 550,
-    "nubriSore": 69,
+    "calories": 500,
+    "nubriSore": 77,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
-    "rating": 4.8,
+    "rating": 4.7,
     "ingredients": {
-      "bases": ["Sushi Rice", "Brown Rice", "Noodles"],
-      "proteins": ["Spicey Tuna", "Krab"],
+      "bases": ["White rice", "Brown rice", "Noodles"],
+      "proteins": ["Spicey tuna", "Shrimp", "Krab"],
       "mixinsAndToppings": [
-        "Avocado",
-        "Green salat leafs",
+        "Cucumber",
         "Mixed Greens",
-        "Zucchini",
-        "Sesame Seeds"
+        "Garlic crisps",
+        "Jalapeno"
       ],
       "sauces": ["Fire Water"]
     },
     "labels": ["High-protein, Spicey"],
+    "reviews": [""]
+  },
+  {
+    "name": "Hold the chicken",
+    "price": 9.97,
+    "image": "",
+    "calories": 500,
+    "nubriSore": 77,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.7,
+    "ingredients": {
+      "bases": ["White rice", "Brown rice", "Noodles"],
+      "proteins": ["Baked chicken"],
+      "mixinsAndToppings": [
+        "Cucumber",
+        "Carrot",
+        "Corn",
+        "Cilantro",
+        "Scallion",
+        "Onion"
+      ],
+      "sauces": ["Sweet yuzu"]
+    },
+    "labels": ["High-protein, Kid-friendly"],
     "reviews": [""]
   }
 ]

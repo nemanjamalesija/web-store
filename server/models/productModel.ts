@@ -36,7 +36,7 @@ const productSchema = new mongoose.Schema<productType>({
     required: [true, 'Nutri-score of calories must be defined for the product'],
   },
   ingredients: {
-    base: [String],
+    bases: [String],
     proteins: [String],
     mixinsAndToppings: [String],
     sauces: [String],

@@ -20,6 +20,6 @@ app.use(
 );
 
 // ROUTES
-// app.use('/api/v1/products', productsRouter);
+app.use('/api/v1/products', productsRouter);
 
 export default app;

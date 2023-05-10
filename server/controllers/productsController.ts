@@ -7,11 +7,25 @@ const getAllProducts = async (
   next: NextFunction
 ) => {
   try {
-    const products = await Product.find({});
+    const products = await Product.find().select({
+      name: 1,
+      price: 1,
+      image: 1,
+      summary: 1,
+      rating: 1,
+      nutriScore: 1,
+      labels: 1,
+    });
 
+    products.forEach((prod) => {
+      return {
+        ...prod,
+        image: `https://localhost:${process.env.PORT}/${prod.image}`,
+      };
+    });
     res.status(200).json({
       status: 'sucess',
-      lenghth: products.length,
+      length: products.length,
       data: { products },
     });
   } catch (error) {

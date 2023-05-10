@@ -15,7 +15,7 @@
         "Mixed Greens",
         "Cilantro",
         "Scallion",
-        "Sesame Seeds"
+        "Sesame seeds"
       ],
       "sauces": ["Poke Classic"]
     },
@@ -38,7 +38,7 @@
         "Carrot",
         "Hawaiian Salsa",
         "Slaw",
-        "Sesame Seeds",
+        "Sesame seeds",
         "Jalapeno"
       ],
       "sauces": ["Avocado lime"]
@@ -192,6 +192,29 @@
       "sauces": ["Sesame Waina"]
     },
     "labels": ["Vegetarian, Spicy"],
+    "reviews": [""]
+  },
+  {
+    "name": "Cali Classic",
+    "price": 9.99,
+    "image": "",
+    "calories": 93,
+    "nutriScore": 81,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.8,
+    "ingredients": {
+      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
+      "proteins": ["Krab", "Shrimp", "Tuna"],
+      "mixinsAndToppings": [
+        "Avocado",
+        "Shredded Nori",
+        "Sesame seeds",
+        "Massago",
+        "Shrooms"
+      ],
+      "sauces": ["Avocado lime"]
+    },
+    "labels": ["High-protein"],
     "reviews": [""]
   }
 ]

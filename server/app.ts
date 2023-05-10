@@ -15,8 +15,8 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 app.use(
-  '/dev-data/images',
-  express.static(path.join(__dirName, 'dev-data/images'))
+  '/public/images',
+  express.static(path.join(__dirName, 'public/images'))
 );
 
 // ROUTES

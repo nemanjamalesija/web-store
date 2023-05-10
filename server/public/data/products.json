@@ -2,7 +2,7 @@
   {
     "name": "The O.G.",
     "price": 8.99,
-    "image": " /dev-data/images/bowl1.avif",
+    "image": "/bowl1.avif",
     "calories": 650,
     "nutriScore": 75,
     "summary": "To add",
@@ -26,7 +26,7 @@
   {
     "name": "Island BBQ",
     "price": 9.39,
-    "image": " /dev-data/images/bowl2.avif",
+    "image": "/bowl2.avif",
     "calories": 820,
     "nutriScore": 68,
     "summary": "To add",
@@ -51,7 +51,7 @@
   {
     "name": "Golden Hour",
     "price": 9.99,
-    "image": " /dev-data/images/bowl3.avif",
+    "image": "/bowl3.avif",
     "calories": 600,
     "nutriScore": 80,
     "summary": "To add",
@@ -76,7 +76,7 @@
   {
     "name": "Trippy",
     "price": 7.99,
-    "image": " /dev-data/images/bowl4.webp",
+    "image": "/bowl4.webp",
     "calories": 480,
     "nutriScore": 81,
     "summary": "To add",
@@ -102,7 +102,7 @@
   {
     "name": "Over the rainbow",
     "price": 9.97,
-    "image": " /dev-data/images/bowl5.avif",
+    "image": "/bowl5.avif",
     "calories": 500,
     "nutriScore": 77,
     "summary": "To add",
@@ -125,7 +125,7 @@
   {
     "name": "Hold the chicken",
     "price": 9.97,
-    "image": " /dev-data/images/bowl6.avif",
+    "image": "/bowl6.avif",
     "calories": 500,
     "nutriScore": 77,
     "summary": "To add",
@@ -150,7 +150,7 @@
   {
     "name": "Grazer",
     "price": 8.97,
-    "image": " /dev-data/images/bowl7.avif",
+    "image": "/bowl7.avif",
     "calories": 460,
     "nutriScore": 74,
     "summary": "To add",
@@ -179,7 +179,7 @@
   {
     "name": "Green panther",
     "price": 9.97,
-    "image": " /dev-data/images/bowl8.avif",
+    "image": "/bowl8.avif",
     "calories": 80,
     "nutriScore": 81,
     "summary": "To add",
@@ -205,7 +205,7 @@
   {
     "name": "Cali Classic",
     "price": 9.99,
-    "image": " /dev-data/images/bowl9.avif",
+    "image": "/bowl9.avif",
     "calories": 93,
     "nutriScore": 81,
     "summary": "To add",

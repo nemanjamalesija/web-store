@@ -17,12 +17,6 @@ const getAllProducts = async (
       labels: 1,
     });
 
-    products.forEach((prod) => {
-      return {
-        ...prod,
-        image: `https://localhost:${process.env.PORT}/${prod.image}`,
-      };
-    });
     res.status(200).json({
       status: 'sucess',
       length: products.length,

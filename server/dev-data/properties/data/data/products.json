@@ -2,7 +2,7 @@
   {
     "name": "The O.G.",
     "price": 8.99,
-    "image": "../img/bowl1.avif",
+    "image": "../images/bowl1.avif",
     "calories": 650,
     "nutriScore": 75,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
@@ -25,7 +25,7 @@
   {
     "name": "Island BBQ",
     "price": 9.39,
-    "image": "../img/bowl2.avif",
+    "image": "../images/bowl2.avif",
     "calories": 820,
     "nutriScore": 68,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing",
@@ -49,7 +49,7 @@
   {
     "name": "Golden Hour",
     "price": 9.99,
-    "image": "../img/bowl3.avif",
+    "image": "../images/bowl3.avif",
     "calories": 600,
     "nutriScore": 80,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
@@ -73,7 +73,7 @@
   {
     "name": "Trippy",
     "price": 7.99,
-    "image": "../img/bowl2.webp",
+    "image": "../images/bowl2.webp",
     "calories": 480,
     "nutriScore": 81,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
@@ -98,7 +98,7 @@
   {
     "name": "Over the rainbow",
     "price": 9.97,
-    "image": "../img/bowl5.avif",
+    "image": "../images/bowl5.avif",
     "calories": 500,
     "nutriScore": 77,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
@@ -120,7 +120,7 @@
   {
     "name": "Hold the chicken",
     "price": 9.97,
-    "image": "../img/bowl6.avif",
+    "image": "../images/bowl6.avif",
     "calories": 500,
     "nutriScore": 77,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
@@ -144,7 +144,7 @@
   {
     "name": "Grazer",
     "price": 8.97,
-    "image": "../img/bowl7.avif",
+    "image": "../images/bowl7.avif",
     "calories": 460,
     "nutriScore": 74,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
@@ -172,7 +172,7 @@
   {
     "name": "Green panther",
     "price": 9.97,
-    "image": "../img/bowl8.avif",
+    "image": "../images/bowl8.avif",
     "calories": 80,
     "nutriScore": 81,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
@@ -197,7 +197,7 @@
   {
     "name": "Cali Classic",
     "price": 9.99,
-    "image": "../img/bowl9.avif",
+    "image": "../images/bowl9.avif",
     "calories": 93,
     "nutriScore": 81,
     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",

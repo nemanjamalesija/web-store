@@ -76,7 +76,7 @@
   {
     "name": "Trippy",
     "price": 7.99,
-    "image": "../images/bowl2.webp",
+    "image": "../images/bowl4.webp",
     "calories": 480,
     "nutriScore": 81,
     "summary": "To add",
@@ -224,31 +224,6 @@
       "sauces": ["Avocado lime"]
     },
     "labels": ["High-protein"],
-    "reviews": [""]
-  },
-  {
-    "name": "Land & sea",
-    "price": 9.91,
-    "image": "",
-    "calories": 88,
-    "nutriScore": 79,
-    "summary": "To add",
-    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
-    "rating": 4.8,
-    "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
-      "proteins": ["Baked chicken", "Shrimp"],
-      "mixinsAndToppings": [
-        "Avocado",
-        "Corn",
-        "Scallion",
-        "Wonton Crispss",
-        "Jalapeno",
-        "Sesame seeds"
-      ],
-      "sauces": ["Chili Aioli"]
-    },
-    "labels": ["High-protein, Spicey"],
     "reviews": [""]
   }
 ]

@@ -14,9 +14,12 @@ const __dirName = path.dirname(__fileName);
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
-app.use('/images', express.static(path.join(__dirName, 'dev-data/images')));
+app.use(
+  '/dev-data/images',
+  express.static(path.join(__dirName, 'dev-data/images'))
+);
 
 // ROUTES
-app.use('/api/v1/products', productsRouter);
+// app.use('/api/v1/products', productsRouter);
 
 export default app;

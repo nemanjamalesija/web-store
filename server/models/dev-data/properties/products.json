@@ -90,9 +90,9 @@
         "Garlic crisps",
         "Furikake"
       ],
-      "sauces": ["Citrus Ponzu"]
+      "sauces": ["Citrus ponzu"]
     },
-    "labels": ["Vegan, Gluten-free"],
+    "labels": ["Vegetarian, Gluten-free"],
     "reviews": [""]
   },
   {
@@ -166,7 +166,32 @@
       ],
       "sauces": ["Sesame Waina"]
     },
-    "labels": ["Vegan, Gluten-free"],
+    "labels": ["Vegetarian, Gluten-free"],
+    "reviews": [""]
+  },
+  {
+    "name": "Green panther",
+    "price": 9.97,
+    "image": "",
+    "calories": 80,
+    "nutriScore": 81,
+    "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr",
+    "rating": 4.9,
+    "ingredients": {
+      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
+      "proteins": ["Tofu"],
+      "mixinsAndToppings": [
+        "Avocado",
+        "Mixed Greens",
+        "Jalapeno",
+        "Cucumber",
+        "Radish sporuts",
+        "Edamme",
+        "Chia seeds"
+      ],
+      "sauces": ["Sesame Waina"]
+    },
+    "labels": ["Vegetarian, Spicy"],
     "reviews": [""]
   }
 ]

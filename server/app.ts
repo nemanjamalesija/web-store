@@ -1,9 +1,11 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import productsRouter from './routes/productsRouter.ts';
+import globalErrorHandler from './controllers/globalErrorController.ts';
+import AppError from './helpers/appError.ts';
 
 const app = express();
 
@@ -21,5 +23,14 @@ app.use(
 
 // ROUTES
 app.use('/api/v1/products', productsRouter);
+
+app.all('*', (req: Request, res: Response, next: NextFunction) => {
+  const message = `Can't find ${req.originalUrl} on this server`;
+  const error = new AppError(message, 404);
+
+  next(error);
+});
+
+app.use(globalErrorHandler);
 
 export default app;

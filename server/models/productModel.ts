@@ -4,6 +4,16 @@ import { productType } from '../types/productType.ts';
 const productSchema = new mongoose.Schema<productType>({
   name: {
     type: String,
+    unique: true,
+    trim: true,
+    maxlength: [
+      40,
+      'A product name must be equal or greater then 40 characters',
+    ],
+    minlength: [
+      10,
+      'A product name must be equal or greater then 10 characters',
+    ],
     required: [true, 'A product must have a name'],
   },
   image: {
@@ -21,10 +31,20 @@ const productSchema = new mongoose.Schema<productType>({
   },
   summary: {
     type: String,
+    trim: true,
+    maxlength: [
+      110,
+      'A product summary must be equal or greater then 110 characters',
+    ],
+    minlength: [
+      10,
+      'A product summary must be equal or greater then 10 characters',
+    ],
     required: [true, 'A product must have a summary'],
   },
   description: {
     type: String,
+    trim: true,
   },
 
   calories: {

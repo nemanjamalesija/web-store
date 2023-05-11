@@ -7,15 +7,7 @@ const getAllProducts = async (
   next: NextFunction
 ) => {
   try {
-    const products = await Product.find().select({
-      name: 1,
-      price: 1,
-      image: 1,
-      summary: 1,
-      rating: 1,
-      nutriScore: 1,
-      labels: 1,
-    });
+    const products = await Product.find();
 
     res.status(200).json({
       status: 'sucess',

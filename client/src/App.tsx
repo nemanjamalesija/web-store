@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div>
-      {products.map((prod, i) => {
+      {products.map((prod: any, i) => {
         console.log(prod.image);
 
         return (

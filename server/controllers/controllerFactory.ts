@@ -27,7 +27,7 @@ const createOne = <T>(Model: Model<T>) =>
     });
   });
 
-const updateOne = <T extends Document>(Model: any) =>
+const updateOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -48,4 +48,20 @@ const updateOne = <T extends Document>(Model: any) =>
     });
   });
 
-export default { getAll, createOne, updateOne };
+const deleteOne = <T>(Model: Model<T>) =>
+  catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const doc = await Model.findByIdAndDelete(req.params.id);
+
+    if (!doc) {
+      const error = new AppError('No document found with that ID', 404);
+
+      return next(error);
+    }
+
+    res.status(204).json({
+      status: 'sucess',
+      data: null,
+    });
+  });
+
+export default { getAll, createOne, updateOne, deleteOne };

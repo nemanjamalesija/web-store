@@ -4,6 +4,7 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import productsRouter from './routes/productsRouter.ts';
+import usersRouter from './routes/userRoutes.ts';
 import globalErrorHandler from './controllers/globalErrorController.ts';
 import AppError from './helpers/appError.ts';
 
@@ -23,6 +24,7 @@ app.use(
 
 // ROUTES
 app.use('/api/v1/products', productsRouter);
+app.use('/api/v1/users', usersRouter);
 
 app.all('*', (req: Request, res: Response, next: NextFunction) => {
   const message = `Can't find ${req.originalUrl} on this server`;

@@ -15,4 +15,5 @@ export type productType = {
   };
   labels: string[];
   reviews: string[];
+  createdAt: Date;
 };

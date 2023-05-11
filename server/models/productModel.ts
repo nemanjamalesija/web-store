@@ -42,6 +42,11 @@ const productSchema = new mongoose.Schema<productType>({
     sauces: [String],
   },
   labels: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    select: false,
+  },
   reviews: [String],
 });
 

@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import { productType } from '../types/productType.ts';
+import validator from '../helpers/validator.ts';
+import bcrypt from 'bcrypt';
+import crypto from 'crypto';
 
 const productSchema = new mongoose.Schema<productType>({
   name: {

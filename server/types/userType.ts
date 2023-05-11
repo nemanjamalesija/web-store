@@ -11,4 +11,8 @@ export type userType = Document & {
   passwordResetToken: string | undefined;
   passwordResetExpires: Date | undefined;
   active: boolean;
+  correctPassword: (
+    candidatePassword: string,
+    userPassword: string
+  ) => Promise<boolean>;
 };

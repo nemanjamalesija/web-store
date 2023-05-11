@@ -48,6 +48,7 @@ const userSchema = new mongoose.Schema<userType>({
   },
 });
 
+// HASH PASSWORD ON SIGNUP
 userSchema.pre('save', async function (next) {
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
@@ -59,6 +60,14 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
+
+// PASS VERIFICATION
+userSchema.methods.correctPassword = async function (
+  canditatePassword: string,
+  userPassword: string
+) {
+  return await bcrypt.compare(canditatePassword, userPassword);
+};
 
 const User = mongoose.model<userType>('User', userSchema);
 

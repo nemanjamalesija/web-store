@@ -44,8 +44,7 @@ const createSendToken = (res: Response, statusCode: number, user: userType) => {
 
 const signUp = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { name, email, password, passwordConfirm, passwordChangedAt, role } =
-      req.body;
+    const { name, email, password, passwordConfirm, role } = req.body;
 
     // 1. Create new user
     const newUser = await User.create({

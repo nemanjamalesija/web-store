@@ -6,6 +6,7 @@ import User from '../models/userModel.ts';
 import AppError from '../helpers/appError.ts';
 import crypto from 'crypto';
 import { userType } from '../types/userType.ts';
+import sendResetEmail from '../helpers/sendResetEmail.ts';
 
 const signToken = (id: string) => {
   return jwt.sign({ id }, process.env.JWT_SECRET_STRING as string, {
@@ -88,4 +89,55 @@ const login = catchAsync(
   }
 );
 
-export default { signUp, login };
+const forgotPassword = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // 1. get user based on posted email
+    const currentUser = await User.findOne({ email: req.body.email });
+
+    if (!currentUser) {
+      const error = new AppError(
+        'User with this email adress not found. Please try again',
+        404
+      );
+
+      return next(error);
+    }
+
+    // 2. generate the random token
+    const resetToken = currentUser.createPasswordResetToken();
+    await currentUser.save({ validateBeforeSave: false }); // persist token in the database
+
+    // 3. send it back as an email
+    //prettier-ignore
+    const resetURL = `${req.protocol}://${req.get("host")}/api/v1/users/resetPassword/${resetToken}`;
+    const message = `Forgot your password? 
+                     Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.
+                     \n If you didn't forget your password, please ignore this email.`;
+
+    try {
+      await sendResetEmail({
+        email: currentUser.email,
+        subject: 'Your password reset token (valid for 10 min)',
+        message,
+      });
+
+      res.status(200).json({
+        status: 'sucess',
+        message: 'Token sent to the email!',
+      });
+    } catch (err) {
+      currentUser.passwordResetToken = undefined;
+      currentUser.passwordResetExpires = undefined;
+      await currentUser.save({ validateBeforeSave: false });
+
+      const error = new AppError(
+        'There was an error sending the email. Please try again later',
+        500
+      );
+
+      return next(error);
+    }
+  }
+);
+
+export default { signUp, login, forgotPassword };

@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema<userType>({
     type: String,
     requred: [true, 'User must have a name'],
   },
+
   email: {
     type: String,
     required: [true, 'User must have an email'],
@@ -16,6 +17,7 @@ const userSchema = new mongoose.Schema<userType>({
     lowercase: true,
     validate: [validator.isEmail, 'Please provide a valid email'],
   },
+
   photo: {
     type: String,
   },
@@ -32,12 +34,21 @@ const userSchema = new mongoose.Schema<userType>({
     minlength: 8,
     select: false,
   },
+
   passwordConfirm: {
     type: String || undefined,
     required: [true, 'You must confirm the password'],
   },
 
   passwordChangedAt: {
+    type: Date || undefined,
+  },
+
+  passwordResetToken: {
+    type: String || undefined,
+  },
+
+  passwordResetExpires: {
     type: Date || undefined,
   },
 
@@ -67,6 +78,20 @@ userSchema.methods.correctPassword = async function (
   userPassword: string
 ) {
   return await bcrypt.compare(canditatePassword, userPassword);
+};
+
+// CREATE RESET TOKEN
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // token expires in 10 min
+
+  return resetToken;
 };
 
 const User = mongoose.model<userType>('User', userSchema);

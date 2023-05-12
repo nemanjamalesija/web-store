@@ -15,4 +15,5 @@ export type userType = Document & {
     candidatePassword: string,
     userPassword: string
   ) => Promise<boolean>;
+  createPasswordResetToken: () => string;
 };

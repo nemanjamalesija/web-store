@@ -72,6 +72,14 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+//  SET THE DATE ON PASSWORD CHANGED PROPERTY
+userSchema.pre('save', function (next) {
+  if (!this.isModified('password') || this.isNew) return next();
+
+  this.passwordChangedAt = new Date(Date.now() - 1000);
+  next();
+});
+
 // PASS VERIFICATION
 userSchema.methods.correctPassword = async function (
   canditatePassword: string,

@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 const BASE_URL = 'http://127.0.0.1:3001';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -23,9 +27,22 @@ const LoginForm = () => {
           },
         }
       );
+      const {
+        data: { data },
+      } = response;
 
-      const data = JSON.stringify(response.data);
-      console.log(data);
+      const { _id, email: userEmail, name, role } = data.user;
+
+      setAuth({
+        _id,
+        email: userEmail,
+        name,
+        role,
+        token: response.data.token,
+      });
+
+      localStorage.setItem('token', response.data.token);
+      navigate(`/products`);
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +57,6 @@ const LoginForm = () => {
         <input
           type='email'
           id='email'
-          autoComplete='off'
           required
           value={email}
           onChange={(e) => setEmail(e.currentTarget.value)}

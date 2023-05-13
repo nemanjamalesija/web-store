@@ -1,11 +1,12 @@
 import express from 'express';
 import productsController from '../controllers/productsController.ts';
+import authController from '../controllers/authController.ts';
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(productsController.getAllProducts)
+  .get(authController.protect, productsController.getAllProducts)
   .post(productsController.createProduct);
 
 router

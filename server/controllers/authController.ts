@@ -14,30 +14,22 @@ const signToken = (id: string) => {
   });
 };
 
-const signRefreshToken = (id: string) => {
-  return jwt.sign({ id }, process.env.JWT_REFRESH_SECRET_STRING as string, {
-    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN,
-  });
-};
-
 const createSendToken = (res: Response, statusCode: number, user: userType) => {
   const token = signToken(user._id);
-  const refreshToken = signRefreshToken(user._id);
 
-  const jwtRefreshExpiresIn =
-    Number(process.env.JWT_REFRESH_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000; // miliseconds
+  const jwtCookieExpiresIn =
+    Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000; // miliseconds
 
-  const expirationDate = new Date(Date.now() + jwtRefreshExpiresIn);
+  const expirationDate = new Date(Date.now() + jwtCookieExpiresIn);
 
-  const refreshCookieOption = {
+  const cookieOptions = {
     expires: expirationDate,
     secure: true,
     httpOnly: true,
   };
 
-  if (process.env.NODE_ENV !== 'development')
-    refreshCookieOption.secure === true;
-  res.cookie('jwt', refreshToken, refreshCookieOption);
+  if (process.env.NODE_ENV !== 'development') cookieOptions.secure === true;
+  res.cookie('jwt', token, cookieOptions);
 
   res.status(statusCode).json({
     status: 'success',
@@ -94,6 +86,61 @@ const login = catchAsync(
 
     // 3. If everything ok, send token to client
     else createSendToken(res, 200, currentUser);
+  }
+);
+
+const protect = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // 1. Get the token and check if it exist
+    let token: string | undefined;
+
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith('Bearer')
+    )
+      token = req.headers.authorization.split(' ')[1] || undefined;
+
+    if (!token) {
+      const message = 'You are not logged in! Please log in to get access';
+      const error = new AppError(message, 401);
+
+      return next(error);
+    }
+
+    // 2. Validate the token
+    const decodeTokenFn: (token: string, secret: string) => Promise<any> =
+      promisify(jwt.verify);
+
+    const decodedTokenObj = await decodeTokenFn(
+      token,
+      process.env.JWT_SECRET_STRING as string
+    );
+
+    // 3. Check if user still exists
+    const currentUser = await User.findById(decodedTokenObj.id);
+
+    if (!currentUser) {
+      const message = 'The user belonging to the token no longer exists';
+      const error = new AppError(message, 401);
+
+      return next(error);
+    }
+
+    // 4. Check if user changed password after the token was issued
+    else if (currentUser.changedPasswordAfter(decodedTokenObj.iat)) {
+      const error = new AppError(
+        'User recently changed password! Please log in again',
+        401
+      );
+
+      return next(error);
+    }
+
+    // If all okay, grant access to protected route
+    else {
+      req.body = { ...req.body, currentUser };
+      return next();
+    }
   }
 );
 
@@ -181,4 +228,4 @@ const resetPassword = catchAsync(
   }
 );
 
-export default { signUp, login, forgotPassword, resetPassword };
+export default { signUp, login, forgotPassword, resetPassword, protect };

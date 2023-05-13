@@ -16,4 +16,5 @@ export type userType = Document & {
     userPassword: string
   ) => Promise<boolean>;
   createPasswordResetToken: () => string;
+  changedPasswordAfter: (jwtTimestamp: number) => boolean;
 };

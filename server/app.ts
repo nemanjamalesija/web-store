@@ -7,8 +7,10 @@ import productsRouter from './routes/productsRouter.ts';
 import usersRouter from './routes/userRoutes.ts';
 import globalErrorHandler from './controllers/globalErrorController.ts';
 import AppError from './helpers/appError.ts';
+import cookieParser from 'cookie-parser';
 
 const app = express();
+app.use(cookieParser());
 
 const __fileName = fileURLToPath(import.meta.url);
 const __dirName = path.dirname(__fileName);
@@ -30,6 +32,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
+
 app.use(
   '/public/images',
   express.static(path.join(__dirName, 'public/images'))

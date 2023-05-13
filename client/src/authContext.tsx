@@ -1,4 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 interface AuthContextProps {
   auth: {
@@ -51,19 +53,42 @@ const authCredentials: authRedentialsType = {
 
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   const [auth, setAuth] = useState(authCredentials);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
+    const setUser = async () => {
+      const storedToken = localStorage.getItem('token');
 
-    console.log(storedToken);
+      if (!storedToken) {
+        return navigate('/');
+      }
 
-    if (storedToken) {
-      setAuth((prev) => ({
-        ...prev,
+      const response = await axios(
+        'http://127.0.0.1:3001/api/v1/users/getUserWithToken',
+        {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        }
+      );
+
+      const {
+        data: { data },
+      } = response;
+
+      const { _id, email: userEmail, name, role } = data.user;
+
+      setAuth({
+        _id,
+        email: userEmail,
+        name,
+        role,
         token: storedToken,
-      }));
-    }
-  }, []);
+      });
+    };
+
+    setUser();
+  }, [navigate]);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>

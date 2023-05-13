@@ -228,4 +228,59 @@ const resetPassword = catchAsync(
   }
 );
 
-export default { signUp, login, forgotPassword, resetPassword, protect };
+const getUserWithToken = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // 1. Get the token and check if it exist
+    let token: string | undefined;
+
+    token = req.headers.authorization?.split(' ')[1] || undefined;
+
+    // 2. Validate the token
+    const decodeTokenFn: (token: string, secret: string) => Promise<any> =
+      promisify(jwt.verify);
+
+    const decodedTokenObj = await decodeTokenFn(
+      token as string,
+      process.env.JWT_SECRET_STRING as string
+    );
+
+    // 3. Check if user still exists
+    const user = await User.findById(decodedTokenObj.id);
+
+    if (!user) {
+      const message = 'The user belonging to the token no longer exists';
+      const error = new AppError(message, 401);
+
+      return next(error);
+    }
+
+    // 4. Check if user changed password after the token was issued
+    else if (user.changedPasswordAfter(decodedTokenObj.iat)) {
+      const error = new AppError(
+        'User recently changed password! Please log in again',
+        401
+      );
+
+      return next(error);
+    }
+
+    // If all okay, grant access to protected route
+    else {
+      res.status(200).json({
+        status: 'sucess',
+        data: {
+          user,
+        },
+      });
+    }
+  }
+);
+
+export default {
+  signUp,
+  login,
+  forgotPassword,
+  resetPassword,
+  protect,
+  getUserWithToken,
+};

@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-
-const BASE_URL = 'http://127.0.0.1:3001';
+import { baseURL } from '../constants/baseURL';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +15,7 @@ const LoginForm = () => {
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/api/v1/users/login`,
+        `${baseURL}/api/v1/users/login`,
         {
           email,
           password,

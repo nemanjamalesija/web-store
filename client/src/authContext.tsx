@@ -1,26 +1,9 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from './constants/baseURL';
+import { AuthContextProps } from './types/authContextProps';
+import { authCredentials } from './types/authCredentials';
 import axios from 'axios';
-
-interface AuthContextProps {
-  auth: {
-    _id: string;
-    email: string;
-    name: string;
-    role: string;
-    token: string;
-    passwordChangedAt?: string;
-  };
-  setAuth: React.Dispatch<
-    React.SetStateAction<{
-      _id: string;
-      email: string;
-      name: string;
-      role: string;
-      token: string;
-    }>
-  >;
-}
 
 const AuthContext = createContext<AuthContextProps>({
   auth: {
@@ -35,15 +18,7 @@ const AuthContext = createContext<AuthContextProps>({
   },
 });
 
-type authRedentialsType = {
-  _id: string;
-  email: string;
-  name: string;
-  role: string;
-  token: string;
-};
-
-const authCredentials: authRedentialsType = {
+const authState: authCredentials = {
   _id: '',
   email: '',
   name: '',
@@ -52,39 +27,40 @@ const authCredentials: authRedentialsType = {
 };
 
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
-  const [auth, setAuth] = useState(authCredentials);
+  const [auth, setAuth] = useState(authState);
   const navigate = useNavigate();
 
   useEffect(() => {
     const setUser = async () => {
-      const storedToken = localStorage.getItem('token');
+      try {
+        const storedToken = localStorage.getItem('token');
 
-      if (!storedToken) {
-        return navigate('/');
-      }
+        if (!storedToken) {
+          return navigate('/');
+        }
 
-      const response = await axios(
-        'http://127.0.0.1:3001/api/v1/users/getUserWithToken',
-        {
+        const response = await axios(`${baseURL}/users/getUserWithToken`, {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           },
-        }
-      );
+        });
 
-      const {
-        data: { data },
-      } = response;
+        const {
+          data: { data },
+        } = response;
 
-      const { _id, email: userEmail, name, role } = data.user;
+        const { _id, email: userEmail, name, role } = data.user;
 
-      setAuth({
-        _id,
-        email: userEmail,
-        name,
-        role,
-        token: storedToken,
-      });
+        setAuth({
+          _id,
+          email: userEmail,
+          name,
+          role,
+          token: storedToken,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     setUser();

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
+import { baseURL } from '../constants/baseURL';
 
 //127.0.0.1:3001/api/v1/products
 
@@ -16,7 +17,7 @@ const Products = () => {
     const fetchAllProducts = async () => {
       try {
         const response = await axios(
-          'http://127.0.0.1:3001/api/v1/products',
+          `${baseURL}/products`,
 
           {
             headers: {

@@ -14,22 +14,30 @@ const signToken = (id: string) => {
   });
 };
 
+const signRefreshToken = (id: string) => {
+  return jwt.sign({ id }, process.env.JWT_REFRESH_SECRET_STRING as string, {
+    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN,
+  });
+};
+
 const createSendToken = (res: Response, statusCode: number, user: userType) => {
   const token = signToken(user._id);
+  const refreshToken = signRefreshToken(user._id);
 
-  const jwtCookieExpiresIn =
-    Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000; // miliseconds
+  const jwtRefreshExpiresIn =
+    Number(process.env.JWT_REFRESH_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000; // miliseconds
 
-  const expirationDate = new Date(Date.now() + jwtCookieExpiresIn);
+  const expirationDate = new Date(Date.now() + jwtRefreshExpiresIn);
 
-  const cookieOptions = {
+  const refreshCookieOption = {
     expires: expirationDate,
     secure: true,
     httpOnly: true,
   };
 
-  if (process.env.NODE_ENV !== 'development') cookieOptions.secure === true;
-  res.cookie('jwt', token, cookieOptions);
+  if (process.env.NODE_ENV !== 'development')
+    refreshCookieOption.secure === true;
+  res.cookie('jwt', refreshToken, refreshCookieOption);
 
   res.status(statusCode).json({
     status: 'success',

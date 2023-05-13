@@ -15,7 +15,20 @@ const __dirName = path.dirname(__fileName);
 
 // MIDDLEWARE
 app.use(morgan('dev'));
-app.use(cors());
+// Enable CORS for all routes
+app.use(cors({ credentials: true }));
+
+app.use((req, res, next) => {
+  const allowedOrigins = ['http://127.0.0.1:5173'];
+  const { origin } = req.headers;
+
+  if (allowedOrigins.includes(origin as string)) {
+    res.setHeader('Access-Control-Allow-Origin', origin as string);
+  }
+
+  next();
+});
+
 app.use(express.json());
 app.use(
   '/public/images',

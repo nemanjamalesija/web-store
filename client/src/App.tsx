@@ -1,27 +1,28 @@
 import { useEffect, useState } from 'react';
+import LoginForm from './components/LoginForm';
 
 function App() {
-  const [products, setProducts] = useState<any>();
-  const fetchAllProducts = async () => {
-    const sir = await fetch('http://127.0.0.1:3001/api/v1/products');
+  // const [products, setProducts] = useState<any>();
+  // const fetchAllProducts = async () => {
+  //   const sir = await fetch('http://127.0.0.1:3001/api/v1/products');
 
-    const {
-      data: { products },
-    } = await sir.json();
+  //   const {
+  //     data: { products },
+  //   } = await sir.json();
 
-    setProducts(products);
-    console.log(products);
-  };
+  //   setProducts(products);
+  //   console.log(products);
+  // };
 
-  useEffect(() => {
-    fetchAllProducts();
-  }, []);
+  // useEffect(() => {
+  //   fetchAllProducts();
+  // }, []);
 
-  if (!products) return <h1>Loading...</h1>;
+  // if (!products) return <h1>Loading...</h1>;
 
   return (
     <div>
-      {products.map((prod: any, i) => {
+      {/* {products.map((prod: any, i) => {
         console.log(prod.image);
 
         return (
@@ -30,7 +31,8 @@ function App() {
             src={`http://127.0.0.1:3001/public/images${prod.image}`}
           />
         );
-      })}{' '}
+      })}{' '} */}
+      <LoginForm />
     </div>
   );
 }

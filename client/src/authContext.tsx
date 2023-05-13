@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { baseURL } from './constants/baseURL';
 import { AuthContextProps } from './types/authContextProps';
-import { authCredentials } from './types/authCredentials';
+import { authCredentials } from './types/userCredentials';
 import axios from 'axios';
 
 const AuthContext = createContext<AuthContextProps>({

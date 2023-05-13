@@ -1,4 +1,4 @@
-export type authCredentials = {
+export type userCredentials = {
   _id: string;
   email: string;
   name: string;

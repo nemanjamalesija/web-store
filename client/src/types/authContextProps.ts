@@ -7,6 +7,7 @@ export type AuthContextProps = {
     token: string;
     passwordChangedAt?: string;
   };
+  loading: boolean;
   setAuth: React.Dispatch<
     React.SetStateAction<{
       _id: string;

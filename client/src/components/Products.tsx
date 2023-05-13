@@ -1,18 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
-import useAuth from '../hooks/useAuth';
 import { baseURL } from '../constants/baseURL';
-
-//127.0.0.1:3001/api/v1/products
+import { useGetGlobalInfo } from '../hooks/useGetGlobalInfo';
 
 const Products = () => {
-  const [products, setProducts] = useState<any>();
-  const { auth } = useAuth();
-
-  console.log(auth);
+  const { user } = useGetGlobalInfo();
 
   useEffect(() => {
-    if (!auth.token) return;
+    if (!user.token) return;
 
     const fetchAllProducts = async () => {
       try {
@@ -22,12 +17,12 @@ const Products = () => {
           {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${auth.token}`,
+              Authorization: `Bearer ${user.token}`,
             },
           }
         );
-
-        const data = JSON.stringify(response.data);
+        console.log(response);
+        const { data } = response.data;
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -35,13 +30,11 @@ const Products = () => {
     };
 
     fetchAllProducts();
-  }, [auth.token]);
-
-  if (!products) return <h1>Loading...</h1>;
+  }, [user.token]);
 
   return (
     <div>
-      {products.map((prod: any, i) => {
+      {/* {products.map((prod: any, i) => {
         console.log(prod.image);
 
         return (
@@ -50,7 +43,7 @@ const Products = () => {
             src={`http://127.0.0.1:3001/public/images${prod.image}`}
           />
         );
-      })}{' '}
+      })}{' '} */}
     </div>
   );
 };

@@ -1,21 +1,22 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
 import { baseURL } from '../constants/baseURL';
+import { logInUser } from '../reducers/authReducer';
+import { useAppDispatch } from '../hooks/useAppDispatch';
+import axios from 'axios';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        `${baseURL}/api/v1/users/login`,
+        `${baseURL}/users/login`,
         {
           email,
           password,
@@ -32,18 +33,20 @@ const LoginForm = () => {
 
       const { _id, email: userEmail, name, role } = data.user;
 
-      setAuth({
-        _id,
-        email: userEmail,
-        name,
-        role,
-        token: response.data.token,
-      });
+      dispatch(
+        logInUser({
+          _id,
+          email: userEmail,
+          name,
+          role,
+          token: response.data.token,
+        })
+      );
 
       localStorage.setItem('token', response.data.token);
       navigate(`/products`);
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.response.data.message);
     }
   };
 

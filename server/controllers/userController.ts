@@ -23,6 +23,19 @@ const updateMe = catchAsync(
       next(error);
     }
 
+    const deleteMe = catchAsync(
+      async (req: Request, res: Response, next: NextFunction) => {
+        await User.findByIdAndUpdate(req.body.currentUser._id, {
+          active: false,
+        });
+
+        res.status(204).json({
+          status: 'sucess',
+          data: null,
+        });
+      }
+    );
+
     // 2. Filter fields that are not allowed
     const filteredBody = filterObj(req.body, 'name', 'email');
 

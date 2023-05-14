@@ -15,6 +15,8 @@ router.get('/getUserWithToken', authController.getUserWithToken);
 
 router.use(authController.protect); // protect all routes below this point
 
+router.get('/me', userController.getMe, userController.getOneUser);
+
 // ADMINISTRATORS
 router.route('/').get(userController.getAllUsers);
 router

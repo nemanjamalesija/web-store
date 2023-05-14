@@ -9,6 +9,8 @@ const getUserFromLocalStorage = createAsyncThunk<userCredentials | null>(
     try {
       const storedToken = localStorage.getItem('token');
 
+      console.log('I run');
+
       if (!storedToken) {
         return null;
       }

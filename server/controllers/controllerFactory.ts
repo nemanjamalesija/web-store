@@ -80,4 +80,4 @@ const deleteOne = <T>(Model: Model<T>) =>
     });
   });
 
-export default { getAll, createOne, updateOne, deleteOne };
+export default { getAll, createOne, updateOne, deleteOne, getOne };

@@ -19,6 +19,7 @@ router.use(authController.protect); // protect all routes below this point
 router.route('/').get(userController.getAllUsers);
 router
   .route('/:id')
+  .get(userController.getOneUser)
   .delete(userController.deleteUser)
   .patch(userController.updateUser);
 

@@ -15,6 +15,22 @@ const getAll = <T>(Model: Model<T>) =>
     });
   });
 
+const getOne = <T>(Model: Model<T>, populateField: string) =>
+  catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const doc = await Model.findById(req.params.id).populate(populateField);
+
+    if (!doc) {
+      const error = new AppError('There is no document with that ID', 404);
+
+      return next(error);
+    }
+
+    res.status(200).json({
+      status: 'sucess',
+      data: { doc },
+    });
+  });
+
 const createOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = new Model(req.body);

@@ -17,6 +17,7 @@ router.use(authController.protect); // protect all routes below this point
 
 router.get('/me', userController.getMe, userController.getOneUser);
 router.patch('/updateMe', userController.updateMe);
+router.delete('/deleteMe', userController.deleteMe);
 
 // ADMINISTRATORS
 router.route('/').get(userController.getAllUsers);

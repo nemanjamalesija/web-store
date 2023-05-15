@@ -11,6 +11,9 @@ router
   .get(reviewController.getAllReviews)
   .post(reviewController.setProductUserIds, reviewController.createReview);
 
-router.route('/:productId').get(reviewController.getOneReview);
+router
+  .route('/:id')
+  .get(reviewController.getOneReview)
+  .patch(reviewController.updateReview);
 
 export default router;

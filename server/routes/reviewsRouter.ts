@@ -14,6 +14,7 @@ router
 router
   .route('/:id')
   .get(reviewController.getOneReview)
-  .patch(reviewController.updateReview);
+  .patch(reviewController.updateReview)
+  .delete(reviewController.deleteReview);
 
 export default router;

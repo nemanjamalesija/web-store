@@ -11,8 +11,9 @@ const setProductUserIds = (req: Request, res: Response, next: NextFunction) => {
 
 const getAllReviews = controllerFactory.getAll(Review);
 const getOneReview = controllerFactory.getOne(Review, '');
-const updateReview = controllerFactory.updateOne(Review);
 const createReview = controllerFactory.createOne(Review);
+const updateReview = controllerFactory.updateOne(Review);
+const deleteReview = controllerFactory.deleteOne(Review);
 
 export default {
   getAllReviews,
@@ -20,4 +21,5 @@ export default {
   createReview,
   setProductUserIds,
   updateReview,
+  deleteReview,
 };

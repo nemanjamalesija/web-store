@@ -5,7 +5,11 @@ import AppError from '../helpers/appError.ts';
 
 const getAll = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const doc = await Model.find();
+    // To allow for nested GET reviews on tour
+    let filter = {};
+    if (req.params.productId) filter = { product: req.params.productId };
+
+    const doc = await Model.find(filter);
 
     // SEND RESPONSE
     res.status(200).json({

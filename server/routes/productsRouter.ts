@@ -4,7 +4,7 @@ import reviewsRouter from './reviewsRouter.ts';
 
 const router = express.Router();
 
-router.use('/:tourId/review', reviewsRouter);
+router.use('/:productId/reviews', reviewsRouter);
 
 router
   .route('/')

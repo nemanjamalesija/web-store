@@ -20,14 +20,14 @@ const reviewSchema = new mongoose.Schema<reviewType>(
       default: Date.now(),
     },
 
-    tour: {
-      type: Types.ObjectId,
-      ref: 'Tour',
-      required: [true, 'Review must belong to a tour'],
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Product',
+      required: [true, 'Review must belong to a product'],
     },
 
     user: {
-      type: Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: [true, 'Review must belong to an user'],
     },
@@ -40,8 +40,18 @@ const reviewSchema = new mongoose.Schema<reviewType>(
 );
 
 reviewSchema.pre('save', function (next) {
-  this.populate({ path: 'tour' });
+  this.populate({ path: 'product' });
   this.populate({ path: 'user' });
+  next();
+});
+
+reviewSchema.pre(/^find/, function (next) {
+  //@ts-ignore
+  this.populate({
+    path: 'user',
+    select: 'name',
+  });
+
   next();
 });
 

@@ -13,6 +13,7 @@ router
 
 router
   .route('/:id')
+  .get(productsController.getOneProduct)
   .patch(productsController.updateProduct)
   .delete(productsController.deleteProduct);
 

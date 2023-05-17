@@ -61,8 +61,6 @@ const globalErrorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(process.env.NODE_ENV);
-
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
@@ -89,8 +87,6 @@ const globalErrorHandler = (
       error = handleValidatorErrorDB(error as validatorErrorDB);
 
     sendErrorProd(res, error);
-
-    console.log(JSON.stringify(err));
   }
 };
 

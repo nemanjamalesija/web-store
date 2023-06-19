@@ -11,10 +11,6 @@ const productSchema = new mongoose.Schema<productType>(
         40,
         'A product name must be equal or greater then 40 characters',
       ],
-      minlength: [
-        10,
-        'A product name must be equal or greater then 10 characters',
-      ],
       required: [true, 'A product must have a name'],
     },
     image: {

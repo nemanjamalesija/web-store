@@ -1,8 +1,8 @@
 [
   {
-    "name": "The O.G.",
+    "name": "The O.G. 1997",
     "price": 8.99,
-    "image": "/bowl1.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl1.avif",
     "calories": 650,
     "nutriScore": 75,
     "summary": "Taste the poke bowl that started it all, and let your cravings meet their match",
@@ -26,7 +26,7 @@
   {
     "name": "Island BBQ",
     "price": 9.39,
-    "image": "/bowl2.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl2.avif",
     "calories": 820,
     "nutriScore": 68,
     "summary": "Spice up your palate with an island-inspired poke bowl that will transport you to tropical bliss.",
@@ -51,7 +51,7 @@
   {
     "name": "Golden Hour",
     "price": 9.99,
-    "image": "/bowl3.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl3.avif",
     "calories": 600,
     "nutriScore": 80,
     "summary": "Elevate your dining experience with the golden flavors of this exquisite poke bowl.",
@@ -76,7 +76,7 @@
   {
     "name": "Trippy",
     "price": 7.99,
-    "image": "/bowl4.webp",
+    "image": "http://127.0.0.1:3001/public/images/bowl4.webp",
     "calories": 480,
     "nutriScore": 81,
     "summary": "Take a flavorful trip into the world of vegetarian delights with this vibrant poke bowl.",
@@ -102,7 +102,7 @@
   {
     "name": "Over the rainbow",
     "price": 9.97,
-    "image": "/bowl5.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl5.avif",
     "calories": 500,
     "nutriScore": 77,
     "summary": "Discover a burst of colorful flavors that will leave you craving more, one bite at a time.",
@@ -125,7 +125,7 @@
   {
     "name": "Hold the chicken",
     "price": 9.97,
-    "image": "/bowl6.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl6.avif",
     "calories": 500,
     "nutriScore": 77,
     "summary": "Enjoy a protein-packed delight that's perfect for both kids and adults alike.",
@@ -150,7 +150,7 @@
   {
     "name": "Grazer",
     "price": 8.97,
-    "image": "/bowl7.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl7.avif",
     "calories": 460,
     "nutriScore": 74,
     "summary": "Embrace the freshest vegetarian ingredients in a bowl that satisfies your cravings guilt-free.",
@@ -179,7 +179,7 @@
   {
     "name": "Green panther",
     "price": 9.97,
-    "image": "/bowl8.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl8.avif",
     "calories": 80,
     "nutriScore": 81,
     "summary": "Unleash your taste buds with a vegetarian poke bowl that packs a fiery punch.",
@@ -205,7 +205,7 @@
   {
     "name": "Cali Classic",
     "price": 9.99,
-    "image": "/bowl9.avif",
+    "image": "http://127.0.0.1:3001/public/images/bowl9.avif",
     "calories": 93,
     "nutriScore": 81,
     "summary": "Dive into a coastal culinary adventure with this high-protein poke bowl inspired by California.",

@@ -83,7 +83,7 @@ productSchema.virtual('reviews', {
 
 productSchema.pre('find', function (next) {
   this.populate('reviews').select(
-    'calories id image labels name nutriScore price rating summary'
+    'image calories id labels name nutriScore price rating summary'
   );
 
   next();

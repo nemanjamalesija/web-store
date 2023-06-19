@@ -3,6 +3,7 @@ import { useProductsStore } from '@/stores/productsStore'
 import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import SingleProduct from '../components/SingleProduct.vue'
+import type { productType } from '../types/productType'
 
 const productsStore = useProductsStore()
 const { products, loading } = storeToRefs(productsStore)
@@ -17,9 +18,7 @@ async function fetchAllProducts() {
       data: { doc }
     } = await response.json()
 
-    console.log(doc)
-
-    setProducts(doc)
+    setProducts(doc as productType[])
     toggleLoading()
   } catch (error) {
     console.log(error)
@@ -36,10 +35,10 @@ onMounted(async () => {
     <div class="max-w-7xl mx-auto">
       <h1 class="" v-if="loading">Loading...</h1>
       <div class="">
-        <h1 class="text-2xl lg:text-3xl text-orange-800 text-center font-bold mb-10">
+        <h1 class="text-3xl lg:text-5xl text-orange-800 text-center font-bold mb-16">
           Mambo Jumbo
         </h1>
-        <div class="">
+        <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center">
           <SingleProduct v-for="product in products" :key="product.id" :product="product" />
         </div>
       </div>

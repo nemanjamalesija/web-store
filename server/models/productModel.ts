@@ -81,8 +81,19 @@ productSchema.virtual('reviews', {
   type: mongoose.Schema.Types.ObjectId,
 });
 
-productSchema.pre('find', function () {
-  this.select('calories id image labels name nutriscore price rating summary');
+productSchema.pre('find', function (next) {
+  this.populate('reviews').select(
+    'calories id image labels name nutriScore price rating summary'
+  );
+
+  next();
+});
+
+productSchema.virtual('reviewsNumber').get(function () {
+  if (this.reviews) {
+    return this.reviews.length;
+  }
+  return 0;
 });
 
 const Product = mongoose.model<productType>('Product', productSchema);

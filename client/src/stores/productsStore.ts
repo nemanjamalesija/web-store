@@ -1,12 +1,12 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { productType } from '@/types/productType'
+import type { productTypeAll } from '@/types/productType'
 
 export const useProductsStore = defineStore('counter', () => {
-  const products = ref([] as productType[])
+  const products = ref([] as productTypeAll[])
   const loading = ref(false)
 
-  function setProducts(productsAPI: productType[]) {
+  function setProducts(productsAPI: productTypeAll[]) {
     products.value = productsAPI
   }
 

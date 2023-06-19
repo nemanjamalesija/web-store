@@ -1,4 +1,4 @@
-export type productType = {
+export type singleProductType = {
   id: string
   name: string
   price: number
@@ -17,4 +17,15 @@ export type productType = {
   labels: string[]
   reviews: string[]
   createdAt: Date
+}
+
+export type productTypeAll = {
+  id: string
+  name: string
+  price: number
+  image: string
+  nutriSore: number
+  summary: string
+  rating: number
+  labels: string[]
 }

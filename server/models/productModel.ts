@@ -80,6 +80,11 @@ productSchema.virtual('reviews', {
   localField: '_id',
   type: mongoose.Schema.Types.ObjectId,
 });
+
+productSchema.pre('find', function () {
+  this.select('calories id image labels name nutriscore price rating summary');
+});
+
 const Product = mongoose.model<productType>('Product', productSchema);
 
 export default Product;

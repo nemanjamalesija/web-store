@@ -17,3 +17,34 @@ html {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.btn:hover {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  -webkit-box-shadow: 0 0.625rem, 1.25rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.625rem, 1.25rem rgba (0, 0, 0, 0.15);
+}
+
+.btn:active {
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+  -webkit-box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+}

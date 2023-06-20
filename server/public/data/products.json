@@ -96,7 +96,7 @@
       ],
       "sauces": ["Citrus ponzu"]
     },
-    "labels": ["Vegetarian, Gluten-free"],
+    "labels": ["Vegetarian", "Gluten-free"],
     "reviews": [""]
   },
   {
@@ -119,7 +119,7 @@
       ],
       "sauces": ["Fire Water"]
     },
-    "labels": ["High-protein, Spicey"],
+    "labels": ["High-protein", "Spicey"],
     "reviews": [""]
   },
   {
@@ -144,7 +144,7 @@
       ],
       "sauces": ["Sweet yuzu"]
     },
-    "labels": ["Classic, High-protein"],
+    "labels": ["Classic", "High-protein"],
     "reviews": [""]
   },
   {
@@ -173,7 +173,7 @@
       ],
       "sauces": ["Sesame Waina"]
     },
-    "labels": ["Vegetarian, Gluten-free"],
+    "labels": ["Vegetarian", "Gluten-free"],
     "reviews": [""]
   },
   {
@@ -199,7 +199,7 @@
       ],
       "sauces": ["Sesame Waina"]
     },
-    "labels": ["Vegetarian, Spicy"],
+    "labels": ["Vegetarian", "Spicy"],
     "reviews": [""]
   },
   {

@@ -8,12 +8,14 @@ type singleProductPropsType = {
 const props = defineProps<singleProductPropsType>()
 </script>
 <template>
-  <div class="card">
-    <div class="card__header">
-      <div class="card__picture">
-        <div class="card__picture-overlay">&nbsp;</div>
+  <div
+    class="card rounded-sm overflow-hidden transition-all duration-300 flex flex-col bg-white text-gray-600"
+  >
+    <div class="card__header relative">
+      <div class="card__picture relative h-60 lg:h-64">
+        <div class="card__picture-overlay absolute h-full w-full">&nbsp;</div>
         <img
-          class="card__picture-img"
+          class="card__picture-img object-cover h-full w-full"
           :src="props.product.image"
           :alt="props.product.name + ' image'"
         />
@@ -22,159 +24,131 @@ const props = defineProps<singleProductPropsType>()
         {{ props.product.name }}
       </h3>
     </div>
-    <div class="card__details">
-      <div class="flex justify-end items-center gap-2 col-span-2">
-        <span
-          v-for="(label, i) in props.product.labels"
-          :key="i"
-          class="card__labels text-xs lg:text-sm"
-        >
-          {{ label }}
-        </span>
-      </div>
 
-      <p class="card__text text-base lg:text-lg italic">{{ props.product.summary }}</p>
-      <div class="card__data">
-        <svg class="card__icon">
-          <!-- <use xlink:href="img/icons.svg#icon-map-pin"></use> -->
-          🎈
+    <div class="card__details grid grid-cols-2 gap-x-5 gap-y-4 py-6 px-7">
+      <p class="card__text col-span-2 text-sm lg:text-base italic mb-3">
+        {{ props.product.summary }}
+      </p>
+      <div class="card__data text-sm lg:text-base flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 stroke-orange-500"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
+          />
         </svg>
-        <span>Banff, Canada</span>
+
+        <span class="card__footer-value font-semibold">{{ props.product.calories }}</span
+        ><span>calories</span>
       </div>
-      <div class="card__data">
-        <svg class="card__icon">
-          <!-- <use xlink:href="img/icons.svg#icon-calendar"></use> -->
-          🎈
+      <div class="card__data text-sm lg:text-base flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 stroke-orange-500"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+          />
         </svg>
-        <span>April 2021</span>
+
+        <span class="card__footer-value font-semibold">{{ props.product.rating }}</span
+        ><span>rating</span>
       </div>
-      <div class="card__data">
-        <svg class="card__icon">
-          <!-- <use xlink:href="img/icons.svg#icon-flag"></use> -->
-          🎈
+      <div class="card__data text-sm lg:text-base flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 stroke-orange-500"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"
+          />
         </svg>
-        <span>3 stops</span>
+
+        <span class="font-semibold">{{ props.product.nutriScore }}</span
+        ><span>N.score</span>
       </div>
-      <div class="card__data">
-        <svg class="card__icon">
-          <!-- <use xlink:href="img/icons.svg#icon-user"></use> -->
-          🎈
+      <div class="card__data text-sm lg:text-base flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 stroke-orange-500"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
         </svg>
-        <span>25 people</span>
+
+        <span class="font-semibold">{{ props.product.price }}</span
+        ><span>price</span>
       </div>
     </div>
-    <div class="card__footer">
-      <p>
-        <span class="card__footer-value">\ {{ props.product.price }}</span>
-        <span class="card__footer-text">per person</span>
-      </p>
-      <p class="card__ratings">
-        <span class="card__footer-value">{{ props.product.rating }}</span>
-        <span class="card__footer-text">rating {{ props.product.reviewsNumber }}</span>
-      </p>
-      <a class="btn btn--green btn--small" href="#">Details</a>
+
+    <div
+      class="card__footer bg-slate-50 border-t-2 border-slate-50 b py-6 px-7 mt-auto flex l items-center"
+    >
+      <div class="flex items-center">
+        <div class="flex flex-col gap-2">
+          <p v-for="(label, i) in props.product.labels" :key="i" class="card__labels flex gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5 stroke-orange-500"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+            <span class="text-xs lg:text-sm text-gray-500">{{ label }}</span>
+          </p>
+        </div>
+      </div>
+      <a
+        class="btn btn--orange btn--small inline-block py-3 px-6 bg-orange-500 uppercase text-white text-sm lg:text-base text-medium hover:bg-orange-600 active:bg-orange-800 rounded-full justify-self-end self-center ml-auto"
+        href="#"
+        >Details</a
+      >
     </div>
   </div>
 </template>
 
 <style>
 .card {
-  border-radius: 3px;
-  overflow: hidden;
-  -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  -webkit-transition: 0.3s all;
-  transition: 0.3s all;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-.card__header {
-  position: relative;
-}
-.card__picture {
-  position: relative;
-  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
-  clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
-  height: 22rem;
-}
-.card__picture-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.card__picture-img {
-  -o-object-fit: cover;
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-.card__details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row-gap: 1.75rem;
-  grid-column-gap: 2rem;
-  padding: 2.5rem 3rem;
-}
-.card__sub-heading {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  grid-column: 1 / -1;
+  -webkit-box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.1);
 }
 
-.card__text {
-  grid-column: 1 / -1;
-}
-.card__data {
-  font-size: 1.3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-.card__data svg {
-  margin-right: 0.7rem;
-}
-.card__icon {
-  height: 2rem;
-  width: 2rem;
-  fill: #55c57a;
-}
-.card__footer {
-  background-color: #f7f7f7;
-  border-top: 1px solid #f1f1f1;
-  padding: 25px 30px;
-  font-size: 1.4rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
-  margin-top: auto;
-}
-.card__footer-value {
-  font-weight: 700;
-}
-.card__footer-text {
-  color: #999;
-}
-.card__ratings {
-  grid-row: 2 / 3;
-}
-.card .btn-small,
-.card .btn {
-  grid-row: 1 / 3;
-  justify-self: end;
-  -ms-flex-item-align: center;
-  align-self: center;
+.card__picture {
+  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
+  clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
 }
 </style>

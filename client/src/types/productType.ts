@@ -3,7 +3,7 @@ export type productType = {
   name: string
   price: number
   image: string
-  nutriSore: number
+  nutriScore: number
   summary: string
   rating: number
   labels: string[]

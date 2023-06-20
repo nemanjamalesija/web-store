@@ -132,10 +132,11 @@ const props = defineProps<singleProductPropsType>()
           </p>
         </div>
       </div>
-      <a
+      <router-link
+        :to="`/products/${props.product.id}`"
         class="btn btn--orange btn--small inline-block py-3 px-6 bg-orange-500 uppercase text-white text-sm lg:text-base text-medium hover:bg-orange-600 active:bg-orange-800 rounded-full justify-self-end self-center ml-auto"
         href="#"
-        >Details</a
+        >Details</router-link
       >
     </div>
   </div>

@@ -5,7 +5,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header class="h-20 bg-orange-950 text-slate-100">
     <nav
-      class="h-full px-10 flex items-center justify-between text-base lg:text-lg text-orange-50 font-medium border-b-2 text-inherit"
+      class="h-full px-10 flex items-center justify-between text-base lg:text-lg text-orange-50 font-medium text-inherit"
     >
       <h1 class="text-xl lg:text-xl uppercase text-center font-medium">Mambo jumbo bowls</h1>
       <div class="flex items-center gap-6">

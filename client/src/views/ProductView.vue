@@ -42,8 +42,8 @@ onMounted(async () => {
   <h1 v-if="loading">Loading...</h1>
   <section v-else class="section-header h-[55vw] lg:h-[35vw]">
     <div class="header__hero h-full relative">
-      <div class="header__hero-overlay absolute h-full w-full z-20 opacity-80"></div>
-      &nbsp;
+      <div class="header__hero-overlay absolute h-full w-full z-20 opacity-80">&nbsp;</div>
+
       <img
         class="header__hero-img h-full w-full object-cover z-10 block"
         :src="currentProduct.image"
@@ -107,10 +107,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-/* .header__hero-img {
-  margin-top: -1.56rem;
-} */
-
 .header__hero-img,
 .header__hero-overlay {
   -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);

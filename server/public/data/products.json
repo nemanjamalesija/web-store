@@ -51,13 +51,7 @@
     "ingredients": {
       "bases": ["Sushi rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Chicken"],
-      "mixinsAndToppings": [
-        "Avocado",
-        "Mixed Greens",
-        "Cilantro",
-        "Scallion",
-        "Sesame seeds"
-      ],
+      "mixinsAndToppings": ["Avocado", "Mixed Greens", "Cilantro", "Scallion"],
       "sauces": ["Poke Classic"]
     },
     "ingredientsImages": {
@@ -95,13 +89,7 @@
     "ingredients": {
       "bases": ["Sushi rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Tuna"],
-      "mixinsAndToppings": [
-        "Corn",
-        "Carrot",
-        "Hawaiian Salsa",
-        "Slaw",
-        "Sesame seeds"
-      ],
+      "mixinsAndToppings": ["Corn", "Carrot", "Hawaiian Salsa", "Sesame seeds"],
       "sauces": ["Avocado lime"]
     },
     "ingredientsImages": {
@@ -137,16 +125,9 @@
     "description": "Step into a golden realm of culinary perfection with our Golden Hour poke bowl. Choose from a variety of bases, from sushi rice to brown rice or noodles. Dive into the ocean of flavors with salmon or krab, complemented by a delightful mix of avocado, scallion, carrot, and more. Drizzle it all with our tantalizing Counter Sauce, and you've got yourself a bowl worth savoring!",
     "rating": 4.9,
     "ingredients": {
-      "bases": ["Sushi Rice", "Brown rice", "Noodles, Mixed Greens"],
+      "bases": ["Sushi Rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Salmon", "Krab"],
-      "mixinsAndToppings": [
-        "Avocado",
-        "Scallion",
-        "Carrot",
-        "Radish sporuts",
-        "Cucumber",
-        "Masago"
-      ],
+      "mixinsAndToppings": ["Scallion", "Radish sporuts", "Cucumber", "Masago"],
       "sauces": ["Counter Sauce"]
     },
     "ingredientsImages": {
@@ -164,9 +145,7 @@
         "http://127.0.0.1:3001/public/images/ingredients/sauces/counterSauce.png"
       ],
       "mixinsAndToppings": [
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/scallions.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/radishSprouts.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/massago.png"
@@ -187,14 +166,7 @@
     "ingredients": {
       "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Tofu"],
-      "mixinsAndToppings": [
-        "Avocado",
-        "Seaweed salad",
-        "Carrot",
-        "Edamme",
-        "Cucumber",
-        "Furikake"
-      ],
+      "mixinsAndToppings": ["Carrot", "Edamme", "Cucumber", "Furikake"],
       "sauces": ["Citrus ponzu"]
     },
     "ingredientsImages": {
@@ -211,8 +183,6 @@
         "http://127.0.0.1:3001/public/images/ingredients/sauces/citrusPonzu.png"
       ],
       "mixinsAndToppings": [
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/seaweedSalad.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/edamme.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
@@ -235,14 +205,7 @@
     "ingredients": {
       "bases": ["White rice", "Brown rice", "Noodles"],
       "proteins": ["Baked chicken"],
-      "mixinsAndToppings": [
-        "Cucumber",
-        "Carrot",
-        "Corn",
-        "Cilantro",
-        "Scallion",
-        "Onion"
-      ],
+      "mixinsAndToppings": ["Cucumber", "Carrot", "Corn", "Cilantro"],
       "sauces": ["Sweet yuzu"]
     },
     "ingredientsImages": {
@@ -261,9 +224,7 @@
         "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/corn.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/cilantro.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/scallions.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/onion.png"
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cilantro.png"
       ]
     },
     "labels": ["Classic", "High-protein"],
@@ -281,14 +242,7 @@
     "ingredients": {
       "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Tofu"],
-      "mixinsAndToppings": [
-        "Cucumber",
-        "Edamme",
-        "Carrot",
-        "Mango",
-        "Pineaple",
-        "Seasame Seeds"
-      ],
+      "mixinsAndToppings": ["Cucumber", "Mango", "Pineaple", "Seasame Seeds"],
       "sauces": ["Sesame Waina"]
     },
     "ingredientsImages": {
@@ -306,8 +260,7 @@
       ],
       "mixinsAndToppings": [
         "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/edamme.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
+
         "http://127.0.0.1:3001/public/images/ingredients/toppings/mango.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/pineaple.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png"
@@ -329,11 +282,10 @@
       "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Tofu"],
       "mixinsAndToppings": [
-        "Avocado",
         "Mixed Greens",
         "Cucumber",
         "Radish sporuts",
-        "Edamme",
+
         "Seasame Seeds"
       ],
       "sauces": ["Sesame Waina"]
@@ -352,11 +304,10 @@
         "http://127.0.0.1:3001/public/images/ingredients/sauces/sesameWaina.png"
       ],
       "mixinsAndToppings": [
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
         "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
         "http://127.0.0.1:3001/public/images/ingredients/toppings/radishSprouts.png",
-        "http://127.0.0.1:3001/public/images/ingredients/toppings/edamme.png",
+
         "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png"
       ]
     },

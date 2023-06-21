@@ -1,3 +1,10 @@
+type ingredientsType = {
+  bases: string[]
+  proteins: string[]
+  mixinsAndToppings: string[]
+  sauces: string[]
+}
+
 export type productType = {
   id: string
   name: string
@@ -12,10 +19,6 @@ export type productType = {
   reviewsNumber: number
 
   description?: string
-  ingredients?: {
-    bases: string[]
-    proteins: string[]
-    mixinsAndToppings: string[]
-    sauces: string[]
-  }
+  ingredients?: ingredientsType
+  ingredientsImages?: ingredientsType
 }

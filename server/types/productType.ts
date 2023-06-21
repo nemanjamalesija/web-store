@@ -1,3 +1,10 @@
+type ingredientsType = {
+  bases: string[];
+  proteins: string[];
+  mixinsAndToppings: string[];
+  sauces: string[];
+};
+
 export type productType = {
   name: string;
   price: number;
@@ -7,13 +14,9 @@ export type productType = {
   summary: string;
   description: string;
   rating: number;
-  ingredients: {
-    bases: string[];
-    proteins: string[];
-    mixinsAndToppings: string[];
-    sauces: string[];
-  };
+  ingredients: ingredientsType;
+  ingredientsImages: ingredientsType;
   labels: string[];
-  reviews: string[];
   createdAt: Date;
+  reviews: string[];
 };

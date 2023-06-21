@@ -6,18 +6,33 @@
     "calories": 500,
     "nutriScore": 77,
     "summary": "Discovers a burst of colorful flavors that will leave you craving more, one bite at a time.",
-    "description": "Embark on a vibrant culinary journey with our Over the Rainbow poke bowl. Take your pick from a variety of bases, and savor the mouthwatering combination of spicy tuna, succulent shrimp, or krab. With refreshing cucumber, a burst of mixed greens, and a hint of garlic crisps, every bite will transport you to flavor paradise. Drizzled with our fiery Fire Water sauce, this bowl is a high-protein sensation with a spicy kick!",
+    "description": "Embark on a vibrant culinary journey with our Over the Rainbow poke bowl. Take your pick from a variety of bases, and savor the mouthwatering combination of spicy tuna, succulent krab. With refreshing cucumber, a burst of mixed greens, and a hint of Wonton  crisps, every bite will transport you to flavor paradise. Drizzled with our fiery Sweet yuzu sauce, this bowl is a high-protein sensation with a spicy kick!",
     "rating": 4.7,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
-      "proteins": ["Spicey tuna", "Shrimp", "Krab"],
-      "mixinsAndToppings": [
-        "Cucumber",
-        "Mixed Greens",
-        "Garlic crisps",
-        "Jalapeno"
+      "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "proteins": ["Spicey tuna", "Krab"],
+      "mixinsAndToppings": ["Cucumber", "Mixed Greens", "Wonton crisps"],
+      "sauces": ["Sweet yuzu"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
       ],
-      "sauces": ["Fire Water"]
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/tuna.png",
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/krab.png"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/sweetYuzu.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/wontonCrisps.png"
+      ]
     },
     "labels": ["High-protein", "Spicey"],
     "reviews": [""]
@@ -30,12 +45,12 @@
 
     "calories": 650,
     "nutriScore": 75,
-    "summary": "Taste the poke bowl that started it all, and let your cravings meet their match",
+    "summary": "Taste the poke bowl that started it all, and let your cravings meet their match.",
     "description": "Indulge in a fiber-rich delight that will make your taste buds dance! With a medley of refreshing mixed greens, creamy avocado, and a sprinkle of sesame seeds, this poke bowl is the ultimate classic. Get ready for a burst of flavors that will leave you craving for more!",
     "rating": 4.9,
     "ingredients": {
       "bases": ["Sushi rice", "Brown rice", "Noodles", "Mixed Greens"],
-      "proteins": ["Tuna"],
+      "proteins": ["Chicken"],
       "mixinsAndToppings": [
         "Avocado",
         "Mixed Greens",
@@ -44,6 +59,26 @@
         "Sesame seeds"
       ],
       "sauces": ["Poke Classic"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/bbqChicken.png"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/pokeClassic.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/scallions.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png"
+      ]
     },
     "labels": ["Fiber-rich"],
     "reviews": [""]
@@ -65,10 +100,29 @@
         "Carrot",
         "Hawaiian Salsa",
         "Slaw",
-        "Sesame seeds",
-        "Jalapeno"
+        "Sesame seeds"
       ],
       "sauces": ["Avocado lime"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/tuna.png"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/avocadoLime.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/corn.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/salsa.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png"
+      ]
     },
     "labels": ["Classic", "Spicey"],
     "reviews": [""]
@@ -84,16 +138,39 @@
     "rating": 4.9,
     "ingredients": {
       "bases": ["Sushi Rice", "Brown rice", "Noodles, Mixed Greens"],
-      "proteins": ["Salmon", "Krab, Shrim"],
+      "proteins": ["Salmon", "Krab"],
       "mixinsAndToppings": [
         "Avocado",
         "Scallion",
         "Carrot",
-        "Shredded Nori",
+        "Radish sporuts",
         "Cucumber",
         "Masago"
       ],
       "sauces": ["Counter Sauce"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/salmon.png",
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/krab.png"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/counterSauce.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/scallions.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/radishSprouts.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/massago.png"
+      ]
     },
     "labels": ["Fiber-rich", "Gluten-free"],
     "reviews": [""]
@@ -108,18 +185,39 @@
     "description": "Embark on a flavor-filled adventure with our Trippy poke bowl. Designed for the vegetarian and gluten-free enthusiasts, this bowl showcases the earthy goodness of shrooms, paired with a delightful ensemble of avocado, seaweed salad, carrot, and more. Topped off with zesty citrus ponzu sauce, every bite is a burst of pure bliss",
     "rating": 4.7,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
-      "proteins": ["Shrooms"],
+      "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "proteins": ["Tofu"],
       "mixinsAndToppings": [
         "Avocado",
         "Seaweed salad",
         "Carrot",
         "Edamme",
         "Cucumber",
-        "Garlic crisps",
         "Furikake"
       ],
       "sauces": ["Citrus ponzu"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/tofu.webp"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/citrusPonzu.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/seaweedSalad.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/edamme.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/furikake.png"
+      ]
     },
     "labels": ["Vegetarian", "Gluten-free"],
     "reviews": [""]
@@ -147,6 +245,27 @@
       ],
       "sauces": ["Sweet yuzu"]
     },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/chicken.png"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/sweetYuzu.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/corn.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cilantro.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/scallions.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/onion.png"
+      ]
+    },
     "labels": ["Classic", "High-protein"],
     "reviews": [""]
   },
@@ -157,24 +276,42 @@
     "calories": 460,
     "nutriScore": 74,
     "summary": "Embrace the freshest vegetarian ingredients in a bowl that satisfies your cravings guilt-free.",
-    "description": "For the vegetarian and gluten-free enthusiasts, our Grazer poke bowl is a feast for the senses. Explore a variety of textures and flavors with a delightful mix of cucumber, edamame, carrot, alfalfa sprouts, corn, onion, mango, pineapple, chia seeds, and wonton crisps. Topped off with our savory Sesame Waina sauce, this bowl is a perfect combination of freshness and satisfaction.",
+    "description": "For the vegetarian and gluten-free enthusiasts, our Grazer poke bowl is a feast for the senses. Explore a variety of textures and flavors with a delightful mix of cucumber, edamme, carrot, alfalfa sprouts, corn, onion, mango, pineapple, chia seeds, and wonton crisps. Topped off with our savory Sesame Waina sauce, this bowl is a perfect combination of freshness and satisfaction.",
     "rating": 4.8,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
-      "proteins": [""],
+      "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "proteins": ["Tofu"],
       "mixinsAndToppings": [
         "Cucumber",
         "Edamme",
         "Carrot",
-        "Alfalfa Sprouts",
-        "Corn",
-        "Onion",
         "Mango",
         "Pineaple",
-        "Chia seeds",
-        "Wonton Crispss"
+        "Seasame Seeds"
       ],
       "sauces": ["Sesame Waina"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/tofu.webp"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/sesameWaina.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/edamme.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/carrots.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/mango.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/pineaple.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png"
+      ]
     },
     "labels": ["Vegetarian", "Gluten-free"],
     "reviews": [""]
@@ -186,21 +323,42 @@
     "calories": 80,
     "nutriScore": 81,
     "summary": "Unleash your taste buds with a vegetarian poke bowl that packs a fiery punch.",
-    "description": "Ignite your taste buds with the Green Panther poke bowl. This vegetarian delight features the perfect blend of tofu, avocado, mixed greens, jalapeno, cucumber, radish sprouts, edamame, and chia seeds. Each bite offers a harmonious balance of flavors and a touch of spiciness. Drizzled with our tantalizing Sesame Waina sauce, the Green Panther is a vegetarian masterpiece that packs a flavorful punch.",
+    "description": "Ignite your taste buds with the Green Panther poke bowl. This vegetarian delight features the perfect blend of tofu, avocado, mixed greens, jalapeno, cucumber, radish sprouts, edamme, and chia seeds. Each bite offers a harmonious balance of flavors and a touch of spiciness. Drizzled with our tantalizing Sesame Waina sauce, the Green Panther is a vegetarian masterpiece that packs a flavorful punch.",
     "rating": 4.9,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
+      "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
       "proteins": ["Tofu"],
       "mixinsAndToppings": [
         "Avocado",
         "Mixed Greens",
-        "Jalapeno",
         "Cucumber",
         "Radish sporuts",
         "Edamme",
-        "Chia seeds"
+        "Seasame Seeds"
       ],
       "sauces": ["Sesame Waina"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/tofu.webp"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/sesameWaina.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/cucumbers.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/radishSprouts.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/edamme.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png"
+      ]
     },
     "labels": ["Vegetarian", "Spicy"],
     "reviews": [""]
@@ -212,19 +370,39 @@
     "calories": 93,
     "nutriScore": 81,
     "summary": "Dive into a coastal culinary adventure with this high-protein poke bowl inspired by California.",
-    "description": "Transport yourself to the sunny beaches of California with our Cali Classic poke bowl. This bowl combines the ocean's treasures of krab, shrimp, and tuna with the creaminess of avocado, the richness of shredded nori, the nuttiness of sesame seeds, the burst of massago, and the earthiness of shrooms. Finished with our refreshing Avocado Lime sauce, this high-protein bowl is a delightful Californian adventure for your taste buds.",
+    "description": "Transport yourself to the sunny beaches of California with our Cali Classic poke bowl. This bowl combines the ocean's treasures of krab  and tuna with the creaminess of avocado, the richness of shredded nori, the nuttiness of sesame seeds, the burst of massago, and the earthiness of shrooms. Finished with our refreshing Avocado Lime sauce, this high-protein bowl is a delightful Californian adventure for your taste buds.",
     "rating": 4.8,
     "ingredients": {
-      "bases": ["White rice", "Brown rice", "Noodles, Mixed Greens"],
-      "proteins": ["Krab", "Shrimp", "Tuna"],
+      "bases": ["White rice", "Brown rice", "Noodles", "Mixed Greens"],
+      "proteins": ["Krab", "Tuna"],
       "mixinsAndToppings": [
         "Avocado",
-        "Shredded Nori",
+        "Radish sporuts",
         "Sesame seeds",
-        "Massago",
-        "Shrooms"
+        "Massago"
       ],
       "sauces": ["Avocado lime"]
+    },
+    "ingredientsImages": {
+      "bases": [
+        "http://127.0.0.1:3001/public/images/ingredients/bases/whiteRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/brownRice.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/noodles.png",
+        "http://127.0.0.1:3001/public/images/ingredients/bases/mixedGreens.png"
+      ],
+      "proteins": [
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/krab.png",
+        "http://127.0.0.1:3001/public/images/ingredients/proteins/tuna.png"
+      ],
+      "sauces": [
+        "http://127.0.0.1:3001/public/images/ingredients/sauces/avocadoLime.png"
+      ],
+      "mixinsAndToppings": [
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/avocado.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/radishSprouts.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/sesameSeeds.png",
+        "http://127.0.0.1:3001/public/images/ingredients/toppings/massago.png"
+      ]
     },
     "labels": ["High-protein"],
     "reviews": [""]

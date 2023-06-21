@@ -19,7 +19,6 @@ async function fetchCurrentProduct() {
     } = await response.json()
 
     console.log(doc)
-    console.log(route.params.id)
 
     setCurrentProduct(doc as productType)
     toggleLoading()
@@ -102,6 +101,38 @@ onMounted(async () => {
           >
         </div>
       </div>
+    </div>
+  </section>
+  <section class="product mt-20">
+    <div class="flex">
+      <img
+        v-for="(image, index) in currentProduct.ingredientsImages?.bases"
+        :key="index"
+        :src="image"
+        alt="aaaa"
+        class="w-14 h-14"
+      />
+      <img
+        v-for="(image, index) in currentProduct.ingredientsImages?.proteins"
+        :key="index"
+        :src="image"
+        alt="aaaa"
+        class="w-14 h-14"
+      />
+      <img
+        v-for="(image, index) in currentProduct.ingredientsImages?.mixinsAndToppings"
+        :key="index"
+        :src="image"
+        alt="aaaa"
+        class="w-14 h-14"
+      />
+      <img
+        v-for="(image, index) in currentProduct.ingredientsImages?.sauces"
+        :key="index"
+        :src="image"
+        alt="aaaa"
+        class="w-14 h-14"
+      />
     </div>
   </section>
 </template>

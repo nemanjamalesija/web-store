@@ -61,6 +61,13 @@ const productSchema = new mongoose.Schema<productType>(
       mixinsAndToppings: [String],
       sauces: [String],
     },
+    ingredientsImages: {
+      bases: [String],
+      proteins: [String],
+      mixinsAndToppings: [String],
+      sauces: [String],
+    },
+
     labels: [String],
     createdAt: {
       type: Date,

@@ -5,6 +5,20 @@ type ingredientsType = {
   sauces: string[]
 }
 
+type review = {
+  createdAt: string
+  id: string
+  product: string
+  rating: number
+  review: string
+  user: {
+    _id: string
+    name: string
+  }
+  __v: number
+  _id: string
+}
+
 export type productType = {
   id: string
   name: string
@@ -15,7 +29,7 @@ export type productType = {
   rating: number
   labels: string[]
   calories: number
-  reviews: string[]
+  reviews: review[]
   reviewsNumber: number
 
   description?: string

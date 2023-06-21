@@ -5,6 +5,20 @@ type ingredientsType = {
   sauces: string[];
 };
 
+type review = {
+  createdAt: string;
+  id: string;
+  product: string;
+  rating: number;
+  review: string;
+  user: {
+    _id: string;
+    name: string;
+  };
+  __v: number;
+  _id: string;
+};
+
 export type productType = {
   name: string;
   price: number;
@@ -18,5 +32,5 @@ export type productType = {
   ingredientsImages: ingredientsType;
   labels: string[];
   createdAt: Date;
-  reviews: string[];
+  reviews: review[];
 };

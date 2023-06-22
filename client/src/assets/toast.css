@@ -9,8 +9,8 @@
   color: #fff;
   flex-direction: column;
   pointer-events: none;
-  margin-top: -10px;
 }
+
 @media only screen and (min-width: 600px) {
   .Vue-Toastification__container.top-left,
   .Vue-Toastification__container.top-right,
@@ -67,9 +67,11 @@
 @media only screen and (max-width: 600px) {
   .Vue-Toastification__container {
     width: 100vw;
+
     padding: 0;
     left: 0;
     margin: 0;
+    margin-top: 10px;
   }
   .Vue-Toastification__container .Vue-Toastification__toast {
     width: 100%;
@@ -104,6 +106,7 @@
   overflow: hidden;
   transform: translateZ(0);
   direction: ltr;
+  margin-top: -10px;
 }
 .Vue-Toastification__toast--rtl {
   direction: rtl;
@@ -132,6 +135,8 @@
   .Vue-Toastification__toast {
     border-radius: 0px;
     margin-bottom: 0.5rem;
+    height: 5rem;
+    margin-top: -10px;
   }
 }
 .Vue-Toastification__toast-body {

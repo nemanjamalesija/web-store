@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import SingleProduct from '../components/SingleProduct.vue'
 import type { productType } from '../types/productType'
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 const productsStore = useProductsStore()
 const { products, loading } = storeToRefs(productsStore)
@@ -35,7 +36,7 @@ onMounted(async () => {
 <template>
   <main>
     <div class="max-w-7xl mx-auto py-16 px-5 lg:px-0">
-      <h1 class="" v-if="loading">Loading...</h1>
+      <LoadingSpinner v-if="loading" />
       <div class="">
         <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center">
           <SingleProduct v-for="product in products" :key="product.id" :product="product" />

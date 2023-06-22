@@ -9,6 +9,7 @@ import ProductPageHeader from '../components/ProductPageHeader.vue'
 import ProductPageStats from '../components/ProductPageStats.vue'
 import ProductPageIngredients from '../components/ProductPageIngredients.vue'
 import ProductPageAbout from '../components/ProductPageAbout.vue'
+import LoadingSpinner from '../components/LoadingSpinner.vue'
 
 const route = useRoute()
 
@@ -38,8 +39,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <h1 v-if="loading">Loading...</h1>
-
+  <LoadingSpinner v-if="loading" />
   <div v-else>
     <ProductPageHeader />
     <section class="product -mt-28 grid grid-cols-2 pb-20">

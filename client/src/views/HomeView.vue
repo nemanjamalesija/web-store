@@ -35,7 +35,7 @@ onMounted(async () => {
 
 <template>
   <main>
-    <div class="max-w-7xl mx-auto py-16 px-5 lg:px-0">
+    <div class="max-w-7xl mx-auto py-16 px-10 lg:px-0">
       <LoadingSpinner v-if="loading" />
       <div class="">
         <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center">

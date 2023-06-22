@@ -85,7 +85,7 @@ function previousReviewHandler() {
       </div>
     </div>
     <button
-      class="btn-slider btn-slider--right py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50"
+      class="btn btn-slider btn-slider--right py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50 hover:bg-slate-100"
       @click="nextReviewHandler"
     >
       <svg
@@ -100,7 +100,7 @@ function previousReviewHandler() {
       </svg>
     </button>
     <button
-      class="btn-slider btn-slider--left py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50"
+      class="btn btn-slider btn-slider--left py-1 px-2 lg:py-2 lg:px-4 bg-slate-50 hover:bg-slate-100"
       @click="previousReviewHandler"
     >
       <svg
@@ -125,11 +125,11 @@ function previousReviewHandler() {
 }
 
 .btn-slider--left {
-  left: -10%;
+  left: -8%;
 }
 
 .btn-slider--right {
-  right: -16%;
+  right: -14%;
 }
 
 @media only screen and (max-width: 1000px) {

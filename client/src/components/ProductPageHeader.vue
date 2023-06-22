@@ -18,7 +18,7 @@ const { currentProduct } = storeToRefs(productsStore)
     </div>
     <div class="heading-box z-30">
       <h1
-        class="heading-primary text-5xl lg:text-6xl text-center text-orange-50 uppercase font-light mb-4"
+        class="heading-primary text-4xl lg:text-6xl text-center text-orange-50 uppercase font-light mb-4"
       >
         <span>{{ currentProduct.name }}</span>
       </h1>
@@ -81,5 +81,11 @@ const { currentProduct } = storeToRefs(productsStore)
 .heading-box__icon {
   -webkit-filter: drop-shadow(0 0.75rem 0.5rem rgba(0, 0, 0, 0.25));
   filter: drop-shadow(0 0.75rem 0.5rem rgba(0, 0, 0, 0.25));
+}
+
+@media only screen and (max-width: 1000px) {
+  .heading-box {
+    bottom: 45vw;
+  }
 }
 </style>

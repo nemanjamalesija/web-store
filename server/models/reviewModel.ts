@@ -49,7 +49,7 @@ reviewSchema.pre(/^find/, function (next) {
   //@ts-ignore
   this.populate({
     path: 'user',
-    select: 'name photo',
+    select: 'name photo createdAt',
   });
 
   next();

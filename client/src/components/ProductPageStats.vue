@@ -28,8 +28,8 @@ const { currentProduct } = storeToRefs(productsStore)
         />
       </svg>
 
-      <span class="card__footer-value font-medium">{{ currentProduct.calories }}</span
-      ><span class="text-gray-600">calories</span>
+      <span class="font-semibold">{{ currentProduct.calories }}</span
+      ><span>calories</span>
     </div>
     <div class="card__data text-sm lg:text-base flex items-center gap-2">
       <svg
@@ -47,8 +47,8 @@ const { currentProduct } = storeToRefs(productsStore)
         />
       </svg>
 
-      <span class="card__footer-value font-medium">{{ currentProduct.rating }}</span
-      ><span class="text-gray-600">rating</span>
+      <span class="font-semibold">{{ currentProduct.rating }}</span
+      ><span>rating</span>
     </div>
     <div class="card__data text-sm lg:text-base flex items-center gap-2">
       <svg
@@ -66,8 +66,8 @@ const { currentProduct } = storeToRefs(productsStore)
         />
       </svg>
 
-      <span class="font-medium">{{ currentProduct.nutriScore }}</span
-      ><span class="text-gray-600">N.score</span>
+      <span class="font-semibold">{{ currentProduct.nutriScore }}</span
+      ><span>N.score</span>
     </div>
     <div class="card__data text-sm lg:text-base flex items-center gap-2">
       <svg
@@ -85,8 +85,8 @@ const { currentProduct } = storeToRefs(productsStore)
         />
       </svg>
 
-      <span class="font-medium">{{ currentProduct.price }}</span
-      ><span class="text-gray-600">price</span>
+      <span class="font-semibold">{{ currentProduct.price }}</span
+      ><span>price</span>
     </div>
   </div>
 </template>

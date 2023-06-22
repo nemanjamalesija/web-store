@@ -14,6 +14,7 @@ type review = {
   user: {
     _id: string
     name: string
+    photo: string
   }
   __v: number
   _id: string

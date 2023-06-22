@@ -63,7 +63,7 @@ const signUp = catchAsync(
 
 const login = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body;
+    const { email, password, photo } = req.body;
 
     // 1. Check if email and password exist
     if (!email || !password) {
@@ -82,10 +82,10 @@ const login = catchAsync(
       const error = new AppError('Incorrect email or password', 401);
 
       next(error);
+    } else {
+      // 3. If everything ok, send token to client
+      createSendToken(res, 200, currentUser);
     }
-
-    // 3. If everything ok, send token to client
-    else createSendToken(res, 200, currentUser);
   }
 );
 

@@ -6,7 +6,7 @@ const productsStore = useProductsStore()
 const { currentProduct } = storeToRefs(productsStore)
 </script>
 <template>
-  <div class="card__details grid grid-cols-2 gap-x-5 gap-y-4">
+  <div class="card__details grid grid-cols-2 gap-x-5 gap-y-4 mb-20">
     <div class="card__data text-sm lg:text-base flex items-center gap-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"

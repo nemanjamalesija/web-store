@@ -8,7 +8,7 @@ const { currentProduct } = storeToRefs(productsStore)
 <template>
   <div class="product__description-about">
     <h2
-      class="heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold"
+      class="heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold text-center"
     >
       About the {{ currentProduct.name }}
     </h2>

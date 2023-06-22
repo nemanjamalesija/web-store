@@ -12,7 +12,7 @@ const { currentProduct } = storeToRefs(productsStore)
     >
       About the {{ currentProduct.name }}
     </h2>
-    <p class="product__description-about--text text-gray-600 text-base lg:text-lg font-thin mb-8">
+    <p class="product__description-about--text text-gray-600 text-sm lg:text-lg font-thin mb-8">
       {{ currentProduct.description }}
     </p>
   </div>

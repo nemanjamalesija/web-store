@@ -25,7 +25,7 @@ function previousReviewHandler() {
 }
 </script>
 <template>
-  <div class="slider relative">
+  <div class="slider relative px-7">
     <h3
       class="heading-tertiary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold text-center"
     >
@@ -35,31 +35,31 @@ function previousReviewHandler() {
       v-if="currentProduct.reviews !== undefined && currentProduct.reviews.length > 0"
       class="slider__box"
     >
-      <p class="text-gray-600 text-base lg:text-lg font-thin mb-8">
+      <p class="text-gray-600 text-sm lg:text-lg font-thin mb-8">
         {{ currentProduct.reviews[currentSlideIndex]?.review }}
       </p>
 
       <div class="slider__box-user-info flex items-center gap-3">
         <img
-          class="slider__box-user-image object-cover h-14 w-14 rounded-full inline-block"
+          class="slider__box-user-image object-cover h-10 w-10 lg:h-14 lg:w-14 rounded-full inline-block"
           :src="currentProduct.reviews[currentSlideIndex]?.user.photo"
           :alt="currentProduct.reviews[currentSlideIndex]?.user.photo + ' image'"
         />
-        <div class="flex flex-col items-start justify-start">
+        <div class="flex flex-col items-start justify-start gap-1 lg:gap-0">
           <div class="slider__box-user-namedate flex items-center justify-center gap-2">
-            <p class="text-base lg:text-lg font-semibold">
+            <p class="text-sm lg:text-lg font-semibold">
               {{ currentProduct.reviews[currentSlideIndex]?.user.name }}
             </p>
           </div>
 
-          <div class="slider__box-user-rating text-sm lg:text-base flex items-center gap-1">
+          <div class="slider__box-user-rating text-xs lg:text-base flex items-center gap-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.4"
               stroke="currentColor"
-              class="w-5 h-5 stroke-orange-500"
+              class="h-4 w-4 lg:w-5 lg:h-5 stroke-orange-500"
             >
               <path
                 stroke-linecap="round"
@@ -85,7 +85,7 @@ function previousReviewHandler() {
       </div>
     </div>
     <button
-      class="btn-slider btn-slider--right py-2 px-4 rounded-full bg-slate-50"
+      class="btn-slider btn-slider--right py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50"
       @click="nextReviewHandler"
     >
       <svg
@@ -100,7 +100,7 @@ function previousReviewHandler() {
       </svg>
     </button>
     <button
-      class="btn-slider btn-slider--left py-2 px-4 rounded-full bg-slate-50"
+      class="btn-slider btn-slider--left py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50"
       @click="previousReviewHandler"
     >
       <svg
@@ -125,10 +125,20 @@ function previousReviewHandler() {
 }
 
 .btn-slider--left {
-  left: -12%;
+  left: -10%;
 }
 
 .btn-slider--right {
-  right: -20%;
+  right: -16%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .btn-slider--left {
+    left: -3%;
+  }
+
+  .btn-slider--right {
+    right: -6%;
+  }
 }
 </style>

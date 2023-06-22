@@ -42,7 +42,7 @@ onMounted(async () => {
   <LoadingSpinner v-if="loading" />
   <div v-else>
     <ProductPageHeader />
-    <section class="product -mt-28 grid grid-cols-2 pb-20">
+    <section class="product -mt-12 lg:-mt-28 flex flex-col lg:grid lg:grid-cols-2">
       <ProductPageIngredients />
       <div class="product__description py-[14vw] px-[8vw] bg-white">
         <ProductPageAbout />

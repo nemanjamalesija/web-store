@@ -8,13 +8,14 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
 const productsStore = useProductsStore()
 const { products, loading } = storeToRefs(productsStore)
+import { baseUrl } from '../constants/baseUrl'
 
 const { toggleLoading, setProducts } = useProductsStore()
 
 async function fetchAllProducts() {
   toggleLoading()
   try {
-    const response = await fetch('http://localhost:3001/api/v1/products')
+    const response = await fetch(`${baseUrl}/api/v1/products`)
     const {
       data: { doc }
     } = await response.json()

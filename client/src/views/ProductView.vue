@@ -10,6 +10,7 @@ import ProductPageStats from '../components/ProductPageStats.vue'
 import ProductPageIngredients from '../components/ProductPageIngredients.vue'
 import ProductPageAbout from '../components/ProductPageAbout.vue'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
+import { baseUrl } from '../constants/baseUrl'
 
 const route = useRoute()
 
@@ -20,7 +21,7 @@ const { loading } = storeToRefs(productsStore)
 async function fetchCurrentProduct() {
   toggleLoading()
   try {
-    const response = await fetch(`http://localhost:3001/api/v1/products/${route.params.id}`)
+    const response = await fetch(`${baseUrl}/api/v1/products/${route.params.id}`)
     const {
       data: { doc }
     } = await response.json()

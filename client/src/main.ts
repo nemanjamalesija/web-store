@@ -15,7 +15,7 @@ app.use(router)
 
 app.use(Toast, {
   position: 'top-center',
-  timeout: 2000
+  timeout: 4000
 })
 
 app.mount('#app')

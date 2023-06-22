@@ -1,5 +1,6 @@
 export type duplicateErrorDB = Error & {
   keyValue: {
-    name: string;
+    name?: string;
+    email?: string;
   };
 };

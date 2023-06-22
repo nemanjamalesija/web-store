@@ -41,9 +41,15 @@ const handleCastErrorDB = (err: castErrorDB) => {
 };
 
 const handleDuplicateFieldErrorDB = (err: duplicateErrorDB) => {
-  const productName = err.keyValue.name;
+  const productName = err.keyValue.email;
+  const userEmail = err.keyValue.email;
+  let message: string = '';
 
-  const message = `The product under the name ${productName} already exists`;
+  if (productName)
+    message = `The product under the name ${productName} already exists`;
+
+  if (userEmail)
+    message = `The user under the email ${userEmail} already exists`;
 
   return new AppError(message, 404);
 };
@@ -51,7 +57,7 @@ const handleDuplicateFieldErrorDB = (err: duplicateErrorDB) => {
 const handleValidatorErrorDB = (err: validatorErrorDB) => {
   const errors = Object.values(err.errors).map((el) => el.message);
 
-  const message = `Invalid input data, ${errors.join('. ')}`;
+  const message = `Invalid input data: ${errors.join('. ')}`;
   return new AppError(message, 404);
 };
 

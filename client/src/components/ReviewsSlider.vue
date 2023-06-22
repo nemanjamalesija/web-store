@@ -13,7 +13,7 @@ function formatDate(date: string) {
 }
 </script>
 <template>
-  <div class="slider">
+  <div class="slider relative">
     <h3
       class="heading-tertiary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold text-center"
     >
@@ -23,7 +23,7 @@ function formatDate(date: string) {
       v-if="currentProduct.reviews !== undefined && currentProduct.reviews.length > 0"
       class="slider__box"
     >
-      <p class="text-gray-600 text-base lg:text-lg font-thin mb-5">
+      <p class="text-gray-600 text-base lg:text-lg font-thin mb-8">
         {{ currentProduct.reviews[currentSlideIndex]?.review }}
       </p>
 
@@ -72,5 +72,45 @@ function formatDate(date: string) {
         </div>
       </div>
     </div>
+    <button class="btn-slider btn-slider--right py-2 px-4 rounded-full bg-slate-50">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 stroke-orange-500"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+    <button class="btn-slider btn-slider--left py-2 px-4 rounded-full bg-slate-50">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6 stroke-orange-500"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </button>
   </div>
 </template>
+
+<style scoped>
+.btn-slider {
+  position: absolute;
+  top: 44%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-slider--left {
+  left: -12%;
+}
+
+.btn-slider--right {
+  right: -12%;
+}
+</style>

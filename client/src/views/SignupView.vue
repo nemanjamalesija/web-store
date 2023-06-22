@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { useToast } from 'vue-toastification'
+const toast = useToast()
+
+const test = () => {
+  toast.success('incremented!')
+}
+</script>
+
 <template>
   <div class="singup-form">
     <h2
@@ -40,6 +49,7 @@
         <button
           class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 active:bg-orange-800"
           type="submit"
+          @click="test"
         >
           Sign up
         </button>

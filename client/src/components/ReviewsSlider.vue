@@ -11,6 +11,18 @@ const { currentProduct } = storeToRefs(productsStore)
 function formatDate(date: string) {
   return format(new Date(date), 'MMMM d, yyyy')
 }
+
+function nextReviewHandler() {
+  if (currentSlideIndex.value === currentProduct.value.reviews.length - 1)
+    currentSlideIndex.value = 0
+  else currentSlideIndex.value += 1
+}
+
+function previousReviewHandler() {
+  if (currentSlideIndex.value === 0)
+    currentSlideIndex.value = currentProduct.value.reviews.length - 1
+  else currentSlideIndex.value -= 1
+}
 </script>
 <template>
   <div class="slider relative">
@@ -72,7 +84,10 @@ function formatDate(date: string) {
         </div>
       </div>
     </div>
-    <button class="btn-slider btn-slider--right py-2 px-4 rounded-full bg-slate-50">
+    <button
+      class="btn-slider btn-slider--right py-2 px-4 rounded-full bg-slate-50"
+      @click="nextReviewHandler"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -84,7 +99,10 @@ function formatDate(date: string) {
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg>
     </button>
-    <button class="btn-slider btn-slider--left py-2 px-4 rounded-full bg-slate-50">
+    <button
+      class="btn-slider btn-slider--left py-2 px-4 rounded-full bg-slate-50"
+      @click="previousReviewHandler"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -111,6 +129,6 @@ function formatDate(date: string) {
 }
 
 .btn-slider--right {
-  right: -12%;
+  right: -20%;
 }
 </style>

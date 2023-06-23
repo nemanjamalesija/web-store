@@ -9,27 +9,70 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 const productsStore = useProductsStore()
 const { products, loading } = storeToRefs(productsStore)
 import { baseUrl } from '../constants/baseUrl'
+import type { UserType } from '@/types/userType'
+import { useUserStore } from '@/stores/userStore'
 
-const { toggleLoading, setProducts } = useProductsStore()
+const { setLoading, setProducts } = useProductsStore()
+const { setCurrentUser } = useUserStore()
+const userStore = useUserStore()
+const { currentUser } = storeToRefs(userStore)
+
+async function getUserFromLocalStorage() {
+  const jwtToken = localStorage.getItem('jwt')
+
+  console.log('running')
+
+  if (!jwtToken) return
+
+  try {
+    const response = await fetch(`${baseUrl}/api/v1/users/getUserWithToken`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + jwtToken
+      }
+    })
+    const data = await response.json()
+
+    if (data.status === 'success') {
+      const {
+        data: { user }
+      } = data
+
+      // In case user submits full name, keep only first name and capitalize first letter
+      const currentUserName =
+        user.name.split(' ')[0].charAt(0).toUpperCase() + user.name.split(' ')[0].slice(1)
+
+      setCurrentUser({
+        id: user.id,
+        name: currentUserName,
+        email: user.email,
+        photo: user.photo,
+        role: user.role
+      } as UserType)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 async function fetchAllProducts() {
-  toggleLoading()
+  setLoading(true)
   try {
     const response = await fetch(`${baseUrl}/api/v1/products`)
     const {
       data: { doc }
     } = await response.json()
 
-    console.log(doc)
-
     setProducts(doc as productType[])
-    toggleLoading()
+    setLoading(false)
   } catch (error) {
     console.log(error)
-    toggleLoading()
+    setLoading(false)
   }
 }
 onMounted(async () => {
+  if (!currentUser.value.name) await getUserFromLocalStorage()
   await fetchAllProducts()
 })
 </script>

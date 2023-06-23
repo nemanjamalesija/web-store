@@ -10,7 +10,7 @@ import sendResetEmail from '../helpers/sendResetEmail.ts';
 
 const signToken = (id: string) => {
   return jwt.sign({ id }, process.env.JWT_SECRET_STRING as string, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+    expiresIn: '90d',
   });
 };
 
@@ -19,17 +19,6 @@ const createSendToken = (res: Response, statusCode: number, user: userType) => {
 
   const jwtCookieExpiresIn =
     Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000; // miliseconds
-
-  const expirationDate = new Date(Date.now() + jwtCookieExpiresIn);
-
-  const cookieOptions = {
-    expires: expirationDate,
-    secure: true,
-    httpOnly: true,
-  };
-
-  if (process.env.NODE_ENV !== 'development') cookieOptions.secure === true;
-  res.cookie('jwt', token, cookieOptions);
 
   res.status(statusCode).json({
     status: 'success',
@@ -83,7 +72,6 @@ const login = catchAsync(
 
       next(error);
     } else {
-      console.log(currentUser);
       // 3. If everything ok, send token to client
       createSendToken(res, 200, currentUser);
     }
@@ -96,12 +84,14 @@ const protect = catchAsync(
     let token: string | undefined;
 
     console.log(req.headers);
+    if (req.headers.authorization?.startsWith('Bearer '))
+      token = req.headers.authorization.split(' ')[1];
 
-    if (req.headers.cookie) token = req.headers.cookie.substring(4);
+    console.log(typeof token + ' from protect');
 
-    if (!token) {
+    if (!token || token?.startsWith('null')) {
       const message = 'You are not logged in! Please log in to get access';
-      const error = new AppError(message, 401);
+      const error = new AppError(message, 403);
 
       return next(error);
     }
@@ -233,7 +223,8 @@ const getUserWithToken = catchAsync(
     // 1. Get the token and check if it exist
     let token: string | undefined;
 
-    token = req.headers.authorization?.split(' ')[1] || undefined;
+    if (req.headers.authorization?.startsWith('Bearer '))
+      token = req.headers.authorization.split(' ')[1];
 
     // 2. Validate the token
     const decodeTokenFn: (token: string, secret: string) => Promise<any> =
@@ -267,7 +258,7 @@ const getUserWithToken = catchAsync(
     // If all okay, grant access to protected route
     else {
       res.status(200).json({
-        status: 'sucess',
+        status: 'success',
         data: {
           user,
         },
@@ -277,10 +268,7 @@ const getUserWithToken = catchAsync(
 );
 
 const logout = (req: Request, res: Response) => {
-  res.cookie('jwt', 'loggedout', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true,
-  });
+  res.clearCookie('jwt');
   res.status(200).json({ status: 'success' });
 };
 

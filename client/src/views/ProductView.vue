@@ -11,40 +11,49 @@ import ProductPageIngredients from '../components/ProductPageIngredients.vue'
 import ProductPageAbout from '../components/ProductPageAbout.vue'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import { baseUrl } from '../constants/baseUrl'
+import { useToast } from 'vue-toastification'
 
 import { useUserStore } from '@/stores/userStore'
+import router from '@/router'
 
 const userStore = useUserStore()
-
 const { currentUser } = storeToRefs(userStore)
 
 const route = useRoute()
+const toast = useToast()
 
 const productsStore = useProductsStore()
-const { toggleLoading, setCurrentProduct } = useProductsStore()
+const { setLoading, setCurrentProduct } = useProductsStore()
 const { loading } = storeToRefs(productsStore)
 
 async function fetchCurrentProduct() {
-  toggleLoading()
+  setLoading(true)
+  const jwtToken = localStorage.getItem('jwt')
+
   try {
     const response = await fetch(`${baseUrl}/api/v1/products/${route.params.id}`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + jwtToken
       }
     })
-    const {
-      data: { doc }
-    } = await response.json()
 
-    console.log(doc)
+    if (!jwtToken) {
+      const error = await response.json()
+      toast.error(error.message)
+      router.push('/login')
+      return
+    } else {
+      const {
+        data: { doc }
+      } = await response.json()
 
-    setCurrentProduct(doc as productType)
-    toggleLoading()
+      setCurrentProduct(doc as productType)
+      setLoading(false)
+    }
   } catch (error) {
-    console.log(error)
-    toggleLoading()
+    setLoading(false)
   }
 }
 onMounted(async () => {

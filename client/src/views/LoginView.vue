@@ -14,7 +14,6 @@ const loginUser = ref({
 
 const userStore = useUserStore()
 const { setCurrentUser } = useUserStore()
-const { currentUser } = storeToRefs(userStore)
 
 const toast = useToast()
 const router = useRouter()
@@ -34,20 +33,25 @@ async function loginUserHandler() {
 
     const data = await response.json()
 
-    console.log(data)
-
     if (data.status === 'success') {
+      const { token } = data
       const {
         data: { user }
       } = data
 
+      // In case user submits full name, keep only first name and capitalize first letter
+      const currentUserName =
+        user.name.split(' ')[0].charAt(0).toUpperCase() + user.name.split(' ')[0].slice(1)
+
       setCurrentUser({
         id: user.id,
-        name: user.name.split(' ')[0],
+        name: currentUserName,
         email: user.email,
         photo: user.photo,
         role: user.role
       } as UserType)
+
+      localStorage.setItem('jwt', token)
       router.push('/')
     } else if (data.status === 'fail') toast.error(data.message)
   } catch (error) {

@@ -12,9 +12,11 @@ const router = useRouter()
 
 async function logoutHandler() {
   try {
-    await fetch(`${baseUrl}/api/v1/users/logout`)
+    const response = await fetch(`${baseUrl}/api/v1/users/logout`)
+    console.log(response)
 
     router.push('/login')
+    localStorage.removeItem('jwt')
     setCurrentUser({ id: '', name: '', email: '', photo: '', role: '' })
   } catch (error) {
     console.log(error)

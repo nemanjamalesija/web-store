@@ -16,9 +16,9 @@ export const useProductsStore = defineStore('product', () => {
     currentProduct.value = singleProductAPI
   }
 
-  function toggleLoading() {
-    loading.value = !loading.value
+  function setLoading(value: boolean) {
+    loading.value = value
   }
 
-  return { products, loading, setProducts, toggleLoading, currentProduct, setCurrentProduct }
+  return { products, loading, setProducts, setLoading, currentProduct, setCurrentProduct }
 })

@@ -21,7 +21,13 @@ const { loading } = storeToRefs(productsStore)
 async function fetchCurrentProduct() {
   toggleLoading()
   try {
-    const response = await fetch(`${baseUrl}/api/v1/products/${route.params.id}`)
+    const response = await fetch(`${baseUrl}/api/v1/products/${route.params.id}`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     const {
       data: { doc }
     } = await response.json()

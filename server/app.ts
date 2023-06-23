@@ -18,8 +18,13 @@ const __dirName = path.dirname(__fileName);
 
 // MIDDLEWARE
 app.use(morgan('dev'));
-// Enable CORS for all routes
-app.use(cors({ credentials: true }));
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
 
 app.use((req, res, next) => {
   const allowedOrigins = ['http://127.0.0.1:5173'];

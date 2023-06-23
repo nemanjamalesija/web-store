@@ -94,11 +94,9 @@ const protect = catchAsync(
     // 1. Get the token and check if it exist
     let token: string | undefined;
 
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith('Bearer')
-    )
-      token = req.headers.authorization.split(' ')[1] || undefined;
+    console.log(req.headers);
+
+    if (req.headers.cookie) token = req.headers.cookie.substring(4);
 
     if (!token) {
       const message = 'You are not logged in! Please log in to get access';
@@ -138,6 +136,7 @@ const protect = catchAsync(
 
     // If all okay, grant access to protected route
     else {
+      console.log(currentUser);
       req.body = { ...req.body, currentUser };
       return next();
     }

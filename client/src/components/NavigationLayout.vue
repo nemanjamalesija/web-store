@@ -24,22 +24,28 @@ async function logoutHandler() {
 }
 </script>
 <template>
-  <header class="h-20 bg-orange-950 text-slate-100">
-    <nav
-      class="h-full px-10 flex items-center justify-between text-base lg:text-lg text-orange-50 font-medium text-inherit"
-    >
-      <h1 class="text-xl lg:text-xl uppercase text-center font-medium">Mambo jumbo bowls</h1>
-      <div class="flex items-center gap-6">
-        <RouterLink to="/"> Home</RouterLink>
-        <RouterLink v-if="!currentUser.name" to="/login">Log in</RouterLink>
+  <header class="h-20 bg-orange-950">
+    <nav class="h-full px-14 flex items-center justify-between text-base lg:text-lg font-semibold">
+      <div class="flex items-center text-white">
+        <h1 class="capitalize font-bold mr-20 text-lg lg:text-xl">jumbo bowls</h1>
+        <div class="font-medium flex gap-10">
+          <RouterLink class="inline-block" to="/"> Home</RouterLink>
+          <RouterLink class="inline-block" to="/"> About us</RouterLink>
+          <RouterLink class="inline-block" to="/"> How it works</RouterLink>
+          <RouterLink class="inline-block" to="/"> Bowls and pricing</RouterLink>
+        </div>
+      </div>
+      <div class="flex items-center gap-10">
+        <RouterLink class="text-white" v-if="!currentUser.name" to="/login">Log in</RouterLink>
         <RouterLink
           v-if="!currentUser.name"
           to="/signup"
-          class="signup border border-orange-50 hover:bg-orange-50 hover:text-orange-950 py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px]"
+          class="signup py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg font-semibold bg-transparent text-white border-2 border-white hover:bg-white hover:text-orange-950"
           >Sign up</RouterLink
         >
 
-        <div v-if="currentUser.name" class="user flex items-center gap-3">
+        <!-- User info -->
+        <div v-if="currentUser.name" class="user flex items-center gap-3 text-white font-bold">
           <div class="user__photo-box">
             <img
               class="card__picture-img object-cover h-12 w-12 inline-block rounded-full"
@@ -47,12 +53,13 @@ async function logoutHandler() {
               :alt="currentUser.photo + ' image'"
             />
           </div>
-          <span class="text-base lg:text-lg font-medium text-orange-50">{{
-            currentUser.name
-          }}</span>
+          <span class="font-medium">{{ currentUser.name }}</span>
         </div>
+
+        <!-- Logout -->
         <button
-          class="border border-orange-50 hover:bg-orange-50 hover:text-orange-950 py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px]"
+          v-if="currentUser.name"
+          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg font-semibold bg-transparent text-white border-2 border-white hover:bg-white hover:text-orange-950"
           @click.prevent="logoutHandler"
         >
           Log out
@@ -61,3 +68,5 @@ async function logoutHandler() {
     </nav>
   </header>
 </template>
+
+<style scoped></style>

@@ -18,9 +18,23 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
+body,
+.heading-gradient {
   font-family: 'Lato', sans-serif;
   color: #333;
+
+  background: #f7b733; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom left,
+    #ffe259,
+    #f37335
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom left,
+    #ffe259,
+    #f37335
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-repeat: no-repeat;
 }
 
 .btn,
@@ -60,7 +74,11 @@ body {
     from(rgba(255, 185, 0, 1)),
     to(rgba(255, 119, 48, 1))
   );
-  background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 1), rgba(255, 119, 48, 1));
+  background-image: linear-gradient(
+    to bottom left bottom,
+    rgba(255, 185, 0, 1),
+    rgba(255, 119, 48, 1)
+  );
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -173,5 +191,9 @@ body {
   .singup-form,
   .login-form {
     margin: 0 auto;
+  }
+
+  .singup-form {
+    padding: 1rem 2rem;
   }
 }

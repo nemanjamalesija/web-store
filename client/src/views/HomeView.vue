@@ -20,8 +20,6 @@ const { currentUser } = storeToRefs(userStore)
 async function getUserFromLocalStorage() {
   const jwtToken = localStorage.getItem('jwt')
 
-  console.log('running')
-
   if (!jwtToken) return
 
   try {
@@ -81,7 +79,7 @@ onMounted(async () => {
   <main>
     <div class="max-w-7xl mx-auto py-16 px-10 lg:px-0">
       <LoadingSpinner v-if="loading" />
-      <div class="">
+      <div>
         <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center">
           <SingleProduct v-for="product in products" :key="product.id" :product="product" />
         </div>

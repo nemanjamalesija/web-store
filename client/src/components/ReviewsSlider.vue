@@ -25,7 +25,7 @@ function previousReviewHandler() {
 }
 </script>
 <template>
-  <div class="slider relative px-7">
+  <div class="slider relative px-7 mb-8">
     <h3
       class="heading-tertiary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold text-center"
     >

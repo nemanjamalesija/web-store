@@ -10,6 +10,7 @@ import ProductPageStats from '../components/ProductPageStats.vue'
 import ProductPageIngredients from '../components/ProductPageIngredients.vue'
 import ProductPageAbout from '../components/ProductPageAbout.vue'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
+import LeaveReview from '@/components/LeaveReview.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 
@@ -70,7 +71,7 @@ onMounted(async () => {
         <ProductPageAbout />
         <ProductPageStats />
         <ReviewsSlider />
-        <h1 class="text-8xl">{{ currentUser.name }}</h1>
+        <LeaveReview />
       </div>
     </section>
   </div>

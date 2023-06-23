@@ -83,6 +83,7 @@ const login = catchAsync(
 
       next(error);
     } else {
+      console.log(currentUser);
       // 3. If everything ok, send token to client
       createSendToken(res, 200, currentUser);
     }
@@ -275,6 +276,14 @@ const getUserWithToken = catchAsync(
   }
 );
 
+const logout = (req: Request, res: Response) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: 'success' });
+};
+
 export default {
   signUp,
   login,
@@ -282,4 +291,5 @@ export default {
   resetPassword,
   protect,
   getUserWithToken,
+  logout,
 };

@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { productType } from '../types/productType'
 
-export const useProductsStore = defineStore('counter', () => {
+export const useProductsStore = defineStore('product', () => {
   const products = ref([] as productType[])
   const currentProduct = ref({} as productType)
 

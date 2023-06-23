@@ -3,11 +3,18 @@ import { baseUrl } from '@/constants/baseUrl'
 import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useUserStore } from '@/stores/userStore'
+import type { UserType } from '../types/userType'
 
 const loginUser = ref({
   email: '',
   password: ''
 })
+
+const userStore = useUserStore()
+const { setCurrentUser } = useUserStore()
+const { currentUser } = storeToRefs(userStore)
 
 const toast = useToast()
 const router = useRouter()
@@ -27,8 +34,22 @@ async function loginUserHandler() {
 
     const data = await response.json()
 
-    if (data.status === 'success') router.push('/')
-    else if (data.status === 'fail') toast.error(data.message)
+    console.log(data)
+
+    if (data.status === 'success') {
+      const {
+        data: { user }
+      } = data
+
+      setCurrentUser({
+        id: user.id,
+        name: user.name.split(' ')[0],
+        email: user.email,
+        photo: user.photo,
+        role: user.role
+      } as UserType)
+      router.push('/')
+    } else if (data.status === 'fail') toast.error(data.message)
   } catch (error) {
     console.error('Error during login:', error)
   }

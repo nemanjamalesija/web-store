@@ -12,6 +12,12 @@ import ProductPageAbout from '../components/ProductPageAbout.vue'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import { baseUrl } from '../constants/baseUrl'
 
+import { useUserStore } from '@/stores/userStore'
+
+const userStore = useUserStore()
+
+const { currentUser } = storeToRefs(userStore)
+
 const route = useRoute()
 
 const productsStore = useProductsStore()
@@ -55,6 +61,7 @@ onMounted(async () => {
         <ProductPageAbout />
         <ProductPageStats />
         <ReviewsSlider />
+        <h1 class="text-8xl">{{ currentUser.name }}</h1>
       </div>
     </section>
   </div>

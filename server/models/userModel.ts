@@ -89,32 +89,6 @@ userSchema.methods.correctPassword = async function (
   return await bcrypt.compare(canditatePassword, userPassword);
 };
 
-// CHECK IF USER CHANGED PASSWORD
-userSchema.methods.changedPasswordAfter = function (jwtTimestamp: number) {
-  const changedPassword = this.get('passwordChangedAt');
-
-  if (changedPassword) {
-    const changedTimestamp = Number(changedPassword.getTime() / 1000);
-
-    // if true password was changed after the token was issued
-    return changedTimestamp > jwtTimestamp;
-  }
-};
-
-// CREATE RESET TOKEN
-userSchema.methods.createPasswordResetToken = function () {
-  const resetToken = crypto.randomBytes(32).toString('hex');
-
-  this.passwordResetToken = crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex');
-
-  this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // token expires in 10 min
-
-  return resetToken;
-};
-
 const User = mongoose.model<userType>('User', userSchema);
 
 export default User;

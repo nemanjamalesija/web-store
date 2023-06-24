@@ -15,9 +15,6 @@ const signToken = (id: string) => {
 const createSendToken = (res: Response, statusCode: number, user: userType) => {
   const token = signToken(user._id);
 
-  const jwtCookieExpiresIn =
-    Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000; // miliseconds
-
   res.status(statusCode).json({
     status: 'success',
     token,
@@ -110,16 +107,6 @@ const protect = catchAsync(
       return next(error);
     }
 
-    // 4. Check if user changed password after the token was issued
-    else if (currentUser.changedPasswordAfter(decodedTokenObj.iat)) {
-      const error = new AppError(
-        'User recently changed password! Please log in again',
-        401
-      );
-
-      return next(error);
-    }
-
     // If all okay, grant access to protected route
     else {
       console.log(currentUser);
@@ -152,16 +139,6 @@ const getUserWithToken = catchAsync(
     if (!user) {
       const message = 'The user belonging to the token no longer exists';
       const error = new AppError(message, 401);
-
-      return next(error);
-    }
-
-    // 4. Check if user changed password after the token was issued
-    else if (user.changedPasswordAfter(decodedTokenObj.iat)) {
-      const error = new AppError(
-        'User recently changed password! Please log in again',
-        401
-      );
 
       return next(error);
     }

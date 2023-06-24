@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import PageNotFound from '../views/PageNotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +27,13 @@ const router = createRouter({
       component: () => import('../views/SignupView.vue')
     },
 
-    { path: '/products/:id', component: () => import('../views/ProductView.vue') }
+    { path: '/products/:id', component: () => import('../views/ProductView.vue') },
+
+    {
+      path: '/:catchAll(.*)*',
+      name: 'PageNotFound',
+      component: PageNotFound
+    }
   ]
 })
 

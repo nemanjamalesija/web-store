@@ -11,6 +11,7 @@ const { products, loading } = storeToRefs(productsStore)
 import { baseUrl } from '../constants/baseUrl'
 import type { UserType } from '@/types/userType'
 import { useUserStore } from '@/stores/userStore'
+import useGetSession from '../hooks/useGetSession'
 
 const { setLoading, setProducts } = useProductsStore()
 const { setCurrentUser } = useUserStore()
@@ -18,40 +19,21 @@ const userStore = useUserStore()
 const { currentUser } = storeToRefs(userStore)
 
 async function getUserFromLocalStorage() {
-  const jwtToken = localStorage.getItem('jwt')
+  const user: UserType | undefined = await useGetSession()
 
-  if (!jwtToken) return
+  if (!user) return
 
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/users/getUserWithToken`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      }
-    })
-    const data = await response.json()
+  // In case user submits full name, keep only first name and capitalize first letter
+  const currentUserName =
+    user.name.split(' ')[0].charAt(0).toUpperCase() + user.name.split(' ')[0].slice(1)
 
-    if (data.status === 'success') {
-      const {
-        data: { user }
-      } = data
-
-      // In case user submits full name, keep only first name and capitalize first letter
-      const currentUserName =
-        user.name.split(' ')[0].charAt(0).toUpperCase() + user.name.split(' ')[0].slice(1)
-
-      setCurrentUser({
-        id: user.id,
-        name: currentUserName,
-        email: user.email,
-        photo: user.photo,
-        role: user.role
-      } as UserType)
-    }
-  } catch (error) {
-    console.log(error)
-  }
+  setCurrentUser({
+    id: user.id,
+    name: currentUserName,
+    email: user.email,
+    photo: user.photo,
+    role: user.role
+  } as UserType)
 }
 
 async function fetchAllProducts() {
@@ -87,3 +69,4 @@ onMounted(async () => {
     </div>
   </main>
 </template>
+../helpers/useGetSession../hooks/getSession

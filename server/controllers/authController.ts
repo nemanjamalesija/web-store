@@ -133,12 +133,22 @@ const getUserWithToken = catchAsync(
       process.env.JWT_SECRET_STRING as string
     );
 
-    // 3. Check if user still exists
+    //  Check if user still exists
     const user = await User.findById(decodedTokenObj.id);
 
     if (!user) {
       const message = 'The user belonging to the token no longer exists';
       const error = new AppError(message, 401);
+
+      return next(error);
+    }
+
+    //  Check if user changed password after the token was issued
+    else if (user.changedPasswordAfter(decodedTokenObj.iat)) {
+      const error = new AppError(
+        'User recently changed password! Please log in again',
+        401
+      );
 
       return next(error);
     }

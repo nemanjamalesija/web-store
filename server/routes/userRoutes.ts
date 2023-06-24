@@ -7,17 +7,19 @@ const router = express.Router();
 // AUTH
 router.post('/signup', authController.signUp);
 router.post('/login', authController.login);
-router.post('/forgotPassword', authController.forgotPassword);
-router.patch('/resetPassword/:token', authController.resetPassword);
 router.get('/getUserWithToken', authController.getUserWithToken);
 router.get('/logout', authController.logout);
 
 // USER SPECIFIC
-
 router.use(authController.protect); // protect all routes below this point
 
 router.get('/me', userController.getMe, userController.getOneUser);
-router.patch('/updateMe', userController.updateMe);
+router.patch(
+  '/updateMe',
+
+  userController.updateMe
+);
+
 router.delete('/deleteMe', userController.deleteMe);
 
 // ADMINISTRATORS

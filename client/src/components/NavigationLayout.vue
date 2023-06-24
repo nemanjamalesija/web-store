@@ -4,6 +4,7 @@ import { baseUrl } from '../constants/baseUrl'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/userStore'
 import { useRouter } from 'vue-router'
+import logo from '../assets/img/logo.png'
 
 const userStore = useUserStore()
 const { setCurrentUser } = useUserStore()
@@ -27,7 +28,10 @@ async function logoutHandler() {
   <header class="h-20 bg-orange-950">
     <nav class="h-full px-14 flex items-center justify-between text-base lg:text-lg font-semibold">
       <div class="flex items-center text-white">
-        <h1 class="capitalize font-bold mr-20 text-lg lg:text-xl">jumbo bowls</h1>
+        <div class="logo flex items-center gap-3">
+          <img :src="logo" alt="jumbo bowls logo" class="inline-block h-10 w-10 object-cover" />
+          <h1 class="capitalize font-bold mr-20 text-lg lg:text-xl">jumbo bowls</h1>
+        </div>
         <div class="font-medium flex gap-10">
           <RouterLink class="inline-block" to="/"> Home</RouterLink>
           <RouterLink class="inline-block" to="/"> About us</RouterLink>

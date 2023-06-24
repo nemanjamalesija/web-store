@@ -3,7 +3,6 @@ import { baseUrl } from '@/constants/baseUrl'
 import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
-import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/userStore'
 import type { UserType } from '../types/userType'
 
@@ -12,7 +11,6 @@ const loginUser = ref({
   password: ''
 })
 
-const userStore = useUserStore()
 const { setCurrentUser } = useUserStore()
 
 const toast = useToast()

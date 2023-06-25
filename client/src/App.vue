@@ -17,5 +17,6 @@ onMounted(async () => {
 
 <template>
   <NavigationLayout />
+
   <RouterView />
 </template>

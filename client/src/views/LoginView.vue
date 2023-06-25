@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { baseUrl } from '@/constants/baseUrl'
-import { onMounted, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/userStore'
+import useGetUser from '../hooks/useGetUser'
 import acceptUser from '../helpers/acceptUser'
+
+const { setCurrentUser, currentUser } = useGetUser()
 
 const loginUser = ref({
   email: '',
@@ -13,8 +15,6 @@ const loginUser = ref({
 
 const toast = useToast()
 const router = useRouter()
-
-const { setCurrentUser, currentUser } = useUserStore()
 
 async function loginUserHandler() {
   try {
@@ -50,8 +50,8 @@ async function loginUserHandler() {
   }
 }
 
-onMounted(async () => {
-  if (!currentUser.name) router.push('/products')
+watch(currentUser, (newValue) => {
+  if (newValue.name) router.push('/products')
 })
 </script>
 

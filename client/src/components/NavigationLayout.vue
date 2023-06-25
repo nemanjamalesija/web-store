@@ -10,8 +10,7 @@ const router = useRouter()
 
 async function logoutHandler() {
   try {
-    const response = await fetch(`${baseUrl}/api/v1/users/logout`)
-    console.log(response)
+    await fetch(`${baseUrl}/api/v1/users/logout`)
 
     router.push('/')
     localStorage.removeItem('jwt')

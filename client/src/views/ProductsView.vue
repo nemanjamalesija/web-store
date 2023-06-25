@@ -6,8 +6,10 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import useGetProduct from '../hooks/useGetProduct'
+import useGetUser from '../hooks/useGetUser'
 
 const { products, loading, setLoading, setProducts } = useGetProduct()
+const { currentUser } = useGetUser()
 const toast = useToast()
 
 async function fetchAllProducts() {
@@ -42,6 +44,7 @@ async function fetchAllProducts() {
 }
 onMounted(async () => {
   await fetchAllProducts()
+  console.log(currentUser.value.name)
 })
 </script>
 

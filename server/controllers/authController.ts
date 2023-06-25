@@ -91,32 +91,33 @@ const getUserWithToken = catchAsync(
     );
 
     //  Check if user still exists
-    const user = await User.findById(decodedTokenObj.id);
+    const currentUser = await User.findById(decodedTokenObj.id);
 
-    if (!user) {
+    if (!currentUser) {
       return next();
     }
 
     //  Check if user changed password after the token was issued
-    else if (user.changedPasswordAfter(decodedTokenObj.iat)) {
+    else if (currentUser.changedPasswordAfter(decodedTokenObj.iat)) {
       const error = new AppError(
         'User recently changed password! Please log in again',
         401
       );
 
       return next(error);
-    }
 
-    // If all okay, grant access to protected route
-    else {
-      req.body = { ...req.body, user };
+      // if all ok return user (for get all), put user in the body (for nested routes)
+    } else {
+      req.body = { ...req.body, currentUser };
 
       res.status(200).json({
         status: 'success',
         data: {
-          user,
+          currentUser,
         },
       });
+
+      return next();
     }
   }
 );

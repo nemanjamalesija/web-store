@@ -1,3 +1,5 @@
+import { UserType } from './userType'
+
 type ingredientsType = {
   bases: string[]
   proteins: string[]
@@ -11,11 +13,7 @@ type review = {
   product: string
   rating: number
   review: string
-  user: {
-    _id: string
-    name: string
-    photo: string
-  }
+  user: UserType
   __v: number
   _id: string
 }

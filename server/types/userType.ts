@@ -10,6 +10,7 @@ export type userType = Document & {
   passwordChangedAt: Date;
   passwordResetToken: string | undefined;
   passwordResetExpires: Date | undefined;
+  joinedAt: Date;
   active: boolean;
   correctPassword: (
     candidatePassword: string,

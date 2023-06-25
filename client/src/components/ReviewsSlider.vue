@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { format } from 'date-fns'
 import useGetProduct from '../hooks/useGetProduct'
+import { starIconsReview } from '../assets/icons/stars'
 
 const currentSlideIndex = ref(0)
 
@@ -22,7 +23,24 @@ function previousReviewHandler() {
     currentSlideIndex.value = currentProduct.value.reviews.length - 1
   else currentSlideIndex.value -= 1
 }
+
+const createStarsArray = (rating: number) => {
+  const starsArray = []
+
+  for (let i = 1; i <= 5; i++) {
+    let halfStar = i - 0.5
+
+    if (rating >= i) starsArray.push(starIconsReview.fullStar)
+    else if (rating >= halfStar) starsArray.push(starIconsReview.halfStar)
+    else starsArray.push(starIconsReview.emptyStar)
+  }
+
+  return starsArray
+}
+
+console.log(currentProduct.value.reviews)
 </script>
+
 <template>
   <div class="slider relative px-7 mb-12">
     <h3
@@ -30,59 +48,54 @@ function previousReviewHandler() {
     >
       Reviews
     </h3>
-    <div
+    <article
       v-if="currentProduct.reviews !== undefined && currentProduct.reviews.length > 0"
       class="slider__box"
     >
-      <p class="text-gray-600 text-sm lg:text-lg font-thin mb-8">
-        {{ currentProduct.reviews[currentSlideIndex]?.review }}
-      </p>
-
-      <div class="slider__box-user-info flex items-center gap-3">
+      <div class="flex items-center mb-4 space-x-4">
         <img
-          class="slider__box-user-image object-cover h-10 w-10 lg:h-14 lg:w-14 rounded-full inline-block"
+          class="w-12 h-12 rounded-full"
           :src="currentProduct.reviews[currentSlideIndex]?.user.photo"
           :alt="currentProduct.reviews[currentSlideIndex]?.user.photo + ' image'"
         />
-        <div class="flex flex-col items-start justify-start gap-1 lg:gap-0">
-          <div class="slider__box-user-namedate flex items-center justify-center gap-2">
-            <p class="text-sm lg:text-lg font-semibold">
-              {{ currentProduct.reviews[currentSlideIndex]?.user.name }}
-            </p>
-          </div>
+        <div class="space-y-1 font-medium dark:text-white">
+          <p>
+            {{ currentProduct.reviews[currentSlideIndex]?.user.name }}
 
-          <div class="slider__box-user-rating text-xs lg:text-base flex items-center gap-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.4"
-              stroke="currentColor"
-              class="h-4 w-4 lg:w-5 lg:h-5 stroke-orange-500"
+            <time
+              class="block text-sm text-gray-500 dark:text-gray-400"
+              datetime="{{formatDate(currentProduct.reviews[1].user.joinedAt)}}"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.485 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.485-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-              />
-            </svg>
-            <div class="flex items-center justify-center gap-1">
-              <p class="flex items-center justify-center gap-1">
-                <span class="font-semibold">{{
-                  currentProduct.reviews[currentSlideIndex].rating
-                }}</span
-                ><span>/</span>
-                <span class="font-semibold">5</span>
-                <span class="text-gray-500">-</span>
-              </p>
-              <span class="text-xs lg:text-sm text-gray-500 flex items-center justify-center">{{
-                formatDate(currentProduct.reviews[currentSlideIndex].createdAt)
-              }}</span>
-            </div>
-          </div>
+              Joined on {{ formatDate(currentProduct.reviews[1].user.joinedAt) }}
+            </time>
+          </p>
         </div>
       </div>
-    </div>
+      <div class="flex items-center mb-1 gap-1">
+        <div
+          v-for="(svgString, index) in createStarsArray(
+            currentProduct.reviews[currentSlideIndex].rating
+          )"
+          :key="index"
+        >
+          <div v-html="svgString"></div>
+        </div>
+        <p class="flex text-sm items-center justify-center gap-1">
+          {{ currentProduct.reviews[currentSlideIndex].rating }} / 5
+        </p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          - Reviewed on
+          <time
+            datetime="{{formatDate(currentProduct.reviews[currentSlideIndex].user.joinedAt)}}"
+            >{{ formatDate(currentProduct.reviews[currentSlideIndex].user.joinedAt) }}</time
+          >
+        </p>
+      </div>
+
+      <p class="mb-2 text-gray-500 dark:text-gray-400">
+        {{ currentProduct.reviews[currentSlideIndex]?.review }}
+      </p>
+    </article>
     <button
       class="btn btn-slider btn-slider--right py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50 hover:bg-slate-100"
       @click="nextReviewHandler"
@@ -119,7 +132,7 @@ function previousReviewHandler() {
 <style scoped>
 .btn-slider {
   position: absolute;
-  top: 44%;
+  top: 60%;
   transform: translate(-50%, -50%);
 }
 

@@ -55,7 +55,9 @@ const userSchema = new mongoose.Schema<userType>({
 
   joinedAt: {
     type: Date,
-    default: Date.now(),
+    default: () => {
+      return Date.now();
+    },
   },
 
   active: {

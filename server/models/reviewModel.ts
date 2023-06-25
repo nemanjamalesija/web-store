@@ -1,6 +1,5 @@
 import mongoose, { Types, mongo } from 'mongoose';
 import { reviewType } from '../types/reviewType.ts';
-import Product from './productModel.ts';
 
 const reviewSchema = new mongoose.Schema<reviewType>(
   {
@@ -18,7 +17,9 @@ const reviewSchema = new mongoose.Schema<reviewType>(
 
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: () => {
+        return Date.now();
+      },
     },
 
     product: {

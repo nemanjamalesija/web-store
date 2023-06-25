@@ -52,7 +52,7 @@ onMounted(async () => {
         <RouterLink
           v-if="!currentUser.name"
           to="/signup"
-          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg bg-white hover:bg-[#f8f9fa] font-semibold"
+          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg bg-white hover:bg-[#f8f9fa] font-semibold text-orange-900"
           >Sign up</RouterLink
         >
 
@@ -71,7 +71,7 @@ onMounted(async () => {
         <!-- Logout -->
         <button
           v-if="currentUser.name"
-          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg bg-white hover:bg-[#f8f9fa] font-semibold"
+          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg bg-white hover:bg-[#f8f9fa] font-semibold text-orange-900"
           @click.prevent="logoutHandler"
         >
           Log out

@@ -67,7 +67,7 @@ const { currentProduct } = useGetProduct()
   position: absolute;
   bottom: 30vw;
   left: 50%;
-  top: 32%;
+  top: 33%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }

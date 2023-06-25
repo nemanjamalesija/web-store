@@ -10,6 +10,7 @@ export type reviewType = mongoose.Document & {
   review: string;
   rating: number;
   createdAt: Date;
+  updatedAt: Date;
   product: ObjectRefType;
   user: ObjectRefType;
   r?: undefined | reviewType;

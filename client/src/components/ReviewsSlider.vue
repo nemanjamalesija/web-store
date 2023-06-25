@@ -37,6 +37,8 @@ const createStarsArray = (rating: number) => {
 
   return starsArray
 }
+
+console.log(currentProduct.value)
 </script>
 
 <template>

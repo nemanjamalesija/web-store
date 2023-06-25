@@ -5,7 +5,7 @@ import AppError from '../helpers/appError.ts';
 
 const getAll = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    // To allow for nested GET reviews on tour
+    // To allow for nested GET reviews on product
     let filter = {};
     if (req.params.productId) filter = { product: req.params.productId };
 
@@ -37,9 +37,7 @@ const getOne = <T>(Model: Model<T>, populateField: string) =>
 
 const createOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const doc = new Model(req.body);
-
-    await doc.save();
+    const doc = await Model.create(req.body);
 
     res.status(201).json({
       status: 'sucess',

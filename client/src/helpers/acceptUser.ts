@@ -10,6 +10,7 @@ export default function acceptUser(user: UserType) {
     name: currentUserName,
     email: user.email,
     photo: user.photo,
-    role: user.role
-  }
+    role: user.role,
+    joinedAt: user.joinedAt
+  } as UserType
 }

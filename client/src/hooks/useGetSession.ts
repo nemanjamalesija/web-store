@@ -1,5 +1,4 @@
 import { baseUrl } from '../constants/baseUrl'
-import { UserType } from '../types/userType'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import acceptUser from '../helpers/acceptUser'
@@ -39,14 +38,13 @@ export default async function useGetSession() {
           data: { user }
         } = data
 
-        const userWithType = user as UserType
+        if (!currentUser.value.name) setCurrentUser(acceptUser(user))
 
-        if (!currentUser.value.name) {
-          setCurrentUser(acceptUser(userWithType))
-        }
-        return { user: userWithType, jwtToken }
+        return { user, jwtToken }
       }
     } catch (error) {
+      console.log(error)
+      toast.error('Sorry, could not get your session! Please try again... ')
       return undefined
     }
   }

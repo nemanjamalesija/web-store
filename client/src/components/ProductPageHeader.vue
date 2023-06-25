@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/productsStore'
-import { storeToRefs } from 'pinia'
+import useGetProduct from '../hooks/useGetProduct'
 
-const productsStore = useProductsStore()
-const { currentProduct } = storeToRefs(productsStore)
+const { currentProduct } = useGetProduct()
 </script>
 <template>
   <section class="section-header h-[55vw] lg:h-[40vw]">
@@ -89,3 +87,4 @@ const { currentProduct } = storeToRefs(productsStore)
   }
 }
 </style>
+../hooks/useGetProduct

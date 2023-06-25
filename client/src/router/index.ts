@@ -7,19 +7,20 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'login',
+      name: '/',
       component: LoginView
-    },
-    {
-      path: '/products',
-      name: 'products',
-      component: () => import('../views/ProductsView.vue')
     },
     {
       path: '/signup',
       name: 'signup',
       component: () => import('../views/SignupView.vue')
     },
+    {
+      path: '/products',
+      name: 'products',
+      component: () => import('../views/ProductsView.vue')
+    },
+
     {
       path: '/products/:id',
       component: () => import('../views/ProductView.vue')

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/productsStore'
 import type { productType } from '@/types/productType'
-import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ReviewsSlider from '../components/ReviewsSlider.vue'
@@ -13,14 +11,13 @@ import LoadingSpinner from '../components/LoadingSpinner.vue'
 import LeaveReview from '@/components/LeaveReview.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
+import useGetProduct from '../hooks/useGetProduct'
 
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
-const productsStore = useProductsStore()
-const { setLoading, setCurrentProduct } = useProductsStore()
-const { loading } = storeToRefs(productsStore)
+const { loading, setLoading, setCurrentProduct } = useGetProduct()
 
 async function fetchCurrentProduct() {
   const jwtToken = localStorage.getItem('jwt')

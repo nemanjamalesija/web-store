@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/productsStore'
-import { storeToRefs } from 'pinia'
+import useGetProduct from '../hooks/useGetProduct'
 
-const productsStore = useProductsStore()
-const { currentProduct } = storeToRefs(productsStore)
+const { currentProduct } = useGetProduct()
 </script>
 <template>
   <div class="product__ingredients py-[14vw] px-[8vw] bg-slate-50">

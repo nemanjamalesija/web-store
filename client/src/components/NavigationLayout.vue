@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { baseUrl } from '../constants/baseUrl'
-import { storeToRefs } from 'pinia'
-import { useUserStore } from '../stores/userStore'
 import { useRouter } from 'vue-router'
 import logo from '../assets/img/logo.png'
+import useGetUser from '@/hooks/useGetUser'
 
-const userStore = useUserStore()
-const { setCurrentUser } = useUserStore()
-const { currentUser } = storeToRefs(userStore)
+const { currentUser, setCurrentUser } = useGetUser()
 const router = useRouter()
 
 async function logoutHandler() {

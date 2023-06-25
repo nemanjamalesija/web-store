@@ -1,25 +1,17 @@
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/productsStore'
 import { onMounted } from 'vue'
-import { storeToRefs } from 'pinia'
 import SingleProduct from '../components/SingleProduct.vue'
 import type { productType } from '../types/productType'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
-const productsStore = useProductsStore()
-const { products, loading } = storeToRefs(productsStore)
 import { baseUrl } from '../constants/baseUrl'
-import useGetSession from '@/hooks/useGetSession'
 import { useToast } from 'vue-toastification'
+import useGetProduct from '../hooks/useGetProduct'
 
-const { setLoading, setProducts } = useProductsStore()
+const { products, loading, setLoading, setProducts } = useGetProduct()
 const toast = useToast()
 
 async function fetchAllProducts() {
-  const session = await useGetSession()
-
-  if (!session) return
-
-  const { jwtToken } = session
+  const jwtToken = localStorage.getItem('jwt')
 
   setLoading(true)
   try {

@@ -3,19 +3,16 @@ import { UserType } from '../types/userType'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import acceptUser from '../helpers/acceptUser'
-import { useUserStore } from '../stores/userStore'
-import { storeToRefs } from 'pinia'
+import useGetUser from './useGetUser'
 
 export default async function useGetSession() {
   const toast = useToast()
   const router = useRouter()
   const jwtToken = localStorage.getItem('jwt')
-  const { setCurrentUser } = useUserStore()
-  const userStore = useUserStore()
-  const { currentUser } = storeToRefs(userStore)
+  const { setCurrentUser, currentUser } = useGetUser()
 
   if (!jwtToken) {
-    router.push('/')
+    router.push('/') // login
 
     return undefined
   } else {

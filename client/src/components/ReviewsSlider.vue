@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/productsStore'
-import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { format } from 'date-fns'
+import useGetProduct from '../hooks/useGetProduct'
+
 const currentSlideIndex = ref(0)
 
-const productsStore = useProductsStore()
-const { currentProduct } = storeToRefs(productsStore)
+const { currentProduct } = useGetProduct()
 
 function formatDate(date: string) {
   return format(new Date(date), 'MMMM d, yyyy')

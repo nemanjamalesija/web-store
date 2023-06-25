@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/productsStore'
-import { storeToRefs } from 'pinia'
+import useGetProduct from '../hooks/useGetProduct'
 
-const productsStore = useProductsStore()
-const { currentProduct } = storeToRefs(productsStore)
+const { currentProduct } = useGetProduct()
 </script>
 <template>
   <div class="card__details grid grid-cols-2 gap-x-5 gap-y-4 mb-20">

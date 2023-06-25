@@ -5,8 +5,6 @@ import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/userStore'
 import acceptUser from '../helpers/acceptUser'
-import { storeToRefs } from 'pinia'
-import useGetSession from '@/hooks/useGetSession'
 
 const loginUser = ref({
   email: '',
@@ -16,7 +14,7 @@ const loginUser = ref({
 const toast = useToast()
 const router = useRouter()
 
-const { setCurrentUser } = useUserStore()
+const { setCurrentUser, currentUser } = useUserStore()
 
 async function loginUserHandler() {
   try {
@@ -45,16 +43,15 @@ async function loginUserHandler() {
       router.push('/products')
     } else if (data.status === 'fail') toast.error(data.message)
   } catch (error) {
-    console.error('Error during login:', error)
+    console.log(error)
+  } finally {
+    loginUser.value.email = ''
+    loginUser.value.password = ''
   }
 }
 
 onMounted(async () => {
-  const session = await useGetSession()
-  if (!session) return
-  const { user } = session
-
-  if (user) router.push('/products')
+  if (!currentUser.name) router.push('/products')
 })
 </script>
 

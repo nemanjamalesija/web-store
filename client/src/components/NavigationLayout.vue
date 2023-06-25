@@ -14,7 +14,7 @@ async function logoutHandler() {
 
     router.push('/')
     localStorage.removeItem('jwt')
-    setCurrentUser({ id: '', name: '', email: '', photo: '', role: '' })
+    setCurrentUser({ id: '', name: '', email: '', photo: '', role: '', joinedAt: '' })
   } catch (error) {
     console.log(error)
   }

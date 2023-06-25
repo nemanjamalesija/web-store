@@ -5,7 +5,7 @@ import type { productType } from '../types/productType'
 export const useProductsStore = defineStore('product', () => {
   const products = ref([] as productType[])
   const currentProduct = ref({} as productType)
-
+  const isProductReviewModalOpen = ref<boolean>(false)
   const loading = ref(false)
 
   function setProducts(productsAPI: productType[]) {
@@ -20,5 +20,18 @@ export const useProductsStore = defineStore('product', () => {
     loading.value = value
   }
 
-  return { products, loading, setProducts, setLoading, currentProduct, setCurrentProduct }
+  function toggleReviewModal() {
+    isProductReviewModalOpen.value = !isProductReviewModalOpen.value
+  }
+
+  return {
+    products,
+    loading,
+    setProducts,
+    setLoading,
+    currentProduct,
+    setCurrentProduct,
+    isProductReviewModalOpen,
+    toggleReviewModal
+  }
 })

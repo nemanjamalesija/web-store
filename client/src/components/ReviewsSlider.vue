@@ -37,8 +37,6 @@ const createStarsArray = (rating: number) => {
 
   return starsArray
 }
-
-console.log(currentProduct.value.reviews)
 </script>
 
 <template>
@@ -64,9 +62,9 @@ console.log(currentProduct.value.reviews)
 
             <time
               class="block text-sm text-gray-500 dark:text-gray-400"
-              datetime="{{formatDate(currentProduct.reviews[1].user.joinedAt)}}"
+              datetime="{{formatDate(currentProduct.reviews[currentSlideIndex].user.joinedAt)}}"
             >
-              Joined on {{ formatDate(currentProduct.reviews[1].user.joinedAt) }}
+              Joined on {{ formatDate(currentProduct.reviews[currentSlideIndex].user.joinedAt) }}
             </time>
           </p>
         </div>

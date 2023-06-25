@@ -12,12 +12,14 @@ import LeaveReview from '@/components/LeaveReview.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import useGetProduct from '../hooks/useGetProduct'
+import ReviewModal from '@/components/ReviewModal.vue'
 
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
-const { loading, setLoading, setCurrentProduct } = useGetProduct()
+const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen, toggleReviewModal } =
+  useGetProduct()
 
 async function fetchCurrentProduct() {
   const jwtToken = localStorage.getItem('jwt')
@@ -59,7 +61,7 @@ onMounted(async () => {
 </script>
 <template>
   <LoadingSpinner v-if="loading" />
-  <div v-else>
+  <div class="relative" v-else>
     <ProductPageHeader />
     <section class="product -mt-12 lg:-mt-28 flex flex-col lg:grid lg:grid-cols-2">
       <ProductPageIngredients />
@@ -68,6 +70,12 @@ onMounted(async () => {
         <ProductPageStats />
         <ReviewsSlider />
         <LeaveReview />
+        <ReviewModal v-if="isProductReviewModalOpen" />
+        <div
+          v-if="isProductReviewModalOpen"
+          class="fixed inset-0 bg-black bg-opacity-30 transition-opacity w-full h-full z-30 cursor-pointer"
+          @click="toggleReviewModal"
+        ></div>
       </div>
     </section>
   </div>

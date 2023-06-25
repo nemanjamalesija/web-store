@@ -60,4 +60,3 @@ onMounted(async () => {
     </div>
   </main>
 </template>
-../helpers/useGetSession../hooks/getSession

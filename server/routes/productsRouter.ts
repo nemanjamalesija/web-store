@@ -1,7 +1,6 @@
 import express from 'express';
 import productsController from '../controllers/productsController.ts';
 import reviewsRouter from './reviewsRouter.ts';
-import authController from '../controllers/authController.ts';
 
 const router = express.Router();
 
@@ -11,8 +10,6 @@ router
   .route('/')
   .get(productsController.getAllProducts)
   .post(productsController.createProduct);
-
-router.use(authController.protect); // protect all routes below this point
 
 router
   .route('/:id')

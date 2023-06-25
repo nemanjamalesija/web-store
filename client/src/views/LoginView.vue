@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import { baseUrl } from '@/constants/baseUrl'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/userStore'
-import type { UserType } from '../types/userType'
+import acceptUser from '../helpers/acceptUser'
+import { storeToRefs } from 'pinia'
+import useGetSession from '@/hooks/useGetSession'
 
 const loginUser = ref({
   email: '',
   password: ''
 })
 
-const { setCurrentUser } = useUserStore()
-
 const toast = useToast()
 const router = useRouter()
+
+const { setCurrentUser } = useUserStore()
 
 async function loginUserHandler() {
   try {
@@ -37,25 +39,23 @@ async function loginUserHandler() {
         data: { user }
       } = data
 
-      // In case user submits full name, keep only first name and capitalize first letter
-      const currentUserName =
-        user.name.split(' ')[0].charAt(0).toUpperCase() + user.name.split(' ')[0].slice(1)
-
-      setCurrentUser({
-        id: user.id,
-        name: currentUserName,
-        email: user.email,
-        photo: user.photo,
-        role: user.role
-      } as UserType)
+      setCurrentUser(acceptUser(user))
 
       localStorage.setItem('jwt', token)
-      router.push('/')
+      router.push('/products')
     } else if (data.status === 'fail') toast.error(data.message)
   } catch (error) {
     console.error('Error during login:', error)
   }
 }
+
+onMounted(async () => {
+  const session = await useGetSession()
+  if (!session) return
+  const { user } = session
+
+  if (user) router.push('/products')
+})
 </script>
 
 <template>

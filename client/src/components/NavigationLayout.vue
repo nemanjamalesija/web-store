@@ -16,7 +16,7 @@ async function logoutHandler() {
     const response = await fetch(`${baseUrl}/api/v1/users/logout`)
     console.log(response)
 
-    router.push('/login')
+    router.push('/')
     localStorage.removeItem('jwt')
     setCurrentUser({ id: '', name: '', email: '', photo: '', role: '' })
   } catch (error) {
@@ -33,14 +33,14 @@ async function logoutHandler() {
           <h1 class="capitalize font-bold mr-20 text-lg lg:text-xl">jumbo bowls</h1>
         </div>
         <div class="font-medium flex gap-10">
-          <RouterLink class="inline-block" to="/"> Home</RouterLink>
-          <RouterLink class="inline-block" to="/"> About us</RouterLink>
-          <RouterLink class="inline-block" to="/"> How it works</RouterLink>
-          <RouterLink class="inline-block" to="/"> Bowls and pricing</RouterLink>
+          <RouterLink class="inline-block" to="/products"> Products</RouterLink>
+          <RouterLink class="inline-block" to="/products"> About us</RouterLink>
+          <RouterLink class="inline-block" to="/products"> How it works</RouterLink>
+          <RouterLink class="inline-block" to="/products"> Bowls and pricing</RouterLink>
         </div>
       </div>
       <div class="flex items-center gap-10">
-        <RouterLink class="text-white" v-if="!currentUser.name" to="/login">Log in</RouterLink>
+        <RouterLink class="text-white" v-if="!currentUser.name" to="/">Log in</RouterLink>
         <RouterLink
           v-if="!currentUser.name"
           to="/signup"

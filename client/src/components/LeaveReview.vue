@@ -12,13 +12,6 @@ const { currentUser } = storeToRefs(productsStore)
     <p class="text-sm lg:text-lg">Want to leave a review?</p>
     <RouterLink
       to="/login"
-      v-if="!currentUser.name"
-      class="btn inline-block py-3 px-6 bg-orange-500 uppercase text-white text-sm lg:text-base text-medium hover:bg-orange-600 active:bg-orange-800 rounded-full"
-    >
-      Log in
-    </RouterLink>
-    <RouterLink
-      to="/login"
       v-if="currentUser.name"
       class="btn inline-block py-3 px-6 bg-orange-500 uppercase text-white text-sm lg:text-base text-medium hover:bg-orange-600 active:bg-orange-800 rounded-full"
     >

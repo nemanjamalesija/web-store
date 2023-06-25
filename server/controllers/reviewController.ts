@@ -5,7 +5,7 @@ import controllerFactory from './controllerFactory.ts';
 const setProductUserIds = (req: Request, res: Response, next: NextFunction) => {
   // Allow nested routes
   if (!req.body.product) req.body.product = req.params.productId;
-  if (!req.body.user) req.body.user = req.body.currentUser.id;
+  if (!req.body.user) req.body.user = req.body.user.id;
   next();
 };
 
@@ -19,7 +19,7 @@ export default {
   getAllReviews,
   getOneReview,
   createReview,
-  setProductUserIds,
   updateReview,
   deleteReview,
+  setProductUserIds,
 };

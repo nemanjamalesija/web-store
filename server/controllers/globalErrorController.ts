@@ -4,17 +4,7 @@ import { castErrorDB } from '../types/castError.ts';
 import { duplicateErrorDB } from '../types/duplicateError.ts';
 import { validatorErrorDB } from '../types/validatorError.ts';
 
-const sendErrorDev = (res: Response, err: any) => {
-  res.status(err.statusCode || 500).json({
-    status: err.status,
-    error: err,
-    message: err.message,
-    stack: err.stack,
-  });
-};
-
-const sendErrorProd = (res: Response, err: any) => {
-  // Operational, trusted error: send message to client
+const sendError = (res: Response, err: any) => {
   if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
@@ -22,16 +12,13 @@ const sendErrorProd = (res: Response, err: any) => {
     });
 
     // Programming or other unknown error: don't leak error details
-  } else {
-    // 1) Log error
-    console.error('ERROR 🔥', err);
-
-    // 2) Send generic message
-    res.status(500).json({
-      status: 'error',
-      message: 'Something went wrong!',
+  } else
+    res.status(err.statusCode || 500).json({
+      status: err.status,
+      error: err,
+      message: err.message,
+      stack: err.stack,
     });
-  }
 };
 
 const handleCastErrorDB = (err: castErrorDB) => {
@@ -70,30 +57,21 @@ const globalErrorHandler = (
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-  // DEVELOPMENT ERROR HANDLING
-  if (process.env.NODE_ENV === 'development') {
-    sendErrorDev(res, err);
-  }
+  let error = { ...err };
 
-  // PRODUCTION ERROR HANDLING
-  else {
-    let error = { ...err };
+  // MONGO DB ERRORS
+  // 1. Cast error
+  if (err.name === 'CastError') error = handleCastErrorDB(error as castErrorDB);
 
-    // MONGO DB ERRORS
-    // 1. Cast error
-    if (err.name === 'CastError')
-      error = handleCastErrorDB(error as castErrorDB);
+  // 2. Tour name already exist
+  if (err.code === 11000)
+    error = handleDuplicateFieldErrorDB(error as duplicateErrorDB);
 
-    // 2. Tour name already exist
-    if (err.code === 11000)
-      error = handleDuplicateFieldErrorDB(error as duplicateErrorDB);
+  // 3. Didn't specify all fields
+  if (err.name === 'ValidationError')
+    error = handleValidatorErrorDB(error as validatorErrorDB);
 
-    // 3. Didn't specify all fields
-    if (err.name === 'ValidationError')
-      error = handleValidatorErrorDB(error as validatorErrorDB);
-
-    sendErrorProd(res, error);
-  }
+  sendError(res, error);
 };
 
 export default globalErrorHandler;

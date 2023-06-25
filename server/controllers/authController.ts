@@ -73,49 +73,6 @@ const login = catchAsync(
   }
 );
 
-const protect = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    // 1. Get the token and check if it exist
-    let token: string | undefined;
-
-    if (req.headers.authorization?.startsWith('Bearer '))
-      token = req.headers.authorization.split(' ')[1];
-
-    if (!token || token?.startsWith('null')) {
-      const message = 'You are not logged in! Please log in to get access';
-      const error = new AppError(message, 403);
-
-      return next(error);
-    }
-
-    // 2. Validate the token
-    const decodeTokenFn: (token: string, secret: string) => Promise<any> =
-      promisify(jwt.verify);
-
-    const decodedTokenObj = await decodeTokenFn(
-      token,
-      process.env.JWT_SECRET_STRING as string
-    );
-
-    // 3. Check if user still exists
-    const currentUser = await User.findById(decodedTokenObj.id);
-
-    if (!currentUser) {
-      const message = 'The user belonging to the token no longer exists';
-      const error = new AppError(message, 401);
-
-      return next(error);
-    }
-
-    // If all okay, grant access to protected route
-    else {
-      console.log(currentUser);
-      req.body = { ...req.body, currentUser };
-      return next();
-    }
-  }
-);
-
 const getUserWithToken = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     // 1. Get the token and check if it exist
@@ -155,6 +112,8 @@ const getUserWithToken = catchAsync(
 
     // If all okay, grant access to protected route
     else {
+      req.body = { ...req.body, user };
+
       res.status(200).json({
         status: 'success',
         data: {
@@ -173,7 +132,6 @@ const logout = (req: Request, res: Response) => {
 export default {
   signUp,
   login,
-  protect,
   getUserWithToken,
   logout,
 };

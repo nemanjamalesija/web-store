@@ -3,7 +3,7 @@ import { useProductsStore } from '@/stores/productsStore'
 import type { productType } from '@/types/productType'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ReviewsSlider from '../components/ReviewsSlider.vue'
 import ProductPageHeader from '../components/ProductPageHeader.vue'
 import ProductPageStats from '../components/ProductPageStats.vue'
@@ -14,13 +14,8 @@ import LeaveReview from '@/components/LeaveReview.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 
-import { useUserStore } from '@/stores/userStore'
-import router from '@/router'
-
-const userStore = useUserStore()
-const { currentUser } = storeToRefs(userStore)
-
 const route = useRoute()
+const router = useRouter()
 const toast = useToast()
 
 const productsStore = useProductsStore()
@@ -28,8 +23,8 @@ const { setLoading, setCurrentProduct } = useProductsStore()
 const { loading } = storeToRefs(productsStore)
 
 async function fetchCurrentProduct() {
-  setLoading(true)
   const jwtToken = localStorage.getItem('jwt')
+  setLoading(true)
 
   try {
     const response = await fetch(`${baseUrl}/api/v1/products/${route.params.id}`, {
@@ -40,10 +35,10 @@ async function fetchCurrentProduct() {
       }
     })
 
-    if (!jwtToken) {
+    if (!response.ok) {
       const error = await response.json()
       toast.error(error.message)
-      router.push('/login')
+      router.push('/products')
       return
     } else {
       const {
@@ -54,9 +49,13 @@ async function fetchCurrentProduct() {
       setLoading(false)
     }
   } catch (error) {
+    console.log(error)
+    setLoading(false)
+  } finally {
     setLoading(false)
   }
 }
+
 onMounted(async () => {
   await fetchCurrentProduct()
 })

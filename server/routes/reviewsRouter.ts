@@ -4,7 +4,7 @@ import authController from '../controllers/authController.ts';
 
 const router = express.Router({ mergeParams: true });
 
-router.use(authController.protect);
+router.use(authController.getUserWithToken);
 
 router
   .route('/')

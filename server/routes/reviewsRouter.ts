@@ -4,16 +4,12 @@ import authController from '../controllers/authController.ts';
 
 const router = express.Router({ mergeParams: true });
 
+router.use(authController.protect);
+
 router
   .route('/')
   .get(reviewController.getAllReviews)
-  .post(
-    authController.getUserWithToken,
-    reviewController.setProductUserIds,
-    reviewController.createReview
-  );
-
-router.use(authController.getUserWithToken);
+  .post(reviewController.setProductUserIds, reviewController.createReview);
 
 router
   .route('/:id')

@@ -65,9 +65,9 @@ const { currentProduct } = useGetProduct()
 
 .heading-box {
   position: absolute;
-  bottom: 35vw;
+  bottom: 30vw;
   left: 50%;
-  top: 37%;
+  top: 32%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
@@ -83,7 +83,7 @@ const { currentProduct } = useGetProduct()
 
 @media only screen and (max-width: 1000px) {
   .heading-box {
-    bottom: 45vw;
+    bottom: 50vw;
   }
 }
 </style>

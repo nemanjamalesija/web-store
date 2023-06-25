@@ -116,7 +116,60 @@ const getUserWithToken = catchAsync(
           user: currentUser,
         },
       });
+    }
+  }
+);
 
+const protect = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    // 1. Get the token and check if it exist
+    let token: string | undefined;
+
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith('Bearer')
+    )
+      token = req.headers.authorization.split(' ')[1] || undefined;
+
+    if (!token) {
+      const message = 'You are not logged in! Please log in to get access';
+      const error = new AppError(message, 401);
+
+      return next(error);
+    }
+
+    // 2. Validate the token
+    const decodeTokenFn: (token: string, secret: string) => Promise<any> =
+      promisify(jwt.verify);
+
+    const decodedTokenObj = await decodeTokenFn(
+      token,
+      process.env.JWT_SECRET_STRING as string
+    );
+
+    // 3. Check if user still exists
+    const currentUser = await User.findById(decodedTokenObj.id);
+
+    if (!currentUser) {
+      const message = 'The user belonging to the token no longer exists';
+      const error = new AppError(message, 401);
+
+      return next(error);
+    }
+
+    // 4. Check if user changed password after the token was issued
+    else if (currentUser.changedPasswordAfter(decodedTokenObj.iat)) {
+      const error = new AppError(
+        'User recently changed password! Please log in again',
+        401
+      );
+
+      return next(error);
+    }
+
+    // If all okay, grant access to protected route
+    else {
+      req.body = { ...req.body, currentUser };
       return next();
     }
   }
@@ -132,4 +185,5 @@ export default {
   login,
   getUserWithToken,
   logout,
+  protect,
 };

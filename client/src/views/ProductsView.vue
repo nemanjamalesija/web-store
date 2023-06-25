@@ -7,6 +7,7 @@ import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import useGetProduct from '../hooks/useGetProduct'
 import useGetUser from '../hooks/useGetUser'
+import useGetSession from '@/hooks/useGetSession'
 
 const { products, loading, setLoading, setProducts } = useGetProduct()
 const { currentUser } = useGetUser()
@@ -43,6 +44,9 @@ async function fetchAllProducts() {
   }
 }
 onMounted(async () => {
+  const session = await useGetSession()
+  if (!session) return
+
   await fetchAllProducts()
   console.log(currentUser.value.name)
 })

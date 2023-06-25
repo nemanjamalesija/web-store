@@ -1,6 +1,7 @@
 import express from 'express';
 import productsController from '../controllers/productsController.ts';
 import reviewsRouter from './reviewsRouter.ts';
+import authController from '../controllers/authController.ts';
 
 const router = express.Router();
 

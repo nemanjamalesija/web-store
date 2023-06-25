@@ -13,6 +13,7 @@ import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import useGetProduct from '../hooks/useGetProduct'
 import ReviewModal from '@/components/ReviewModal.vue'
+import useGetSession from '@/hooks/useGetSession'
 
 const route = useRoute()
 const router = useRouter()
@@ -56,6 +57,9 @@ async function fetchCurrentProduct() {
 }
 
 onMounted(async () => {
+  const session = await useGetSession()
+  if (!session) return
+
   await fetchCurrentProduct()
 })
 </script>

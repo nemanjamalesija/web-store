@@ -94,10 +94,7 @@ const getUserWithToken = catchAsync(
     const user = await User.findById(decodedTokenObj.id);
 
     if (!user) {
-      const message = 'The user belonging to the token no longer exists';
-      const error = new AppError(message, 401);
-
-      return next(error);
+      return next();
     }
 
     //  Check if user changed password after the token was issued

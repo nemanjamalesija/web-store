@@ -32,7 +32,7 @@ async function logoutHandler() {
           <img :src="logo" alt="jumbo bowls logo" class="inline-block h-10 w-10 object-cover" />
           <h1 class="capitalize font-bold mr-20 text-lg lg:text-xl">jumbo bowls</h1>
         </div>
-        <div class="font-medium flex gap-10">
+        <div v-if="currentUser.name" class="font-medium flex gap-10">
           <RouterLink class="inline-block" to="/products"> Products</RouterLink>
           <RouterLink class="inline-block" to="/products"> About us</RouterLink>
           <RouterLink class="inline-block" to="/products"> How it works</RouterLink>

@@ -5,16 +5,20 @@ import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
+import acceptUser from '@/helpers/acceptUser'
 
 const changeUser = ref({
   name: '',
   email: ''
 })
 
+const { currentUser, setCurrentUser } = useGetUser()
+
 const toast = useToast()
 const router = useRouter()
 
 async function updateUserHandler() {
+  // No need to usegetSession because of protect middleware on the backend
   const jwtToken = localStorage.getItem('jwt')
 
   try {
@@ -35,14 +39,19 @@ async function updateUserHandler() {
       return toast.error(data.message)
     }
 
+    const newCurrentUser = {
+      ...currentUser.value,
+      name: changeUser.value.name ? changeUser.value.name : currentUser.value.name,
+      email: changeUser.value.email ? changeUser.value.email : currentUser.value.name
+    }
+
+    setCurrentUser(acceptUser(newCurrentUser))
+
     toast.success('Your account information has been sucessfully updated!')
-    return router.push('/products')
   } catch (error) {
     console.log(error)
   }
 }
-
-const { currentUser } = useGetUser()
 </script>
 <template>
   <div class="user-account mt-36 mx-auto max-w-6xl flex flex-col lg:gap-32 lg:grid rounded-md">

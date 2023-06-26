@@ -31,6 +31,10 @@ const props = defineProps<singleProductPropsType>()
     </div>
 
     <div>
+      <p>{{ formatDate(props.user.joinedAt) }}</p>
+    </div>
+
+    <div>
       <p>{{ props.user.role }}</p>
     </div>
 
@@ -101,7 +105,7 @@ const props = defineProps<singleProductPropsType>()
 <style scoped>
 .users-list__item {
   display: grid;
-  grid-template-columns: minmax(220px, auto) minmax(220px, auto) repeat(4, auto);
+  grid-template-columns: minmax(220px, auto) minmax(250px, auto) 180px repeat(4, 30px);
 
   align-items: center;
 

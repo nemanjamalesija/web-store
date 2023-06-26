@@ -34,7 +34,10 @@ onMounted(async () => {
 </script>
 <template>
   <header class="header-nav absolute top-0 left-0 w-full z-50">
-    <nav class="h-full px-14 flex items-center justify-between text-base lg:text-lg font-medium">
+    <nav
+      class="nav relative h-full px-14 flex items-center justify-between text-base lg:text-lg font-medium"
+    >
+      <!-- Logo and page navigation -->
       <div class="flex items-center">
         <div class="logo flex items-center gap-2">
           <img :src="logo" alt="jumbo bowls logo" class="inline-block h-10 w-10 object-cover" />
@@ -47,6 +50,8 @@ onMounted(async () => {
           <RouterLink class="inline-block" to="/products"> Bowls and pricing</RouterLink>
         </div>
       </div>
+
+      <!-- User related -->
       <div class="flex items-center gap-10">
         <RouterLink class="font-semibold" v-if="!currentUser.name" to="/">Log in</RouterLink>
         <RouterLink
@@ -57,28 +62,71 @@ onMounted(async () => {
         >
 
         <!-- User info -->
-        <div v-if="currentUser.name" class="user flex items-center gap-3 font-bold">
-          <div class="user__photo-box">
+        <div v-if="currentUser.name" class="user flex flex-col items-center gap-3 font-bold">
+          <div class="user__photo-box flex gap-4 items-center">
             <img
               class="card__picture-img object-cover h-12 w-12 inline-block rounded-full"
               :src="currentUser.photo"
               :alt="currentUser.photo + ' image'"
             />
+            <span class="username inline-block font-semibold cursor-pointer">{{
+              currentUser.name
+            }}</span>
           </div>
-          <span class="font-semibold">{{ currentUser.name }}</span>
-        </div>
 
-        <!-- Logout -->
-        <button
-          v-if="currentUser.name"
-          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg bg-white hover:bg-[#f8f9fa] font-semibold text-orange-900"
-          @click.prevent="logoutHandler"
-        >
-          Log out
-        </button>
+          <!-- Drop down modal -->
+          <div class="account bg-white flex flex-col text-base gap-2 rounded-md w-max">
+            <RouterLink class="nav__link" to="/me"> Account </RouterLink>
+            <RouterLink class="nav__link" to="/reviews"> My reviews </RouterLink>
+            <RouterLink class="nav__link" to="/products"> Help & support </RouterLink>
+            <RouterLink class="nav__link" to="/products"> Display & accesibility </RouterLink>
+            <RouterLink class="nav__link" to="/products"> Give feedback</RouterLink>
+            <button
+              v-if="currentUser.name"
+              class="nav__link text-start"
+              @click.prevent="logoutHandler"
+            >
+              Log out
+            </button>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+.user {
+  position: absolute;
+  right: 5%;
+  top: 6.5%;
+  padding-bottom: 2rem;
+}
+
+.account {
+  -webkit-box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.1);
+  max-height: 0;
+  visibility: hidden;
+  transition: max-height 0.3s;
+  overflow: hidden;
+}
+
+.account {
+  position: absolute;
+  top: 78%;
+  right: 0.3%;
+}
+
+.user:hover > .account {
+  visibility: visible;
+  transform-origin: top;
+  padding: 1rem;
+  max-height: 300px;
+}
+
+.nav__link:hover {
+  transition: all 0.2s;
+  color: rgba(234 88 12 / 1);
+}
+</style>

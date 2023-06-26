@@ -197,15 +197,6 @@ body,
   padding-bottom: 2rem;
 }
 
-.header-nav.sticky button {
-  background-color: #f97316;
-  color: #fff;
-}
-
-.header-nav.sticky button:hover {
-  background-color: #e06814;
-}
-
 .header-nav.sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);

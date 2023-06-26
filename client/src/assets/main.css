@@ -189,3 +189,27 @@ body,
     padding: 1rem 2rem;
   }
 }
+
+.header-nav {
+  transition: all 0.3s;
+  color: #222;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.header-nav.sticky button {
+  background-color: #f97316;
+  color: #fff;
+}
+
+.header-nav.sticky button:hover {
+  background-color: #e06814;
+}
+
+.header-nav.sticky {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1.2px 3.2px rgba(0, 0, 0, 0.03);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

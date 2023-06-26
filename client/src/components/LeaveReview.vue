@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useUserStore } from '@/stores/userStore'
 import useGetUser from '../hooks/useGetUser'
 import useGetProduct from '../hooks/useGetProduct'
 

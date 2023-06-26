@@ -56,7 +56,7 @@ watch(currentUser, (newValue) => {
 </script>
 
 <template>
-  <div class="mt-20 px-5 lg:px-0">
+  <div class="mt-28 px-5 lg:px-0">
     <div class="login-form">
       <h2
         class="heading-secondary heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-8 font-semibold text-center"
@@ -89,7 +89,7 @@ watch(currentUser, (newValue) => {
         </div>
         <div class="form__group">
           <button
-            class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 active:bg-orange-800"
+            class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600"
             type="submit"
             @click.prevent="loginUserHandler"
           >

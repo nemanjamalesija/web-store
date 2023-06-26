@@ -27,6 +27,7 @@ export default async function useGetSession() {
       if (!response.ok) {
         const error = await response.json()
         toast.error(error.message)
+        setCurrentUser({ id: '', name: '', email: '', photo: '', role: '', joinedAt: '' })
         router.push('/')
         return undefined
       }

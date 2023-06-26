@@ -9,6 +9,8 @@ import useGetProduct from '../hooks/useGetProduct'
 import useGetUser from '../hooks/useGetUser'
 import useGetSession from '@/hooks/useGetSession'
 
+import { ref } from 'vue'
+
 const { products, loading, setLoading, setProducts } = useGetProduct()
 const { currentUser } = useGetUser()
 const toast = useToast()
@@ -43,12 +45,12 @@ async function fetchAllProducts() {
     setLoading(false)
   }
 }
+
 onMounted(async () => {
   const session = await useGetSession()
   if (!session) return
 
   await fetchAllProducts()
-  console.log(currentUser.value.name)
 })
 </script>
 
@@ -56,7 +58,7 @@ onMounted(async () => {
   <main>
     <div class="max-w-7xl mx-auto py-16 px-10 lg:px-0">
       <LoadingSpinner v-if="loading" />
-      <div>
+      <div class="products pt-20">
         <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center">
           <SingleProduct v-for="product in products" :key="product.id" :product="product" />
         </div>

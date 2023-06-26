@@ -42,7 +42,7 @@ async function updateUserHandler() {
     const newCurrentUser = {
       ...currentUser.value,
       name: changeUser.value.name ? changeUser.value.name : currentUser.value.name,
-      email: changeUser.value.email ? changeUser.value.email : currentUser.value.name
+      email: changeUser.value.email ? changeUser.value.email : currentUser.value.email
     }
 
     setCurrentUser(acceptUser(newCurrentUser))

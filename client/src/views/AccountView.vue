@@ -54,7 +54,7 @@ async function updateUserHandler() {
 }
 </script>
 <template>
-  <div
+  <section
     class="user-account mt-36 mx-auto max-w-6xl flex flex-col gap-12 lg:gap-32 lg:grid rounded-md"
   >
     <div class="user">
@@ -85,7 +85,7 @@ async function updateUserHandler() {
 
     <div class="user-settings mx-auto w-full">
       <div class="user-settings__forms">
-        <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-3">
+        <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-9">
           Your account settings
         </h2>
         <form class="form form--signup mb-16">
@@ -121,7 +121,7 @@ async function updateUserHandler() {
         </form>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

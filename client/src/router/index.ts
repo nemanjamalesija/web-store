@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: '/login',
+      name: 'login',
       component: LoginView
     },
     {
@@ -21,15 +21,20 @@ const router = createRouter({
       component: () => import('../views/ProductsView.vue')
     },
     {
-      path: '/me',
-      name: 'account',
-      component: () => import('../views/AccountView.vue')
-    },
-
-    {
       path: '/products/:id',
       component: () => import('../views/ProductView.vue')
     },
+    {
+      path: '/me',
+      name: 'me',
+      component: () => import('../views/AccountView.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/AdminDashboard.vue')
+    },
+
     {
       path: '/:catchAll(.*)*',
       name: 'PageNotFound',

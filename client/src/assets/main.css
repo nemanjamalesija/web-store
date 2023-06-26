@@ -92,7 +92,8 @@ body,
 .user-account,
 .singup-form,
 .login-form,
-.review-form {
+.review-form,
+.admin-dashboard {
   background-color: #fff;
   -webkit-box-shadow: 0 1.5rem 5rem 1.25rem rgba(0, 0, 0, 0.06);
   box-shadow: 0 1.5625rem 5rem 1.25rem rgba(0, 0, 0, 0.06);

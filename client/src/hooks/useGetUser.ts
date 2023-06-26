@@ -3,8 +3,8 @@ import { useUserStore } from '../stores/userStore'
 
 export default function useGetUser() {
   const userStore = useUserStore()
-  const { currentUser } = storeToRefs(userStore)
-  const { setCurrentUser } = useUserStore()
+  const { users, currentUser, loading } = storeToRefs(userStore)
+  const { setCurrentUser, setUsers, setLoading } = useUserStore()
 
-  return { userStore, currentUser, setCurrentUser }
+  return { users, setUsers, userStore, currentUser, setCurrentUser, loading, setLoading }
 }

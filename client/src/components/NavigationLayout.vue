@@ -80,6 +80,9 @@ onMounted(async () => {
 
           <!-- Drop down modal -->
           <div class="account bg-white flex flex-col text-base gap-2 rounded-md w-max">
+            <RouterLink v-if="currentUser.role === 'admin'" class="nav__link" to="/dashboard"
+              >Dashboard</RouterLink
+            >
             <RouterLink class="nav__link" to="/me"> Account </RouterLink>
             <RouterLink class="nav__link" to="/reviews"> My reviews </RouterLink>
             <RouterLink class="nav__link" to="/products"> Help & support </RouterLink>

@@ -56,7 +56,7 @@ watch(currentUser, (newValue) => {
 </script>
 
 <template>
-  <div class="mt-28 px-5 lg:px-0">
+  <section class="mt-28 px-5 lg:px-0">
     <div class="login-form">
       <h2
         class="heading-secondary heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-8 font-semibold text-center"
@@ -98,7 +98,7 @@ watch(currentUser, (newValue) => {
         </div>
       </form>
     </div>
-  </div>
+  </section>
 </template>
 
 <style></style>

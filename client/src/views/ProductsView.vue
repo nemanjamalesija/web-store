@@ -58,11 +58,11 @@ onMounted(async () => {
   <main>
     <div class="max-w-7xl mx-auto py-16 px-10 lg:px-0">
       <LoadingSpinner v-if="loading" />
-      <div class="products pt-20">
-        <div class="flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center">
-          <SingleProduct v-for="product in products" :key="product.id" :product="product" />
-        </div>
-      </div>
+      <section
+        class="products pt-20 flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center"
+      >
+        <SingleProduct v-for="product in products" :key="product.id" :product="product" />
+      </section>
     </div>
   </main>
 </template>

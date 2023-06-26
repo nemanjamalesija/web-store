@@ -8,18 +8,18 @@ type singleProductPropsType = {
 const props = defineProps<singleProductPropsType>()
 </script>
 <template>
-  <div
+  <article
     class="card rounded-sm overflow-hidden transition-all duration-300 flex flex-col bg-white text-gray-600"
   >
     <div class="card__header relative">
-      <div class="card__picture relative h-60 lg:h-64">
-        <div class="card__picture-overlay absolute h-full w-full">&nbsp;</div>
+      <figure class="card__picture relative h-60 lg:h-64">
         <img
           class="card__picture-img object-cover h-full w-full"
           :src="props.product.image"
           :alt="props.product.name + ' image'"
         />
-      </div>
+      </figure>
+
       <h3 class="heading-tertirary text-center text-orange-800 text-xl lg:text-2xl font-semibold">
         {{ props.product.name }}
       </h3>
@@ -134,12 +134,12 @@ const props = defineProps<singleProductPropsType>()
       </div>
       <router-link
         :to="`/products/${props.product.id}`"
-        class="btn inline-block py-3 px-6 bg-orange-500 uppercase text-white text-sm lg:text-base text-medium hover:bg-orange-600 active:bg-orange-800 rounded-full justify-self-end self-center ml-auto"
+        class="btn inline-block py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 active:bg-orange-800 justify-self-end self-center ml-auto"
         href="#"
         >Details</router-link
       >
     </div>
-  </div>
+  </article>
 </template>
 
 <style>

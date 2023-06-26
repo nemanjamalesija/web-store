@@ -10,6 +10,8 @@ router.post('/login', authController.login);
 router.get('/getUserWithToken', authController.getUserWithToken);
 router.get('/logout', authController.logout);
 
+router.use(authController.protect);
+
 router.get('/me', userController.getMe, userController.getOneUser);
 router.patch(
   '/updateMe',

@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { format } from 'date-fns'
+
 import useGetProduct from '../hooks/useGetProduct'
 import { starIconsReview } from '../assets/icons/stars'
+import formatDate from '@/helpers/formatDate'
 
 const currentSlideIndex = ref(0)
 
 const { currentProduct } = useGetProduct()
-
-function formatDate(date: string) {
-  return format(new Date(date), 'MMMM d, yyyy')
-}
 
 function nextReviewHandler() {
   if (currentSlideIndex.value === currentProduct.value.reviews.length - 1)

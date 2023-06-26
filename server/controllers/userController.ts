@@ -13,17 +13,11 @@ const getMe = (req: Request, res: Response, next: NextFunction) => {
 
 const updateMe = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    // 1. Create error if user posts password data
-    if (req.body.password || req.body.passwordConfirm) {
-      const error = new AppError(
-        'This route is not for password update. Please use /updateMypassword',
-        400
-      );
+    //1. Check if no input
+    if (!req.body.name && !req.body.email)
+      return next(new AppError('Please provide name or email to update', 400));
 
-      next(error);
-    }
-
-    // 2. Filter fields that are not allowed
+    // 2. Filter out fields that are not allowed
     const filteredBody = filterObj(req.body, 'name', 'email');
 
     // 3. Update user document

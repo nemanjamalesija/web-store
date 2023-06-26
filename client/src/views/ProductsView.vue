@@ -16,7 +16,10 @@ const { currentUser } = useGetUser()
 const toast = useToast()
 
 async function fetchAllProducts() {
-  const jwtToken = localStorage.getItem('jwt')
+  const session = await useGetSession()
+  if (!session) return
+
+  const { jwtToken } = session
 
   setLoading(true)
   try {
@@ -47,9 +50,6 @@ async function fetchAllProducts() {
 }
 
 onMounted(async () => {
-  const session = await useGetSession()
-  if (!session) return
-
   await fetchAllProducts()
 })
 </script>

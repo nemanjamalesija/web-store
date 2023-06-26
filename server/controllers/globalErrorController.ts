@@ -10,12 +10,14 @@ const sendError = (res: Response, err: any) => {
       status: err.status,
       message: err.message,
     });
-  } else console.log(err);
-  res.status(err.statusCode || 500).json({
-    status: err.status,
-    error: err,
-    message: err.message,
-  });
+  } else {
+    console.log(err);
+    res.status(err.statusCode || 500).json({
+      status: err.status,
+      error: err,
+      message: err.message,
+    });
+  }
 };
 
 const handleCastErrorDB = (err: castErrorDB) => {

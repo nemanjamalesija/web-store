@@ -18,15 +18,22 @@ html {
   scroll-behavior: smooth;
 }
 
-body,
-.heading-gradient {
+body {
   font-family: 'Lato', sans-serif;
   color: #333;
+}
 
+body,
+.heading-gradient {
   background: #ffe8cc;
   background: -webkit-linear-gradient(to bottom left, #ffe259, #f37335);
   background: linear-gradient(to bottom left, #ffe259, #f37335);
   background-repeat: no-repeat;
+}
+
+.heading-gradient {
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .btn,
@@ -58,31 +65,20 @@ body,
   box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
 }
 
-.heading-gradient {
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    from(rgba(255, 185, 0, 1)),
-    to(rgba(255, 119, 48, 1))
-  );
-  background-image: linear-gradient(
-    to bottom left bottom,
-    rgba(255, 185, 0, 1),
-    rgba(255, 119, 48, 1)
-  );
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
 /* FORMS */
 .singup-form,
 .login-form,
 .review-form {
   margin: 1.8rem auto 0 auto;
   max-width: 34rem;
+}
+
+.user-account,
+.singup-form,
+.login-form,
+.review-form {
   background-color: #fff;
-  -webkit-box-shadow: 0 1.5625rem 5rem 1.25rem rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: 0 1.5rem 5rem 1.25rem rgba(0, 0, 0, 0.06);
   box-shadow: 0 1.5625rem 5rem 1.25rem rgba(0, 0, 0, 0.06);
   padding: 2.8rem 3.8rem;
   border-radius: 5px;

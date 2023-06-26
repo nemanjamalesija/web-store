@@ -14,7 +14,7 @@ type singleProductPropsType = {
 const props = defineProps<singleProductPropsType>()
 </script>
 <template>
-  <li class="users-list__item py-3 px-6 border-b border-2 border-neutral-300 text-base">
+  <li class="users-list__item py-3 px-6 border-b border-2 border-gray-300 rounded-sm text-base">
     <div class="flex items-center gap-2">
       <figure>
         <img

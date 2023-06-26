@@ -4,16 +4,26 @@ import useGetUser from '../hooks/useGetUser'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import type { UserType } from '@/types/userType'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import SingleUser from '@/components/SingleUser.vue'
 import { ref } from 'vue'
 
-const sortBy = ref<string>('Sort by')
 const { loading, setLoading, users, setUsers } = useGetUser()
 const toast = useToast()
 const router = useRouter()
+
+const sortBy = ref<string>('Sort by')
+
+const filterByNameValue = ref<string>('')
+const filteredUsers = computed(() => {
+  if (filterByNameValue.value) {
+    const filterValue = filterByNameValue.value.toLowerCase()
+    return users.value.filter((user) => user.name.toLowerCase().includes(filterValue))
+  }
+  return users.value
+})
 
 async function fetchAllUsers() {
   const session = await useGetSession()
@@ -71,16 +81,16 @@ onMounted(async () => {
       </h2>
       <div class="info mb-10 flex justify-between items-center gap-10">
         <p>
-          <span class="font-semibold">{{ users.length }}</span> total users.
+          <span class="font-semibold text-base">{{ users.length }}</span> total users.
         </p>
 
         <div class="flex-1">
-          <input type="text" class="form__input" />
+          <input type="text" class="form__input" v-model="filterByNameValue" />
         </div>
 
         <div>
           <select
-            class="inline-block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-emerald-500 focus:border-emerald-500 cursor-pointer"
+            class="inline-block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-[#f8f9fa;] focus:ring-emerald-500 focus:border-emerald-500 cursor-pointer"
             v-model="sortBy"
             @change="sortUsersHandler"
           >
@@ -103,7 +113,12 @@ onMounted(async () => {
       </div>
 
       <ul class="list-none flex flex-col gap-3">
-        <SingleUser v-for="user in users" :key="user.id" :user="user" :totalUsers="users.length" />
+        <SingleUser
+          v-for="user in filteredUsers"
+          :key="user.id"
+          :user="user"
+          :totalUsers="users.length"
+        />
       </ul>
     </section>
   </div>

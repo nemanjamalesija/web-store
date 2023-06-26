@@ -24,18 +24,22 @@ async function logoutHandler() {
 onMounted(async () => {
   const navRef = ref(document.querySelector('.header-nav'))
 
-  window.addEventListener('scroll', function () {
+  const handleStickyNav = function () {
     if (!navRef.value) return
 
     if (window.scrollY > 50) navRef.value.classList.add('sticky')
     else navRef.value.classList.remove('sticky')
-  })
+  }
+
+  window.addEventListener('scroll', handleStickyNav)
+
+  return () => window.removeEventListener('scroll', handleStickyNav)
 })
 </script>
 <template>
   <header class="header-nav absolute top-0 left-0 w-full z-50">
     <nav
-      class="nav relative h-full px-14 flex items-center justify-between text-base lg:text-lg font-medium"
+      class="nav pb-3 relative h-full px-14 flex items-center justify-between text-base lg:text-lg font-medium"
     >
       <!-- Logo and page navigation -->
       <div class="flex items-center">

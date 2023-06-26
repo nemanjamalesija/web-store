@@ -54,7 +54,9 @@ async function updateUserHandler() {
 }
 </script>
 <template>
-  <div class="user-account mt-36 mx-auto max-w-6xl flex flex-col lg:gap-32 lg:grid rounded-md">
+  <div
+    class="user-account mt-36 mx-auto max-w-6xl flex flex-col gap-12 lg:gap-32 lg:grid rounded-md"
+  >
     <div class="user">
       <img
         class="block h-40 w- object-cover rounded-sm mb-6"

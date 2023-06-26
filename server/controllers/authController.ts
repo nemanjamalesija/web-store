@@ -125,7 +125,6 @@ const authenticateUser = async (
   return currentUser;
 };
 
-////////////////////////////////////////////
 const getUserWithToken = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const currentUser = await authenticateUser(req, res, next);
@@ -154,6 +153,20 @@ const protect = catchAsync(
   }
 );
 
+const restrictTo = (role: 'admin') => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const userWithPrivilege = role.includes(req.body.currentUser.role);
+
+    if (!userWithPrivilege) {
+      const message = 'You do not have permission to perfom this operation';
+      const error = new AppError(message, 403);
+
+      return next(error);
+    }
+    return next();
+  };
+};
+
 const logout = (req: Request, res: Response) => {
   res.clearCookie('jwt');
   res.status(200).json({ status: 'success' });
@@ -165,4 +178,5 @@ export default {
   getUserWithToken,
   logout,
   protect,
+  restrictTo,
 };

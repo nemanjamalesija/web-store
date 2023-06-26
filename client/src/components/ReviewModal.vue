@@ -5,7 +5,7 @@ import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
 
-const reviewRating = ref<number>(1)
+const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
 
 const route = useRoute()
@@ -58,7 +58,6 @@ async function submitReviewHandler() {
           step="0.1"
           class="form__input"
           id="productReview"
-          placeholder="5"
           v-model="reviewRating"
         />
       </div>
@@ -98,5 +97,11 @@ async function submitReviewHandler() {
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 1000px) {
+  .review {
+    top: 81%;
+  }
 }
 </style>

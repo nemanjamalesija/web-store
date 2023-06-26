@@ -21,12 +21,13 @@ router.patch(
 
 router.delete('/deleteMe', userController.deleteMe);
 
+router.use(authController.restrictTo('admin'));
+
 // ADMINISTRATORS
 router.route('/').get(userController.getAllUsers);
 router
   .route('/:id')
   .get(userController.getOneUser)
-  .delete(userController.deleteUser)
-  .patch(userController.updateUser);
+  .delete(userController.deleteUser);
 
 export default router;

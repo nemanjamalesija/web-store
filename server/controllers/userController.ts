@@ -56,13 +56,11 @@ const deleteMe = catchAsync(
 const getAllUsers = controllerFactory.getAll(User);
 const getOneUser = controllerFactory.getOne(User, '');
 
-// ONLY FOR ADMINISTORS. DO NOT UPDATE PASSWORDS WITH THIS
-const updateUser = controllerFactory.updateOne(User);
+// ONLY FOR ADMINISTORS
 const deleteUser = controllerFactory.deleteOne(User);
 
 export default {
   getAllUsers,
-  updateUser,
   deleteUser,
   getOneUser,
   getMe,

@@ -46,6 +46,7 @@ async function updateUserHandler() {
 
     toast.success('Your account information has been sucessfully updated!')
   } catch (error) {
+    toast.error('Oop, something went wrong!')
     console.log(error)
   }
 }

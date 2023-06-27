@@ -15,7 +15,8 @@ import ModalCustom from '@/components/ui/ModalCustom.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
 
 const { route, router, toast } = useAppNavigation()
-const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen } = useGetProductsStore()
+const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen, currentProduct } =
+  useGetProductsStore()
 
 async function fetchCurrentProduct() {
   const jwtToken = localStorage.getItem('jwt')
@@ -44,6 +45,7 @@ async function fetchCurrentProduct() {
       setLoading(false)
     }
   } catch (error) {
+    toast.error('Oop, something went wrong!')
     console.log(error)
     setLoading(false)
   } finally {

@@ -42,7 +42,7 @@ async function signUpHandler() {
     signUpUser.value.password = ''
     signUpUser.value.passwordConfirm = ''
   } catch (error) {
-    toast.error('Something went wrong! Please try again.')
+    toast.error('Oop, something went wrong!')
   }
 }
 </script>
@@ -104,7 +104,7 @@ async function signUpHandler() {
         </div>
         <div class="form__group">
           <button
-            class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60"
+            class="btn btn--signup py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60"
             type="submit"
             @click.prevent="signUpHandler"
           >

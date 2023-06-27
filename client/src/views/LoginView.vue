@@ -4,7 +4,7 @@ import { ref, watch } from 'vue'
 import useGetUserStore from '@/hooks/useGetUserStore'
 import acceptUser from '@/helpers/acceptUser'
 import useAppNavigation from '@/composables/useAppNavigation'
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 
 const { setCurrentUser, currentUser } = useGetUserStore()
 const { toast, router } = useAppNavigation()
@@ -12,6 +12,10 @@ const { toast, router } = useAppNavigation()
 const loginUser = ref({
   email: '',
   password: ''
+})
+
+const allFieldsCompleted = computed(() => {
+  return loginUser.value.email.trim() !== '' && loginUser.value.password.trim() !== ''
 })
 
 async function loginUserHandler() {
@@ -103,8 +107,9 @@ onMounted(() => {
         </div>
         <div class="form__group">
           <button
-            class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600"
+            class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 disabled:bg-gray-500"
             type="submit"
+            :disabled="!allFieldsCompleted"
             @click.prevent="loginUserHandler"
           >
             Log in

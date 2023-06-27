@@ -52,6 +52,18 @@ body,
   padding-bottom: 1rem;
 }
 
+.header-nav.sticky .nav .nav__user .nav__user-control .account .btn-signup:last-child {
+}
+
+.header-nav.sticky .btn-signup {
+  background-color: #f9791f;
+  color: #fff;
+}
+
+.header-nav.sticky .btn-signup:hover {
+  background-color: #e06d1c;
+}
+
 /* BUTTONS */
 .btn,
 .btn:link,

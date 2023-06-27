@@ -66,12 +66,14 @@ onMounted(async () => {
       </div>
 
       <!-- User related -->
-      <div class="flex items-center gap-10">
-        <RouterLink class="font-semibold" v-if="!currentUser.name" to="/">Log in</RouterLink>
+      <div class="nav__user flex items-center gap-10">
+        <RouterLink class="font-semibold uppercase text-base" v-if="!currentUser.name" to="/"
+          >Log in</RouterLink
+        >
         <RouterLink
           v-if="!currentUser.name"
           to="/signup"
-          class="py-2 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base lg:text-lg bg-white hover:bg-[#f8f9fa] font-semibold text-orange-900"
+          class="btn-signup py-3 px-6 rounded-full transition-all duration-300 hover:-translate-y-[3px] flex items-center justify-center text-base bg-white hover:bg-[#f8f9fa] font-semibold uppercase"
           >Sign up</RouterLink
         >
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import useGetProductsStore from '../hooks/useGetProductsStore'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import CloseModalButton from './ui/CloseModalButton.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
@@ -8,6 +8,10 @@ import type { ReviewType } from '@/types/productType'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
+
+const allFieldsCompleted = computed(() => {
+  return reviewMessage.value.trim() !== ''
+})
 
 const { route, router, toast } = useAppNavigation()
 const { setIsReviewModalOpen, currentProduct, setCurrentProduct, updateAllProducts } =
@@ -92,7 +96,8 @@ async function submitReviewHandler() {
     </div>
     <div class="flex justify-end">
       <button
-        class="btn bg-orange-500 py-3 px-6 text-sm lg:text-base hover:bg-orange-600"
+        class="btn bg-orange-500 py-3 px-6 text-sm lg:text-base hover:bg-orange-600 disabled:bg-gray-500"
+        :disabled="!allFieldsCompleted"
         @click.prevent="submitReviewHandler"
       >
         Send review

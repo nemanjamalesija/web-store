@@ -32,6 +32,7 @@ export default async function fetchAllProducts() {
     setProducts(doc as ProductType[])
     setLoading(false)
   } catch (error) {
+    toast.error('Oop, something went wrong!')
     console.log(error)
     setLoading(false)
   }

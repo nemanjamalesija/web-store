@@ -33,6 +33,7 @@ async function patchUserHandler() {
       setIsEditing(false)
     }
   } catch (error) {
+    toast.error('Oop, something went wrong!')
     console.log(error)
   }
 }

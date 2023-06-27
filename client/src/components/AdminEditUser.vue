@@ -7,7 +7,7 @@ import useAppNavigation from '@/composables/useAppNavigation'
 const { setIsEditing, userToEdit } = useGetAdminStore()
 const { toast, router } = useAppNavigation()
 
-async function editUserHandler() {
+async function patchUserHandler() {
   // No need to usegetSession because of protect middleware on the backend
   const jwtToken = localStorage.getItem('jwt')
 
@@ -81,7 +81,7 @@ async function editUserHandler() {
       <button
         type="submit"
         class="btn bg-orange-500 py-3 px-6 text-sm lg:text-base hover:bg-orange-600 inline-block"
-        @click.prevent="editUserHandler"
+        @click.prevent="patchUserHandler"
       >
         Submit
       </button>

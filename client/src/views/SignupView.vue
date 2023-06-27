@@ -48,7 +48,7 @@ async function signUpHandler() {
 </script>
 
 <template>
-  <section class="mt-24">
+  <section class="mt-24 singup">
     <div class="singup-form">
       <h2
         class="heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold text-center"

@@ -51,6 +51,8 @@ export const useAdminStore = defineStore('admin', () => {
   function setUserToEdit(passId: string) {
     const currentUser = users.value.find((user) => user._id === passId)
 
+    if (!currentUser) return
+
     userToEdit.value = currentUser
   }
 

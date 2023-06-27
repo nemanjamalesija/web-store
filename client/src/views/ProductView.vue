@@ -60,12 +60,12 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <LoadingSpinner v-if="loading" />
-  <div class="relative" v-else>
+  <LoadingSpinner class="mt-16" v-if="loading" />
+  <div v-else class="relative product">
     <ProductPageHeader />
-    <section class="product -mt-12 lg:-mt-28 flex flex-col lg:grid lg:grid-cols-2">
+    <section class="-mt-12 lg:-mt-28 flex flex-col lg:grid lg:grid-cols-2">
       <ProductPageIngredients />
-      <div class="product__description py-[14vw] px-[8vw] bg-white">
+      <div class="py-[14vw] px-[8vw] bg-white">
         <ProductPageAbout />
         <ProductPageStats />
         <ReviewsSlider />

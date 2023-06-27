@@ -26,13 +26,14 @@ body {
 body,
 .heading-gradient {
   background: #ffe8cc;
-  background: -webkit-linear-gradient(to bottom left, #ffe259, #f37335);
-  background: linear-gradient(to bottom left, #ffe259, #f37335);
+  background: -webkit-linear-gradient(to bottom left, #ffe259, #f97316);
+  background: linear-gradient(to bottom left, #ffe259, #f97316);
   background-repeat: no-repeat;
 }
 
 .heading-gradient {
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -79,6 +80,31 @@ body,
   transform: translateY(-1px);
   -webkit-box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
   box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+}
+
+/* ANIMATIONS */
+@keyframes moveInTop {
+  0% {
+    transform: translateY(3rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.products,
+.product,
+.user-account,
+.admin-dashboard,
+.login,
+.singup .not-found {
+  animation: moveInTop;
+  animation-duration: 0.5s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
 }
 
 /* FORMS */

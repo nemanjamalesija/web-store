@@ -87,4 +87,3 @@ const { currentProduct } = useGetProductsStore()
   }
 }
 </style>
-../hooks/useGetProduct

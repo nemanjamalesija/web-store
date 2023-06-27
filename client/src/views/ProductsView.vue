@@ -35,4 +35,4 @@ onMounted(async () => {
     </div>
   </main>
 </template>
-../hooks/useGetUserStore
+<style scoped></style>

@@ -3,7 +3,7 @@ import useGetUserStore from '../hooks/useGetUserStore'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 
 const { currentUser } = useGetUserStore()
-const { toggleReviewModal } = useGetProductsStore()
+const { setIsReviewModalOpen } = useGetProductsStore()
 </script>
 <template>
   <div
@@ -13,7 +13,7 @@ const { toggleReviewModal } = useGetProductsStore()
     <button
       v-if="currentUser.name"
       class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 active:bg-orange-800"
-      @click="toggleReviewModal"
+      @click="setIsReviewModalOpen(true)"
     >
       Click here
     </button>

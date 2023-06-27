@@ -4,6 +4,7 @@ import useGetProductsStore from '../hooks/useGetProductsStore'
 import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
+import CloseModalButton from './ui/CloseModalButton.vue'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
@@ -12,7 +13,7 @@ const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
-const { toggleReviewModal, isProductReviewModalOpen } = useGetProductsStore()
+const { setIsReviewModalOpen } = useGetProductsStore()
 
 async function submitReviewHandler() {
   const jwtToken = localStorage.getItem('jwt')
@@ -35,7 +36,7 @@ async function submitReviewHandler() {
       toast.error(error.message)
       return
     } else {
-      toggleReviewModal()
+      setIsReviewModalOpen(false)
       router.push('/products')
       return toast.success('Review sucessfully submited. Thank you!')
     }
@@ -74,32 +75,6 @@ async function submitReviewHandler() {
       Send review
     </button>
 
-    <button type="button" class="absolute top-0 right-0" @click="isProductReviewModalOpen = false">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 stroke-neutral-500"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+    <CloseModalButton @close-modal="setIsReviewModalOpen(false)" />
   </form>
 </template>
-
-<style scoped>
-.review {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@media only screen and (max-width: 1000px) {
-  .review {
-    top: 81%;
-  }
-}
-</style>

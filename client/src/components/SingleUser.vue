@@ -2,18 +2,13 @@
 import formatDate from '@/helpers/formatDate'
 import type { UserType } from '@/types/userType'
 import useGetAdminStore from '@/hooks/useAdminStore'
-import Modal from './ModalCustom.vue'
-import { ref } from 'vue'
-import AdminEditUser from './AdminEditUser.vue'
-
-const showModal = ref(false)
 
 type singleProductPropsType = {
   user: UserType
   totalUsers: number
 }
 
-const { setIsEditing, isEditing } = useGetAdminStore()
+const { setIsEditing } = useGetAdminStore()
 
 const props = defineProps<singleProductPropsType>()
 </script>

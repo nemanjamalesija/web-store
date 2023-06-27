@@ -1,9 +1,9 @@
 <script setup lang="ts">
-type singleProductPropsType = {
+type customModalProps = {
   isEditing: boolean
 }
 
-const props = defineProps<singleProductPropsType>()
+const props = defineProps<customModalProps>()
 </script>
 <template>
   <Transition name="modal">
@@ -38,9 +38,9 @@ const props = defineProps<singleProductPropsType>()
 }
 
 .popup-modal {
-  width: 600px;
+  width: 560px;
   margin: auto;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
 }

@@ -20,8 +20,8 @@ export const useProductsStore = defineStore('product', () => {
     loading.value = value
   }
 
-  function toggleReviewModal() {
-    isProductReviewModalOpen.value = !isProductReviewModalOpen.value
+  function setIsReviewModalOpen(value: boolean) {
+    isProductReviewModalOpen.value = value
   }
 
   return {
@@ -32,6 +32,6 @@ export const useProductsStore = defineStore('product', () => {
     currentProduct,
     setCurrentProduct,
     isProductReviewModalOpen,
-    toggleReviewModal
+    setIsReviewModalOpen
   }
 })

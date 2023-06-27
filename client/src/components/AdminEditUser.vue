@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import useGetAdminStore from '@/hooks/useAdminStore'
+import CloseModalButton from './ui/CloseModalButton.vue'
 
 const { isEditing, setIsEditing } = useGetAdminStore()
 </script>
@@ -40,53 +41,6 @@ const { isEditing, setIsEditing } = useGetAdminStore()
     </div>
 
     <!-- close modal -->
-    <button type="button" class="absolute top-0 right-0" @click="setIsEditing(false)">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 stroke-neutral-500"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+    <CloseModalButton @close-modal="setIsEditing(false)" />
   </form>
 </template>
-
-<style>
-.modal-enter-from .popup-modal,
-.modal-leave-to .popup-modal {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  transition: opacity 0.3s ease;
-}
-
-.popup-modal {
-  width: 600px;
-  margin: auto;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-}
-
-.modal-enter-from {
-  opacity: 0;
-}
-
-.modal-leave-to {
-  opacity: 0;
-}
-</style>

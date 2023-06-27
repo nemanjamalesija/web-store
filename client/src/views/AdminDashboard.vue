@@ -12,7 +12,7 @@ import AdminEditUser from '@/components/AdminEditUser.vue'
 
 import { ref } from 'vue'
 import useGetAdminStore from '../hooks/useAdminStore'
-import ModalCustom from '@/components/ModalCustom.vue'
+import ModalCustom from '@/components/ui/ModalCustom.vue'
 
 const { isEditing } = useGetAdminStore()
 

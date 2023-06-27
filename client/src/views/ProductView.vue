@@ -14,14 +14,13 @@ import { useToast } from 'vue-toastification'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import ReviewModal from '@/components/ReviewModal.vue'
 import useGetSession from '@/hooks/useGetSession'
-import ModalCustom from '@/components/ModalCustom.vue'
+import ModalCustom from '@/components/ui/ModalCustom.vue'
 
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
-const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen, toggleReviewModal } =
-  useGetProductsStore()
+const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen } = useGetProductsStore()
 
 async function fetchCurrentProduct() {
   const jwtToken = localStorage.getItem('jwt')

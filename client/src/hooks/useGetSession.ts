@@ -2,13 +2,13 @@ import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import acceptUser from '../helpers/acceptUser'
-import useGetUser from './useGetUser'
+import useGetUserStore from './useGetUserStore'
 
 export default async function useGetSession() {
   const toast = useToast()
   const router = useRouter()
   const jwtToken = localStorage.getItem('jwt')
-  const { setCurrentUser, currentUser } = useGetUser()
+  const { setCurrentUser, currentUser } = useGetUserStore()
 
   if (!jwtToken) {
     router.push('/') // login
@@ -27,7 +27,15 @@ export default async function useGetSession() {
       if (!response.ok) {
         const error = await response.json()
         toast.error(error.message)
-        setCurrentUser({ id: '', name: '', email: '', photo: '', role: '', joinedAt: '' })
+        setCurrentUser({
+          id: '',
+          name: '',
+          email: '',
+          photo: '',
+          role: '',
+          joinedAt: '',
+          active: false
+        })
         router.push('/')
         return undefined
       }

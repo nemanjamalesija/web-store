@@ -1,29 +1,35 @@
 <script setup lang="ts">
 import useGetSession from '@/hooks/useGetSession'
-import useGetUser from '../hooks/useGetUser'
+import useAdminStore from '../hooks/useAdminStore'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import type { UserType } from '@/types/userType'
-import { computed, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import SingleUser from '@/components/SingleUser.vue'
-import { ref } from 'vue'
+import AdminEditUser from '@/components/AdminEditUser.vue'
 
-const { loading, setLoading, users, setUsers } = useGetUser()
+import { ref } from 'vue'
+import useGetAdminStore from '../hooks/useAdminStore'
+import ModalCustom from '@/components/ModalCustom.vue'
+
+const { isEditing } = useGetAdminStore()
+
+const showModal = ref<boolean>(false)
+
+const {
+  loading,
+  setLoading,
+  users,
+  setUsers,
+  sortBy,
+  sortUsersHandler,
+  filterByNameValue,
+  filteredUsers
+} = useAdminStore()
 const toast = useToast()
 const router = useRouter()
-
-const sortBy = ref<string>('Sort by')
-
-const filterByNameValue = ref<string>('')
-const filteredUsers = computed(() => {
-  if (filterByNameValue.value) {
-    const filterValue = filterByNameValue.value.toLowerCase()
-    return users.value.filter((user) => user.name.toLowerCase().includes(filterValue))
-  }
-  return users.value
-})
 
 async function fetchAllUsers() {
   const session = await useGetSession()
@@ -59,15 +65,6 @@ async function fetchAllUsers() {
   }
 }
 
-function sortUsersHandler() {
-  if (sortBy.value === 'a-z') users.value.sort((a, b) => a.name.localeCompare(b.name))
-  if (sortBy.value === 'z-a') users.value.sort((a, b) => b.name.localeCompare(a.name))
-  if (sortBy.value === 'recent')
-    users.value.sort((a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime())
-  if (sortBy.value === 'latest')
-    users.value.sort((a, b) => new Date(a.joinedAt).getTime() - new Date(b.joinedAt).getTime())
-}
-
 onMounted(async () => {
   await fetchAllUsers()
 })
@@ -75,13 +72,14 @@ onMounted(async () => {
 <template>
   <div class="admin-dashboard mt-36 mx-auto max-w-7xl rounded-md">
     <LoadingSpinner v-if="loading" />
-    <section class="users">
+    <section v-else class="users">
       <h2 class="heading-gradient text-lg lg:text-2xl uppercase font-semibold text-center mb-10">
         Dashboard
       </h2>
+
       <div class="info mb-10 flex justify-between items-center gap-10">
         <p>
-          <span class="font-semibold text-base">{{ users.length }}</span> total users.
+          <span class="font-semibold text-base">{{ filteredUsers.length }}</span> total users.
         </p>
 
         <div class="flex-1">
@@ -120,6 +118,9 @@ onMounted(async () => {
           :totalUsers="users.length"
         />
       </ul>
+      <ModalCustom :isEditing="isEditing">
+        <AdminEditUser />
+      </ModalCustom>
     </section>
   </div>
 </template>
@@ -137,3 +138,4 @@ h3 {
   text-align: start;
 }
 </style>
+../hooks/useAdminStore

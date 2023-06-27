@@ -1,7 +1,7 @@
 import { storeToRefs } from 'pinia'
 import { useProductsStore } from '../stores/productsStore'
 
-export default function useGetProduct() {
+export default function useGetProductsStore() {
   const productsStore = useProductsStore()
   const { products, loading, currentProduct, isProductReviewModalOpen } = storeToRefs(productsStore)
   const { setLoading, setProducts, setCurrentProduct, toggleReviewModal } = useProductsStore()

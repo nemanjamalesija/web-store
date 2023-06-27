@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import useGetProduct from '../hooks/useGetProduct'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 
-const { currentProduct } = useGetProduct()
+const { currentProduct } = useGetProductsStore()
 </script>
 <template>
   <div class="product__ingredients py-[14vw] px-[8vw] bg-slate-50">

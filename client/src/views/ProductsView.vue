@@ -5,14 +5,11 @@ import type { productType } from '../types/productType'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
-import useGetProduct from '../hooks/useGetProduct'
-import useGetUser from '../hooks/useGetUser'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 import useGetSession from '@/hooks/useGetSession'
 
-import { ref } from 'vue'
+const { products, loading, setLoading, setProducts } = useGetProductsStore()
 
-const { products, loading, setLoading, setProducts } = useGetProduct()
-const { currentUser } = useGetUser()
 const toast = useToast()
 
 async function fetchAllProducts() {
@@ -66,3 +63,4 @@ onMounted(async () => {
     </div>
   </main>
 </template>
+../hooks/useGetUserStore

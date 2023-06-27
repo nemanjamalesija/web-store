@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import useGetUser from '../hooks/useGetUser'
-import useGetProduct from '../hooks/useGetProduct'
+import useGetUserStore from '../hooks/useGetUserStore'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 
-const { currentUser } = useGetUser()
-const { toggleReviewModal } = useGetProduct()
+const { currentUser } = useGetUserStore()
+const { toggleReviewModal } = useGetProductsStore()
 </script>
 <template>
   <div

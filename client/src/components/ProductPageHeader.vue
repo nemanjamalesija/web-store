@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import useGetProduct from '../hooks/useGetProduct'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 
-const { currentProduct } = useGetProduct()
+const { currentProduct } = useGetProductsStore()
 </script>
 <template>
   <section class="section-header h-[55vw] lg:h-[40vw]">

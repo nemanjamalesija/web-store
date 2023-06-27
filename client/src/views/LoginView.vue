@@ -3,10 +3,11 @@ import { baseUrl } from '@/constants/baseUrl'
 import { ref, watch } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
-import useGetUser from '../hooks/useGetUser'
+import useGetUserStore from '../hooks/useGetUserStore'
 import acceptUser from '../helpers/acceptUser'
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
-const { setCurrentUser, currentUser } = useGetUser()
+const { setCurrentUser, currentUser, loading, setLoading } = useGetUserStore()
 
 const loginUser = ref({
   email: '',
@@ -17,6 +18,8 @@ const toast = useToast()
 const router = useRouter()
 
 async function loginUserHandler() {
+  setLoading(true)
+
   try {
     const response = await fetch(`${baseUrl}/api/v1/users/login`, {
       method: 'POST',
@@ -38,12 +41,15 @@ async function loginUserHandler() {
       } = data
 
       setCurrentUser(acceptUser(user))
-
+      setLoading(false)
       localStorage.setItem('jwt', token)
       router.push('/products')
-    } else if (data.status === 'fail') toast.error(data.message)
+    } else if (data.status === 'fail') {
+      toast.error(data.message)
+    }
   } catch (error) {
     console.log(error)
+    setLoading(false)
   } finally {
     loginUser.value.email = ''
     loginUser.value.password = ''
@@ -57,6 +63,7 @@ watch(currentUser, (newValue) => {
 
 <template>
   <section class="mt-28 px-5 lg:px-0">
+    <LoadingSpinner v-if="loading" />
     <div class="login-form">
       <h2
         class="heading-secondary heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-8 font-semibold text-center"
@@ -102,3 +109,4 @@ watch(currentUser, (newValue) => {
 </template>
 
 <style></style>
+../hooks/useGetUserStore

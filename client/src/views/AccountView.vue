@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useGetUser from '../hooks/useGetUser'
+import useGetUserStore from '../hooks/useGetUserStore'
 import formatDate from '../helpers/formatDate'
 import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
@@ -12,7 +12,7 @@ const changeUser = ref({
   email: ''
 })
 
-const { currentUser, setCurrentUser } = useGetUser()
+const { currentUser, setCurrentUser } = useGetUserStore()
 
 const toast = useToast()
 const router = useRouter()
@@ -143,3 +143,4 @@ async function updateUserHandler() {
   grid-template-columns: auto 1fr;
 }
 </style>
+../hooks/useGetUserStore

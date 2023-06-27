@@ -11,16 +11,17 @@ import LoadingSpinner from '../components/LoadingSpinner.vue'
 import LeaveReview from '@/components/LeaveReview.vue'
 import { baseUrl } from '../constants/baseUrl'
 import { useToast } from 'vue-toastification'
-import useGetProduct from '../hooks/useGetProduct'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 import ReviewModal from '@/components/ReviewModal.vue'
 import useGetSession from '@/hooks/useGetSession'
+import ModalCustom from '@/components/ModalCustom.vue'
 
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()
 
 const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen, toggleReviewModal } =
-  useGetProduct()
+  useGetProductsStore()
 
 async function fetchCurrentProduct() {
   const jwtToken = localStorage.getItem('jwt')
@@ -74,12 +75,9 @@ onMounted(async () => {
         <ProductPageStats />
         <ReviewsSlider />
         <LeaveReview />
-        <ReviewModal v-if="isProductReviewModalOpen" />
-        <div
-          v-if="isProductReviewModalOpen"
-          class="fixed inset-0 bg-black bg-opacity-30 transition-opacity w-full h-full z-30 cursor-pointer"
-          @click="toggleReviewModal"
-        ></div>
+        <ModalCustom :isEditing="isProductReviewModalOpen">
+          <ReviewModal />
+        </ModalCustom>
       </div>
     </section>
   </div>

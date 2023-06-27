@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import useGetProduct from '../hooks/useGetProduct'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 
-const { currentProduct } = useGetProduct()
+const { currentProduct } = useGetProductsStore()
 </script>
 <template>
   <div class="card__details grid grid-cols-2 gap-x-5 gap-y-4 mb-20">

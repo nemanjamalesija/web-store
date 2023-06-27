@@ -1,21 +1,26 @@
 <script setup lang="ts">
 import formatDate from '@/helpers/formatDate'
 import type { UserType } from '@/types/userType'
+import useGetAdminStore from '@/hooks/useAdminStore'
+import Modal from './ModalCustom.vue'
+import { ref } from 'vue'
+import AdminEditUser from './AdminEditUser.vue'
+
+const showModal = ref(false)
 
 type singleProductPropsType = {
   user: UserType
   totalUsers: number
 }
 
-// <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-//   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-// </svg>
+const { setIsEditing, isEditing } = useGetAdminStore()
 
 const props = defineProps<singleProductPropsType>()
 </script>
 <template>
   <li class="users-list__item py-3 px-6 border-b border-2 border-gray-300 rounded-sm text-base">
     <div class="flex items-center gap-2">
+      <!-- user photo -->
       <figure>
         <img
           class="card__picture-img object-cover h-12 w-12 rounded-full"
@@ -23,22 +28,28 @@ const props = defineProps<singleProductPropsType>()
           :alt="props.user.name + ' image'"
         />
       </figure>
+
+      <!-- user name -->
       <h3>{{ props.user.name }}</h3>
     </div>
 
-    <div class="">
+    <!-- user email -->
+    <div>
       <p>{{ props.user.email }}</p>
     </div>
 
+    <!-- user date join -->
     <div>
       <p>{{ formatDate(props.user.joinedAt) }}</p>
     </div>
 
+    <!-- user role-->
     <div>
       <p>{{ props.user.role }}</p>
     </div>
 
-    <div class="" v-if="props.user.active">
+    <!-- user is active true-->
+    <div v-if="props.user.active">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -51,6 +62,7 @@ const props = defineProps<singleProductPropsType>()
       </svg>
     </div>
 
+    <!-- user is active false-->
     <div class="" v-if="!props.user.active">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -64,8 +76,9 @@ const props = defineProps<singleProductPropsType>()
       </svg>
     </div>
 
+    <!-- edit user -->
     <div>
-      <button>
+      <button id="show-modal" @click="setIsEditing(true)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -81,8 +94,11 @@ const props = defineProps<singleProductPropsType>()
           />
         </svg>
       </button>
+
+      <!-- edit user -->
     </div>
 
+    <!-- delete user -->
     <button class="flex items-center justify-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +122,6 @@ const props = defineProps<singleProductPropsType>()
 .users-list__item {
   display: grid;
   grid-template-columns: minmax(220px, auto) minmax(250px, auto) 180px repeat(4, 30px);
-
   align-items: center;
 
   gap: 3.2rem;

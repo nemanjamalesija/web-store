@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import useGetProduct from '../hooks/useGetProduct'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 import { starIconsReview } from '../assets/icons/stars'
 import formatDate from '@/helpers/formatDate'
 
 const currentSlideIndex = ref(0)
 
-const { currentProduct } = useGetProduct()
+const { currentProduct } = useGetProductsStore()
 
 function nextReviewHandler() {
   if (currentSlideIndex.value === currentProduct.value.reviews.length - 1)

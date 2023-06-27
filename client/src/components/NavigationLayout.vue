@@ -3,10 +3,10 @@ import { RouterLink } from 'vue-router'
 import { baseUrl } from '../constants/baseUrl'
 import { useRouter } from 'vue-router'
 import logo from '../assets/img/logo.png'
-import useGetUser from '@/hooks/useGetUser'
+import useGetUserStore from '@/hooks/useGetUserStore'
 import { onMounted, ref } from 'vue'
 
-const { currentUser, setCurrentUser } = useGetUser()
+const { currentUser, setCurrentUser } = useGetUserStore()
 const router = useRouter()
 
 async function logoutHandler() {
@@ -15,7 +15,15 @@ async function logoutHandler() {
 
     router.push('/')
     localStorage.removeItem('jwt')
-    setCurrentUser({ id: '', name: '', email: '', photo: '', role: '', joinedAt: '' })
+    setCurrentUser({
+      id: '',
+      name: '',
+      email: '',
+      photo: '',
+      role: '',
+      joinedAt: '',
+      active: false
+    })
   } catch (error) {
     console.log(error)
   }
@@ -37,7 +45,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <header class="header-nav absolute top-0 left-0 w-full z-50">
+  <header class="header-nav absolute top-0 left-0 w-full z-40">
     <nav
       class="nav pb-3 relative h-full px-14 flex items-center justify-between text-base lg:text-lg font-medium"
     >

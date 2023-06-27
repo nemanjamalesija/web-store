@@ -1,12 +1,11 @@
-import useAppNavigation from '../composables/useAppNavigation'
 import { baseUrl } from '../constants/baseUrl'
 import useGetProductsStore from '../hooks/useGetProductsStore'
-import useGetSession from '../hooks/useGetSession'
 import { productType } from '../types/productType'
+import { useToast } from 'vue-toastification'
 
 export default async function fetchAllProducts(jwtToken: string) {
   const { setLoading, setProducts } = useGetProductsStore()
-  const { toast } = useAppNavigation()
+  const toast = useToast()
 
   setLoading(true)
   try {

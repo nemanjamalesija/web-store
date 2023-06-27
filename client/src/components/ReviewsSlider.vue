@@ -42,10 +42,9 @@ const createStarsArray = (rating: number) => {
     >
       Reviews
     </h3>
-    <article
-      v-if="currentProduct.reviews !== undefined && currentProduct.reviews.length > 0"
-      class="slider__box"
-    >
+
+    <!--  check if reviews are not undefined before rendering the component -->
+    <article v-if="currentProduct.reviews && currentProduct.reviews.length > 0" class="slider__box">
       <!-- review user image -->
       <div class="flex items-center mb-4 space-x-4">
         <figure>

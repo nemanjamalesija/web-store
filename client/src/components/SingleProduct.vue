@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { productType } from '@/types/productType'
 import { cardIcons } from '../assets/icons/cardIcons'
+import calculateAverageRating from '@/helpers/calculateAverageRating'
 
 type singleProductPropsType = {
   product: productType
@@ -8,20 +9,6 @@ type singleProductPropsType = {
 }
 
 const props = defineProps<singleProductPropsType>()
-
-function calculateAverageRating(product: productType) {
-  const reviews = product.reviews.map((rev) => {
-    return rev
-  })
-
-  const ratings = reviews.map((r) => r.rating)
-
-  const sum = ratings.reduce((acc, rating) => acc + rating, 0)
-  const average = sum / ratings.length
-  return average.toFixed(1)
-}
-
-const prodAverageRating = calculateAverageRating(props.product)
 </script>
 <template>
   <article
@@ -59,7 +46,9 @@ const prodAverageRating = calculateAverageRating(props.product)
       <!-- rating -->
       <div class="card__data text-sm lg:text-base flex items-center gap-2">
         <div v-html="cardIcons.rating"></div>
-        <span class="card__footer-value font-semibold">{{ prodAverageRating }}</span
+        <span class="card__footer-value font-semibold">{{
+          calculateAverageRating(props.product)
+        }}</span
         ><span>rating</span>
       </div>
 

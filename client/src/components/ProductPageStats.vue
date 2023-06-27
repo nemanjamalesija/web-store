@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { cardIcons } from '@/assets/icons/cardIcons'
+import calculateAverageRating from '@/helpers/calculateAverageRating'
+import LoadingSpinner from './LoadingSpinner.vue'
 
 const { currentProduct } = useGetProductsStore()
 </script>
@@ -16,7 +18,11 @@ const { currentProduct } = useGetProductsStore()
     <!-- raing -->
     <div class="card__data text-sm lg:text-base flex items-center gap-2">
       <div v-html="cardIcons.rating"></div>
-      <span class="font-semibold">{{ currentProduct.rating }}</span
+
+      <!--  check if reviews are not undefined before rendering the rating-->
+      <span v-if="currentProduct && currentProduct.reviews" class="font-semibold">{{
+        calculateAverageRating(currentProduct)
+      }}</span
       ><span>rating</span>
     </div>
 

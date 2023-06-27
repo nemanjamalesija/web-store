@@ -38,7 +38,6 @@ async function submitReviewHandler() {
       setIsReviewModalOpen(false)
       await fetchAllProducts(jwtToken as string)
       router.push('/products')
-
       return toast.success('Review sucessfully submited. Thank you!')
     }
   } catch (error) {

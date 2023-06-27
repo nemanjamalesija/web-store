@@ -5,7 +5,7 @@
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        stroke-width="1.2"
+        stroke-width="1"
         fill="currentColor"
         class="h-16 w-16 lg:h-20 lg:w-20 fill-orange-500"
       >

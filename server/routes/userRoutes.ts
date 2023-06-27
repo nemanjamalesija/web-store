@@ -12,7 +12,7 @@ router.get('/logout', authController.logout);
 
 router.use(authController.protect);
 
-router.get('/me', userController.getMe, userController.getOneUser);
+router.get('/me', userController.getMe);
 router.patch(
   '/updateMe',
 
@@ -27,7 +27,7 @@ router.use(authController.restrictTo('admin'));
 router.route('/').get(userController.getAllUsers);
 router
   .route('/:id')
-  .get(userController.getOneUser)
+  .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
 export default router;

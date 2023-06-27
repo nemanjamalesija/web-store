@@ -64,7 +64,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <div class="admin-dashboard mt-36 mx-auto max-w-7xl rounded-md">
+  <div class="admin-dashboard mt-36 mb-28 mx-auto max-w-7xl rounded-md">
     <LoadingSpinner v-if="loading" />
     <section v-else class="users">
       <h2 class="heading-gradient text-lg lg:text-2xl uppercase font-semibold text-center mb-10">
@@ -92,8 +92,8 @@ onMounted(async () => {
             <option selected>Sort by</option>
             <option value="a-z">A - Z</option>
             <option value="z-a">Z - A</option>
-            <option value="recent">Recent</option>
             <option value="latest">Latest</option>
+            <option value="earliest">Earliest</option>
           </select>
         </div>
       </div>

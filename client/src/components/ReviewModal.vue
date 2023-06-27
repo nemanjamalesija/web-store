@@ -47,6 +47,7 @@ async function submitReviewHandler() {
 </script>
 <template>
   <form class="form">
+    <!-- review rating -->
     <div class="flex flex-col mb-3">
       <label for="productReview" class="z-40 mb-2 font-bold text-neutral-500 text-sm lg:text-base"
         >How would you rate this product from 1 to 5 ?
@@ -61,6 +62,8 @@ async function submitReviewHandler() {
         v-model="reviewRating"
       />
     </div>
+
+    <!-- review message -->
     <div class="mb-6">
       <textarea
         className=" min-h-[80px] py-4 px-5 block p-2.5 w-full text-sm lg:text-base text-gray-900 bg-[#f8f9fa]  rounded-lg border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
@@ -68,12 +71,14 @@ async function submitReviewHandler() {
         v-model="reviewMessage"
       ></textarea>
     </div>
-    <button
-      class="btn bg-orange-500 py-3 px-5 text-sm lg:text-base hover:bg-orange-600 active:bg-orange-800"
-      @click.prevent="submitReviewHandler"
-    >
-      Send review
-    </button>
+    <div class="flex justify-end">
+      <button
+        class="btn bg-orange-500 py-3 px-6 text-sm lg:text-base hover:bg-orange-600"
+        @click.prevent="submitReviewHandler"
+      >
+        Send review
+      </button>
+    </div>
 
     <CloseModalButton @close-modal="setIsReviewModalOpen(false)" />
   </form>

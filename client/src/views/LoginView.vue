@@ -5,9 +5,8 @@ import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 import useGetUserStore from '../hooks/useGetUserStore'
 import acceptUser from '../helpers/acceptUser'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
 
-const { setCurrentUser, currentUser, loading, setLoading } = useGetUserStore()
+const { setCurrentUser, currentUser } = useGetUserStore()
 
 const loginUser = ref({
   email: '',
@@ -18,8 +17,6 @@ const toast = useToast()
 const router = useRouter()
 
 async function loginUserHandler() {
-  setLoading(true)
-
   try {
     const response = await fetch(`${baseUrl}/api/v1/users/login`, {
       method: 'POST',
@@ -34,23 +31,30 @@ async function loginUserHandler() {
 
     const data = await response.json()
 
-    if (data.status === 'success') {
+    // throw error from the backend
+    if (!response.ok) {
+      toast.error(data.message)
+      return
+    } else {
+      // get token and current user from the response
       const { token } = data
       const {
         data: { user }
       } = data
 
+      // set user in the state
       setCurrentUser(acceptUser(user))
-      setLoading(false)
+
+      // set jwt in the local storage
       localStorage.setItem('jwt', token)
+
+      // grant access
       router.push('/products')
-    } else if (data.status === 'fail') {
-      toast.error(data.message)
     }
   } catch (error) {
     console.log(error)
-    setLoading(false)
   } finally {
+    // clear input form
     loginUser.value.email = ''
     loginUser.value.password = ''
   }
@@ -63,7 +67,6 @@ watch(currentUser, (newValue) => {
 
 <template>
   <section class="mt-28 px-5 lg:px-0">
-    <LoadingSpinner v-if="loading" />
     <div class="login-form">
       <h2
         class="heading-secondary heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-8 font-semibold text-center"

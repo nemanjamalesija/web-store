@@ -2,8 +2,10 @@
 import { useToast } from 'vue-toastification'
 import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
+import { useRouter } from 'vue-router'
 
 const toast = useToast()
+const router = useRouter()
 
 const signUpUser = ref({
   name: '',
@@ -31,8 +33,11 @@ async function signUpHandler() {
 
     const data = await response.json()
 
-    if (data.status === 'success') toast.success('Account created! Feel free to log in')
-    else if (data.status === 'fail') toast.error(data.message)
+    if (!response.ok) toast.error(data.message)
+    else {
+      toast.success('Account created! Feel free to log in')
+      router.push('/')
+    }
 
     signUpUser.value.name = ''
     signUpUser.value.email = ''

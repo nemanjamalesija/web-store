@@ -20,9 +20,9 @@ export const useAdminStore = defineStore('admin', () => {
   function sortUsersHandler() {
     if (sortBy.value === 'a-z') users.value.sort((a, b) => a.name.localeCompare(b.name))
     if (sortBy.value === 'z-a') users.value.sort((a, b) => b.name.localeCompare(a.name))
-    if (sortBy.value === 'recent')
-      users.value.sort((a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime())
     if (sortBy.value === 'latest')
+      users.value.sort((a, b) => new Date(b.joinedAt).getTime() - new Date(a.joinedAt).getTime())
+    if (sortBy.value === 'earliest')
       users.value.sort((a, b) => new Date(a.joinedAt).getTime() - new Date(b.joinedAt).getTime())
   }
 
@@ -38,11 +38,14 @@ export const useAdminStore = defineStore('admin', () => {
   })
 
   // edit related
+
+  // toggle edit form
   const isEditing = ref<boolean>(false)
   function setIsEditing(value: boolean) {
     isEditing.value = value
   }
 
+  // connect clicked user state with the edit form
   const userToEdit = ref<UserType>({} as UserType)
 
   function setUserToEdit(passId: string) {

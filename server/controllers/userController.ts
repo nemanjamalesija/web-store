@@ -54,15 +54,15 @@ const deleteMe = catchAsync(
 );
 
 const getAllUsers = controllerFactory.getAll(User);
-const getOneUser = controllerFactory.getOne(User, '');
 
 // ONLY FOR ADMINISTORS
+const updateUser = controllerFactory.updateOne(User);
 const deleteUser = controllerFactory.deleteOne(User);
 
 export default {
   getAllUsers,
   deleteUser,
-  getOneUser,
+  updateUser,
   getMe,
   updateMe,
   deleteMe,

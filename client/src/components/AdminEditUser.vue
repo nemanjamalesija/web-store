@@ -1,10 +1,43 @@
 <script setup lang="ts">
 import useGetAdminStore from '@/hooks/useGetAdminStore'
 import CloseModalButton from './ui/CloseModalButton.vue'
+import { baseUrl } from '@/constants/baseUrl'
+import { useToast } from 'vue-toastification'
+import { useRouter } from 'vue-router'
 
 const { setIsEditing, userToEdit } = useGetAdminStore()
+const toast = useToast()
+const router = useRouter()
 
-console.log(userToEdit)
+async function editUserHandler() {
+  // No need to usegetSession because of protect middleware on the backend
+  const jwtToken = localStorage.getItem('jwt')
+
+  try {
+    const response = await fetch(`${baseUrl}/api/v1/users/${userToEdit.value._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + jwtToken
+      },
+      body: JSON.stringify({
+        ...userToEdit.value
+      })
+    })
+
+    if (!response.ok) {
+      const data = await response.json()
+      toast.error(data.message)
+      setIsEditing(false)
+      router.push('/products')
+    } else {
+      toast.success('User sucessfully updated')
+      setIsEditing(false)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 <template>
   <form class="form">
@@ -32,7 +65,7 @@ console.log(userToEdit)
     </div>
 
     <!-- user checkbox active -->
-    <div class="flex items-center mb-4">
+    <div class="flex items-center mb-6">
       <input
         id="user-active"
         type="checkbox"
@@ -46,5 +79,14 @@ console.log(userToEdit)
 
     <!-- close modal -->
     <CloseModalButton @close-modal="setIsEditing(false)" />
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="btn bg-orange-500 py-3 px-6 text-sm lg:text-base hover:bg-orange-600 inline-block"
+        @click.prevent="editUserHandler"
+      >
+        Submit
+      </button>
+    </div>
   </form>
 </template>

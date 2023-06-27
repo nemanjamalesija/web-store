@@ -34,8 +34,6 @@ const createStarsArray = (rating: number) => {
 
   return starsArray
 }
-
-console.log(currentProduct.value)
 </script>
 
 <template>
@@ -49,12 +47,17 @@ console.log(currentProduct.value)
       v-if="currentProduct.reviews !== undefined && currentProduct.reviews.length > 0"
       class="slider__box"
     >
+      <!-- review user image -->
       <div class="flex items-center mb-4 space-x-4">
-        <img
-          class="w-12 h-12 rounded-full"
-          :src="currentProduct.reviews[currentSlideIndex]?.user.photo"
-          :alt="currentProduct.reviews[currentSlideIndex]?.user.photo + ' image'"
-        />
+        <figure>
+          <img
+            class="w-12 h-12 rounded-full"
+            :src="currentProduct.reviews[currentSlideIndex]?.user.photo"
+            :alt="currentProduct.reviews[currentSlideIndex]?.user.photo + ' image'"
+          />
+        </figure>
+
+        <!-- format user join date -->
         <div class="space-y-1 font-medium dark:text-white">
           <p>
             {{ currentProduct.reviews[currentSlideIndex]?.user.name }}
@@ -68,7 +71,9 @@ console.log(currentProduct.value)
           </p>
         </div>
       </div>
+
       <div class="flex items-center mb-1 gap-1">
+        <!-- number of stars -->
         <div
           v-for="(svgString, index) in createStarsArray(
             currentProduct.reviews[currentSlideIndex].rating
@@ -77,9 +82,12 @@ console.log(currentProduct.value)
         >
           <div v-html="svgString"></div>
         </div>
+
         <p class="flex text-sm items-center justify-center gap-1">
           {{ currentProduct.reviews[currentSlideIndex].rating }} / 5
         </p>
+
+        <!-- date of the posted review -->
         <p class="text-sm text-gray-500 dark:text-gray-400">
           - Reviewed on
           <time
@@ -93,6 +101,8 @@ console.log(currentProduct.value)
         {{ currentProduct.reviews[currentSlideIndex]?.review }}
       </p>
     </article>
+
+    <!-- slider buttons absolute -->
     <button
       class="btn btn-slider btn-slider--right py-1 px-2 lg:py-2 lg:px-4 rounded-full bg-slate-50 hover:bg-slate-100"
       @click="nextReviewHandler"

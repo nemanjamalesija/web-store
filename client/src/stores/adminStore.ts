@@ -37,7 +37,7 @@ export const useAdminStore = defineStore('admin', () => {
     return users.value
   })
 
-  // edit related
+  // edit and delete user
 
   // toggle edit form
   const isEditing = ref<boolean>(false)
@@ -45,10 +45,16 @@ export const useAdminStore = defineStore('admin', () => {
     isEditing.value = value
   }
 
+  // toggle delete modal
+  const isDeleting = ref<boolean>(false)
+  function setIsDeleting(value: boolean) {
+    isDeleting.value = value
+  }
+
   // connect clicked user state with the edit form
   const userToEdit = ref<UserType>({} as UserType)
 
-  function setUserToEdit(passId: string) {
+  function connectUserToTheFormHandler(passId: string) {
     const currentUser = users.value.find((user) => user._id === passId)
 
     if (!currentUser) return
@@ -68,6 +74,8 @@ export const useAdminStore = defineStore('admin', () => {
     isEditing,
     setIsEditing,
     userToEdit,
-    setUserToEdit
+    connectUserToTheFormHandler,
+    isDeleting,
+    setIsDeleting
   }
 })

@@ -4,13 +4,14 @@ import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import CloseModalButton from './ui/CloseModalButton.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
-import fetchAllProducts from '@/helpers/fetchAllProducts'
+import type { ReviewType } from '@/types/productType'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
 
 const { route, router, toast } = useAppNavigation()
-const { setIsReviewModalOpen } = useGetProductsStore()
+const { setIsReviewModalOpen, currentProduct, setCurrentProduct, updateAllProducts } =
+  useGetProductsStore()
 
 const jwtToken = localStorage.getItem('jwt')
 
@@ -31,13 +32,31 @@ async function submitReviewHandler() {
     })
 
     if (!response.ok) {
+      // if token manipulated
+      if (response.status === 400) {
+        router.push('/')
+        setIsReviewModalOpen(false)
+      }
+
       const error = await response.json()
       toast.error(error.message)
       return
     } else {
       setIsReviewModalOpen(false)
-      await fetchAllProducts(jwtToken as string)
-      router.push('/products')
+
+      const {
+        data: { doc }
+      } = await response.json()
+
+      const updatedProduct = {
+        ...currentProduct.value,
+        reviews: [...currentProduct.value.reviews, doc as ReviewType]
+      }
+
+      setCurrentProduct(updatedProduct)
+
+      updateAllProducts(updatedProduct)
+
       return toast.success('Review sucessfully submited. Thank you!')
     }
   } catch (error) {

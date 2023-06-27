@@ -1,13 +1,13 @@
 import { UserType } from './userType'
 
-type ingredientsType = {
+type IngredientsType = {
   bases: string[]
   proteins: string[]
   mixinsAndToppings: string[]
   sauces: string[]
 }
 
-export type reviewType = {
+export type ReviewType = {
   createdAt: string
   id: string
   product: string
@@ -18,7 +18,7 @@ export type reviewType = {
   _id: string
 }
 
-export type productType = {
+export type ProductType = {
   id: string
   name: string
   price: number
@@ -28,10 +28,10 @@ export type productType = {
   rating: number
   labels: string[]
   calories: number
-  reviews: reviewType[]
+  reviews: ReviewType[]
   reviewsNumber: number
 
   description?: string
-  ingredients?: ingredientsType
-  ingredientsImages?: ingredientsType
+  ingredients?: IngredientsType
+  ingredientsImages?: IngredientsType
 }

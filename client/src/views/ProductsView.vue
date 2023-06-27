@@ -3,18 +3,13 @@ import { onMounted } from 'vue'
 import SingleProduct from '@/components/SingleProduct.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import useGetProductsStore from '../hooks/useGetProductsStore'
-import useGetSession from '@/hooks/useGetSession'
 import fetchAllProducts from '@/helpers/fetchAllProducts'
 
 const { products, loading } = useGetProductsStore()
 
 onMounted(async () => {
-  const session = await useGetSession()
-  if (!session) return
-
-  const { jwtToken } = session
-
-  await fetchAllProducts(jwtToken)
+  // avoid refetching
+  if (products.value.length === 0) await fetchAllProducts()
 })
 </script>
 

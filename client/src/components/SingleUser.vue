@@ -8,7 +8,7 @@ type singleProductPropsType = {
   totalUsers: number
 }
 
-const { setIsEditing, setUserToEdit } = useGetAdminStore()
+const { setIsEditing, connectUserToTheFormHandler, setIsDeleting } = useGetAdminStore()
 
 const props = defineProps<singleProductPropsType>()
 </script>
@@ -73,7 +73,10 @@ const props = defineProps<singleProductPropsType>()
 
     <!-- edit user -->
     <div>
-      <button id="show-modal" @click="setIsEditing(true), setUserToEdit(props.user._id as string)">
+      <button
+        id="show-modal"
+        @click="setIsEditing(true), connectUserToTheFormHandler(props.user._id as string)"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -89,12 +92,14 @@ const props = defineProps<singleProductPropsType>()
           />
         </svg>
       </button>
-
-      <!-- edit user -->
     </div>
 
     <!-- delete user -->
-    <button class="flex items-center justify-center">
+    <button
+      type="button"
+      class="flex items-center justify-center"
+      @click="setIsDeleting(true), connectUserToTheFormHandler(props.user._id as string)"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

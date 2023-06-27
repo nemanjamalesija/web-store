@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { productType } from '@/types/productType'
+import type { ProductType } from '@/types/productType'
 import { cardIcons } from '../assets/icons/cardIcons'
 import calculateAverageRating from '@/helpers/calculateAverageRating'
 
-type singleProductPropsType = {
-  product: productType
+type SingleProductPropsType = {
+  product: ProductType
   index: number
 }
 
-const props = defineProps<singleProductPropsType>()
+const props = defineProps<SingleProductPropsType>()
 </script>
 <template>
   <article

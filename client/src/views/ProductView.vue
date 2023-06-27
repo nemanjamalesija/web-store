@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { productType } from '@/types/productType'
+import type { ProductType } from '@/types/productType'
 import { onMounted } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import ReviewsSlider from '@/components/ReviewsSlider.vue'
@@ -11,7 +11,6 @@ import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import LeaveReview from '@/components/LeaveReview.vue'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import ReviewModal from '@/components/ReviewModal.vue'
-import useGetSession from '@/hooks/useGetSession'
 import ModalCustom from '@/components/ui/ModalCustom.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
 
@@ -41,7 +40,7 @@ async function fetchCurrentProduct() {
         data: { doc }
       } = await response.json()
 
-      setCurrentProduct(doc as productType)
+      setCurrentProduct(doc as ProductType)
       setLoading(false)
     }
   } catch (error) {
@@ -53,9 +52,6 @@ async function fetchCurrentProduct() {
 }
 
 onMounted(async () => {
-  const session = await useGetSession()
-  if (!session) return
-
   await fetchCurrentProduct()
 })
 </script>
@@ -70,7 +66,7 @@ onMounted(async () => {
         <ProductPageStats />
         <ReviewsSlider />
         <LeaveReview />
-        <ModalCustom :isEditing="isProductReviewModalOpen">
+        <ModalCustom :isVisible="isProductReviewModalOpen">
           <ReviewModal />
         </ModalCustom>
       </div>

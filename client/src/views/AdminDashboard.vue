@@ -9,6 +9,8 @@ import AdminEditUser from '@/components/AdminEditUser.vue'
 import useGetAdminStore from '@/hooks/useGetAdminStore'
 import ModalCustom from '@/components/ui/ModalCustom.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
+import DeleteUserModal from '@/components/DeleteUserModal.vue'
+import useGetUserStore from '@/hooks/useGetUserStore'
 const {
   loading,
   setLoading,
@@ -18,15 +20,13 @@ const {
   sortUsersHandler,
   filterByNameValue,
   filteredUsers,
-  isEditing
+  isEditing,
+  isDeleting
 } = useGetAdminStore()
 const { toast, router } = useAppNavigation()
 
 async function fetchAllUsers() {
-  const session = await useGetSession()
-  if (!session) return
-
-  const { jwtToken } = session
+  const jwtToken = localStorage.getItem('jwt')
 
   setLoading(true)
   try {
@@ -117,8 +117,13 @@ onMounted(async () => {
       </ul>
 
       <!-- edit form -->
-      <ModalCustom :isEditing="isEditing">
+      <ModalCustom :isVisible="isEditing">
         <AdminEditUser />
+      </ModalCustom>
+
+      <!-- delete modal -->
+      <ModalCustom :isVisible="isDeleting">
+        <DeleteUserModal />
       </ModalCustom>
     </section>
   </div>

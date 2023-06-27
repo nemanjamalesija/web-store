@@ -1,13 +1,13 @@
 <script setup lang="ts">
 type customModalProps = {
-  isEditing: boolean
+  isVisible: boolean
 }
 
 const props = defineProps<customModalProps>()
 </script>
 <template>
   <Transition name="modal">
-    <div v-if="props.isEditing" class="modal-mask">
+    <div v-if="props.isVisible" class="modal-mask">
       <div class="popup-modal relative">
         <slot>
           <!-- fallback content -->

@@ -1,18 +1,18 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { productType } from '../types/productType'
+import type { ProductType } from '../types/productType'
 
 export const useProductsStore = defineStore('product', () => {
-  const products = ref([] as productType[])
-  const currentProduct = ref({} as productType)
+  const products = ref([] as ProductType[])
+  const currentProduct = ref({} as ProductType)
   const isProductReviewModalOpen = ref<boolean>(false)
   const loading = ref(false)
 
-  function setProducts(productsAPI: productType[]) {
+  function setProducts(productsAPI: ProductType[]) {
     products.value = productsAPI
   }
 
-  function setCurrentProduct(singleProductAPI: productType) {
+  function setCurrentProduct(singleProductAPI: ProductType) {
     currentProduct.value = singleProductAPI
   }
 
@@ -24,6 +24,18 @@ export const useProductsStore = defineStore('product', () => {
     isProductReviewModalOpen.value = payload
   }
 
+  function updateAllProducts(payload: ProductType) {
+    const indexToUpdate = products.value.findIndex((prod) => prod.id === payload.id)
+
+    if (indexToUpdate !== -1) {
+      // Remove the old object
+      products.value.splice(indexToUpdate, 1)
+
+      // Add the updated object
+      products.value.push(payload)
+    }
+  }
+
   return {
     products,
     loading,
@@ -32,6 +44,7 @@ export const useProductsStore = defineStore('product', () => {
     currentProduct,
     setCurrentProduct,
     isProductReviewModalOpen,
-    setIsReviewModalOpen
+    setIsReviewModalOpen,
+    updateAllProducts
   }
 })

@@ -1,11 +1,13 @@
 import { baseUrl } from '../constants/baseUrl'
 import useGetProductsStore from '../hooks/useGetProductsStore'
-import { productType } from '../types/productType'
+import { ProductType } from '../types/productType'
 import { useToast } from 'vue-toastification'
 
-export default async function fetchAllProducts(jwtToken: string) {
+export default async function fetchAllProducts() {
   const { setLoading, setProducts } = useGetProductsStore()
   const toast = useToast()
+
+  const jwtToken = localStorage.getItem('jwt')
 
   setLoading(true)
   try {
@@ -27,7 +29,7 @@ export default async function fetchAllProducts(jwtToken: string) {
       data: { doc }
     } = await response.json()
 
-    setProducts(doc as productType[])
+    setProducts(doc as ProductType[])
     setLoading(false)
   } catch (error) {
     console.log(error)

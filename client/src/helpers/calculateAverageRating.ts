@@ -1,6 +1,6 @@
-import { productType } from '../types/productType'
+import { ProductType } from '../types/productType'
 
-export default function calculateAverageRating(product: productType) {
+export default function calculateAverageRating(product: ProductType) {
   const reviews = product.reviews.map((rev) => {
     return rev
   })

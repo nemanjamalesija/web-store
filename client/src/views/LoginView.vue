@@ -4,6 +4,7 @@ import { ref, watch } from 'vue'
 import useGetUserStore from '@/hooks/useGetUserStore'
 import acceptUser from '@/helpers/acceptUser'
 import useAppNavigation from '@/composables/useAppNavigation'
+import { onMounted } from 'vue'
 
 const { setCurrentUser, currentUser } = useGetUserStore()
 const { toast, router } = useAppNavigation()
@@ -60,6 +61,11 @@ async function loginUserHandler() {
 
 watch(currentUser, (newValue) => {
   if (newValue.name) router.push('/products')
+})
+
+onMounted(() => {
+  // if (currentUser.value.name) router.push('/products')
+  console.log(currentUser.value.name)
 })
 </script>
 

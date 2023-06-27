@@ -3,9 +3,24 @@ import { useAdminStore } from '../stores/adminStore'
 
 export default function useGetAdminStore() {
   const userStore = useAdminStore()
-  const { users, loading, filterByNameValue, filteredUsers, sortBy, isEditing, userToEdit } =
-    storeToRefs(userStore)
-  const { setUsers, setLoading, sortUsersHandler, setIsEditing, setUserToEdit } = useAdminStore()
+  const {
+    users,
+    loading,
+    filterByNameValue,
+    filteredUsers,
+    sortBy,
+    isEditing,
+    userToEdit,
+    isDeleting
+  } = storeToRefs(userStore)
+  const {
+    setUsers,
+    setLoading,
+    sortUsersHandler,
+    setIsEditing,
+    connectUserToTheFormHandler,
+    setIsDeleting
+  } = useAdminStore()
 
   return {
     users,
@@ -20,6 +35,8 @@ export default function useGetAdminStore() {
     isEditing,
     setIsEditing,
     userToEdit,
-    setUserToEdit
+    connectUserToTheFormHandler,
+    isDeleting,
+    setIsDeleting
   }
 }

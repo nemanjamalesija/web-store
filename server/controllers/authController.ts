@@ -107,7 +107,7 @@ const authenticateUser = async (
 
   if (!currentUser) {
     const message = 'The user belonging to the token no longer exists';
-    const error = new AppError(message, 401);
+    const error = new AppError(message, 400);
 
     return next(error);
   }
@@ -145,6 +145,8 @@ const getUserWithToken = catchAsync(
 const protect = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const currentUser = await authenticateUser(req, res, next);
+
+    console.log(currentUser);
 
     if (currentUser) {
       req.body = { ...req.body, currentUser };

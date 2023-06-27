@@ -30,6 +30,8 @@ async function logoutHandler() {
 }
 
 onMounted(async () => {
+  console.log(currentUser.value)
+
   const navRef = ref(document.querySelector('.header-nav'))
 
   const handleStickyNav = function () {

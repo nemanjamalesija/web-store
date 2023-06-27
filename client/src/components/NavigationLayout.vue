@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import { baseUrl } from '../constants/baseUrl'
-import { useRouter } from 'vue-router'
 import logo from '../assets/img/logo.png'
 import useGetUserStore from '@/hooks/useGetUserStore'
 import { onMounted, ref } from 'vue'
+import useAppNavigation from '@/composables/useAppNavigation'
 
 const { currentUser, setCurrentUser } = useGetUserStore()
-const router = useRouter()
+const { router } = useAppNavigation()
 
 async function logoutHandler() {
   try {

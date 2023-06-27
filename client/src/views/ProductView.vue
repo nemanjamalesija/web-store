@@ -1,25 +1,21 @@
 <script setup lang="ts">
 import type { productType } from '@/types/productType'
 import { onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import ReviewsSlider from '../components/ReviewsSlider.vue'
-import ProductPageHeader from '../components/ProductPageHeader.vue'
-import ProductPageStats from '../components/ProductPageStats.vue'
-import ProductPageIngredients from '../components/ProductPageIngredients.vue'
-import ProductPageAbout from '../components/ProductPageAbout.vue'
-import LoadingSpinner from '../components/LoadingSpinner.vue'
+import { baseUrl } from '@/constants/baseUrl'
+import ReviewsSlider from '@/components/ReviewsSlider.vue'
+import ProductPageHeader from '@/components/ProductPageHeader.vue'
+import ProductPageStats from '@/components/ProductPageStats.vue'
+import ProductPageIngredients from '@/components/ProductPageIngredients.vue'
+import ProductPageAbout from '@/components/ProductPageAbout.vue'
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import LeaveReview from '@/components/LeaveReview.vue'
-import { baseUrl } from '../constants/baseUrl'
-import { useToast } from 'vue-toastification'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import ReviewModal from '@/components/ReviewModal.vue'
 import useGetSession from '@/hooks/useGetSession'
 import ModalCustom from '@/components/ui/ModalCustom.vue'
+import useAppNavigation from '@/composables/useAppNavigation'
 
-const route = useRoute()
-const router = useRouter()
-const toast = useToast()
-
+const { route, router, toast } = useAppNavigation()
 const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen } = useGetProductsStore()
 
 async function fetchCurrentProduct() {

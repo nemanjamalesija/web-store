@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
-import { useToast } from 'vue-toastification'
 import CloseModalButton from './ui/CloseModalButton.vue'
+import useAppNavigation from '@/composables/useAppNavigation'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
 
-const route = useRoute()
-const router = useRouter()
-const toast = useToast()
-
+const { route, router, toast } = useAppNavigation()
 const { setIsReviewModalOpen } = useGetProductsStore()
 
 async function submitReviewHandler() {

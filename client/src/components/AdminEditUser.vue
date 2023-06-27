@@ -2,12 +2,10 @@
 import useGetAdminStore from '@/hooks/useGetAdminStore'
 import CloseModalButton from './ui/CloseModalButton.vue'
 import { baseUrl } from '@/constants/baseUrl'
-import { useToast } from 'vue-toastification'
-import { useRouter } from 'vue-router'
+import useAppNavigation from '@/composables/useAppNavigation'
 
 const { setIsEditing, userToEdit } = useGetAdminStore()
-const toast = useToast()
-const router = useRouter()
+const { toast, router } = useAppNavigation()
 
 async function editUserHandler() {
   // No need to usegetSession because of protect middleware on the backend

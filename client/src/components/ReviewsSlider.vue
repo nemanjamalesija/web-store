@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { starIconsReview } from '../assets/icons/stars'
 import formatDate from '@/helpers/formatDate'

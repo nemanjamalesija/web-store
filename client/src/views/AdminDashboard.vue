@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import useGetSession from '@/hooks/useGetSession'
 import { baseUrl } from '@/constants/baseUrl'
-import { useToast } from 'vue-toastification'
 import type { UserType } from '@/types/userType'
 import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import SingleUser from '@/components/SingleUser.vue'
 import AdminEditUser from '@/components/AdminEditUser.vue'
-import useGetAdminStore from '../hooks/useGetAdminStore'
+import useGetAdminStore from '@/hooks/useGetAdminStore'
 import ModalCustom from '@/components/ui/ModalCustom.vue'
-
+import useAppNavigation from '@/composables/useAppNavigation'
 const {
   loading,
   setLoading,
@@ -22,8 +20,7 @@ const {
   filteredUsers,
   isEditing
 } = useGetAdminStore()
-const toast = useToast()
-const router = useRouter()
+const { toast, router } = useAppNavigation()
 
 async function fetchAllUsers() {
   const session = await useGetSession()

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import SingleProduct from '../components/SingleProduct.vue'
-import type { productType } from '../types/productType'
+import SingleProduct from '@/components/SingleProduct.vue'
+import type { productType } from '@/types/productType'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
-import { baseUrl } from '../constants/baseUrl'
+import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import useGetSession from '@/hooks/useGetSession'

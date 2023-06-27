@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { baseUrl } from '@/constants/baseUrl'
 import { ref, watch } from 'vue'
-import { useToast } from 'vue-toastification'
-import { useRouter } from 'vue-router'
-import useGetUserStore from '../hooks/useGetUserStore'
-import acceptUser from '../helpers/acceptUser'
+import useGetUserStore from '@/hooks/useGetUserStore'
+import acceptUser from '@/helpers/acceptUser'
+import useAppNavigation from '@/composables/useAppNavigation'
 
 const { setCurrentUser, currentUser } = useGetUserStore()
+const { toast, router } = useAppNavigation()
 
 const loginUser = ref({
   email: '',
   password: ''
 })
-
-const toast = useToast()
-const router = useRouter()
 
 async function loginUserHandler() {
   try {
@@ -53,6 +50,7 @@ async function loginUserHandler() {
     }
   } catch (error) {
     console.log(error)
+    toast.error('Oops, something went wrong!')
   } finally {
     // clear input form
     loginUser.value.email = ''

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useToast } from 'vue-toastification'
 import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
-import { useRouter } from 'vue-router'
+import useAppNavigation from '@/composables/useAppNavigation'
 
-const toast = useToast()
-const router = useRouter()
+const { toast, router } = useAppNavigation()
 
 const signUpUser = ref({
   name: '',

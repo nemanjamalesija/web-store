@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import CloseModalButton from './ui/CloseModalButton.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
+import fetchAllProducts from '@/helpers/fetchAllProducts'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
@@ -11,9 +12,11 @@ const reviewMessage = ref<string>('')
 const { route, router, toast } = useAppNavigation()
 const { setIsReviewModalOpen } = useGetProductsStore()
 
-async function submitReviewHandler() {
-  const jwtToken = localStorage.getItem('jwt')
+const jwtToken = localStorage.getItem('jwt')
 
+if (!jwtToken) toast.error('Could not get your session! Please log in.')
+
+async function submitReviewHandler() {
   try {
     const response = await fetch(`${baseUrl}/api/v1${route.fullPath}/reviews`, {
       method: 'POST',
@@ -33,7 +36,9 @@ async function submitReviewHandler() {
       return
     } else {
       setIsReviewModalOpen(false)
+      await fetchAllProducts(jwtToken as string)
       router.push('/products')
+
       return toast.success('Review sucessfully submited. Thank you!')
     }
   } catch (error) {

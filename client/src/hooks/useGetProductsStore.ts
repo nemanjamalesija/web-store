@@ -4,7 +4,8 @@ import { useProductsStore } from '../stores/productsStore'
 export default function useGetProductsStore() {
   const productsStore = useProductsStore()
   const { products, loading, currentProduct, isProductReviewModalOpen } = storeToRefs(productsStore)
-  const { setLoading, setProducts, setCurrentProduct, setIsReviewModalOpen } = useProductsStore()
+  const { setLoading, setProducts, setCurrentProduct, setIsReviewModalOpen, addNewReview } =
+    useProductsStore()
 
   return {
     products,
@@ -14,6 +15,7 @@ export default function useGetProductsStore() {
     loading,
     setLoading,
     isProductReviewModalOpen,
-    setIsReviewModalOpen
+    setIsReviewModalOpen,
+    addNewReview
   }
 }

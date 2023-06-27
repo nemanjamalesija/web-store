@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { productType } from '../types/productType'
+import type { productType, reviewType } from '../types/productType'
 
 export const useProductsStore = defineStore('product', () => {
   const products = ref([] as productType[])
@@ -16,12 +16,25 @@ export const useProductsStore = defineStore('product', () => {
     currentProduct.value = singleProductAPI
   }
 
-  function setLoading(value: boolean) {
-    loading.value = value
+  function setLoading(payload: boolean) {
+    loading.value = payload
   }
 
-  function setIsReviewModalOpen(value: boolean) {
-    isProductReviewModalOpen.value = value
+  function setIsReviewModalOpen(payload: boolean) {
+    isProductReviewModalOpen.value = payload
+  }
+
+  function addNewReview(payload: reviewType) {
+    console.log(payload.product)
+
+    const ids = products.value.map((prod) => prod)
+
+    const reviewedProduct = products.value.find((prod) => prod.id === payload.product)
+    const reviewedProductIndex = products.value.findIndex(
+      (product) => product.id === reviewedProduct.id
+    )
+
+    console.log(products.value)
   }
 
   return {
@@ -32,6 +45,7 @@ export const useProductsStore = defineStore('product', () => {
     currentProduct,
     setCurrentProduct,
     isProductReviewModalOpen,
-    setIsReviewModalOpen
+    setIsReviewModalOpen,
+    addNewReview
   }
 })

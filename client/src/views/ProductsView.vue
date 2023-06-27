@@ -1,53 +1,20 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import SingleProduct from '@/components/SingleProduct.vue'
-import type { productType } from '@/types/productType'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
-import { baseUrl } from '@/constants/baseUrl'
-import { useToast } from 'vue-toastification'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import useGetSession from '@/hooks/useGetSession'
+import fetchAllProducts from '@/helpers/fetchAllProducts'
 
-const { products, loading, setLoading, setProducts } = useGetProductsStore()
+const { products, loading } = useGetProductsStore()
 
-const toast = useToast()
-
-async function fetchAllProducts() {
+onMounted(async () => {
   const session = await useGetSession()
   if (!session) return
 
   const { jwtToken } = session
 
-  setLoading(true)
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/products`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      }
-    })
-
-    if (!response.ok) {
-      const error = await response.json()
-      toast.error(error.message)
-      return
-    }
-
-    const {
-      data: { doc }
-    } = await response.json()
-
-    setProducts(doc as productType[])
-    setLoading(false)
-  } catch (error) {
-    console.log(error)
-    setLoading(false)
-  }
-}
-
-onMounted(async () => {
-  await fetchAllProducts()
+  await fetchAllProducts(jwtToken)
 })
 </script>
 
@@ -58,7 +25,12 @@ onMounted(async () => {
       <section
         class="products pt-20 flex flex-col lg:grid lg:grid-cols-3 gap-16 justify-between place-items-center"
       >
-        <SingleProduct v-for="product in products" :key="product.id" :product="product" />
+        <SingleProduct
+          v-for="(product, index) in products"
+          :key="product.id"
+          :product="product"
+          :index="index"
+        />
       </section>
     </div>
   </main>

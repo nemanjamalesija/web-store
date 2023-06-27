@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import formatDate from '@/helpers/formatDate'
 import type { UserType } from '@/types/userType'
-import useGetAdminStore from '@/hooks/useAdminStore'
+import useGetAdminStore from '@/hooks/useGetAdminStore'
 
 type singleProductPropsType = {
   user: UserType
   totalUsers: number
 }
 
-const { setIsEditing } = useGetAdminStore()
+const { setIsEditing, setUserToEdit } = useGetAdminStore()
 
 const props = defineProps<singleProductPropsType>()
 </script>
@@ -43,7 +43,7 @@ const props = defineProps<singleProductPropsType>()
       <p>{{ props.user.role }}</p>
     </div>
 
-    <!-- user is active true-->
+    <!-- user is active true icon-->
     <div v-if="props.user.active">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ const props = defineProps<singleProductPropsType>()
       </svg>
     </div>
 
-    <!-- user is active false-->
+    <!-- user is active false icon-->
     <div class="" v-if="!props.user.active">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ const props = defineProps<singleProductPropsType>()
 
     <!-- edit user -->
     <div>
-      <button id="show-modal" @click="setIsEditing(true)">
+      <button id="show-modal" @click="setIsEditing(true), setUserToEdit(props.user._id as string)">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

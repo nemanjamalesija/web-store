@@ -4,7 +4,6 @@ import formatDate from '../helpers/formatDate'
 import { ref } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
-import { useRouter } from 'vue-router'
 import acceptUser from '@/helpers/acceptUser'
 
 const changeUser = ref({
@@ -15,7 +14,6 @@ const changeUser = ref({
 const { currentUser, setCurrentUser } = useGetUserStore()
 
 const toast = useToast()
-const router = useRouter()
 
 async function updateUserHandler() {
   // No need to usegetSession because of protect middleware on the backend

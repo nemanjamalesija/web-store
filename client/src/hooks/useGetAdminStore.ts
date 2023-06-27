@@ -3,9 +3,9 @@ import { useAdminStore } from '../stores/adminStore'
 
 export default function useGetAdminStore() {
   const userStore = useAdminStore()
-  const { users, loading, filterByNameValue, filteredUsers, sortBy, isEditing } =
+  const { users, loading, filterByNameValue, filteredUsers, sortBy, isEditing, userToEdit } =
     storeToRefs(userStore)
-  const { setUsers, setLoading, sortUsersHandler, setIsEditing } = useAdminStore()
+  const { setUsers, setLoading, sortUsersHandler, setIsEditing, setUserToEdit } = useAdminStore()
 
   return {
     users,
@@ -18,6 +18,8 @@ export default function useGetAdminStore() {
     filteredUsers,
     sortUsersHandler,
     isEditing,
-    setIsEditing
+    setIsEditing,
+    userToEdit,
+    setUserToEdit
   }
 }

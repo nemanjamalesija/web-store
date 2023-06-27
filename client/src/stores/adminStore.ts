@@ -43,6 +43,14 @@ export const useAdminStore = defineStore('admin', () => {
     isEditing.value = value
   }
 
+  const userToEdit = ref<UserType>({} as UserType)
+
+  function setUserToEdit(passId: string) {
+    const currentUser = users.value.find((user) => user._id === passId)
+
+    userToEdit.value = currentUser
+  }
+
   return {
     loading,
     setLoading,
@@ -53,6 +61,8 @@ export const useAdminStore = defineStore('admin', () => {
     filterByNameValue,
     filteredUsers,
     isEditing,
-    setIsEditing
+    setIsEditing,
+    userToEdit,
+    setUserToEdit
   }
 })

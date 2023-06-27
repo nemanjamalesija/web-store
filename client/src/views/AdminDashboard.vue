@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import useGetSession from '@/hooks/useGetSession'
-import useAdminStore from '../hooks/useAdminStore'
 import { baseUrl } from '@/constants/baseUrl'
 import { useToast } from 'vue-toastification'
 import type { UserType } from '@/types/userType'
@@ -9,14 +8,8 @@ import { useRouter } from 'vue-router'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import SingleUser from '@/components/SingleUser.vue'
 import AdminEditUser from '@/components/AdminEditUser.vue'
-
-import { ref } from 'vue'
-import useGetAdminStore from '../hooks/useAdminStore'
+import useGetAdminStore from '../hooks/useGetAdminStore'
 import ModalCustom from '@/components/ui/ModalCustom.vue'
-
-const { isEditing } = useGetAdminStore()
-
-const showModal = ref<boolean>(false)
 
 const {
   loading,
@@ -26,8 +19,9 @@ const {
   sortBy,
   sortUsersHandler,
   filterByNameValue,
-  filteredUsers
-} = useAdminStore()
+  filteredUsers,
+  isEditing
+} = useGetAdminStore()
 const toast = useToast()
 const router = useRouter()
 
@@ -78,14 +72,17 @@ onMounted(async () => {
       </h2>
 
       <div class="info mb-10 flex justify-between items-center gap-10">
+        <!-- total users -->
         <p>
           <span class="font-semibold text-base">{{ filteredUsers.length }}</span> total users.
         </p>
 
+        <!-- search user by name -->
         <div class="flex-1">
           <input type="text" class="form__input" v-model="filterByNameValue" />
         </div>
 
+        <!-- sort users -->
         <div>
           <select
             class="inline-block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-[#f8f9fa;] focus:ring-emerald-500 focus:border-emerald-500 cursor-pointer"
@@ -100,6 +97,8 @@ onMounted(async () => {
           </select>
         </div>
       </div>
+
+      <!-- dashobard sections -->
       <div class="control py-3 px-6 text-base">
         <h3>Name</h3>
         <h3>Email</h3>
@@ -110,6 +109,7 @@ onMounted(async () => {
         <h3>Delete</h3>
       </div>
 
+      <!-- users -->
       <ul class="list-none flex flex-col gap-3">
         <SingleUser
           v-for="user in filteredUsers"
@@ -118,6 +118,8 @@ onMounted(async () => {
           :totalUsers="users.length"
         />
       </ul>
+
+      <!-- edit form -->
       <ModalCustom :isEditing="isEditing">
         <AdminEditUser />
       </ModalCustom>
@@ -138,4 +140,3 @@ h3 {
   text-align: start;
 }
 </style>
-../hooks/useAdminStore

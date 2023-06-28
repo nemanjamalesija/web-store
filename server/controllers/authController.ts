@@ -112,16 +112,6 @@ const authenticateUser = async (
     return next(error);
   }
 
-  // 4. Check if user changed password after the token was issued
-  else if (currentUser.changedPasswordAfter(decodedTokenObj.iat)) {
-    const error = new AppError(
-      'User recently changed password! Please log in again',
-      401
-    );
-
-    return next(error);
-  }
-
   return currentUser;
 };
 
@@ -145,8 +135,6 @@ const getUserWithToken = catchAsync(
 const protect = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const currentUser = await authenticateUser(req, res, next);
-
-    console.log(currentUser);
 
     if (currentUser) {
       req.body = { ...req.body, currentUser };

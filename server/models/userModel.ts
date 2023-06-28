@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
-import validator from '../helpers/validator.ts';
 import { userType } from '../types/userType.ts';
-import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema<userType>({
@@ -15,7 +13,6 @@ const userSchema = new mongoose.Schema<userType>({
     required: [true, 'User must have an email'],
     unique: true,
     lowercase: true,
-    validate: [validator.isEmail, 'Please provide a valid email'],
   },
 
   photo: {
@@ -39,18 +36,6 @@ const userSchema = new mongoose.Schema<userType>({
   passwordConfirm: {
     type: String || undefined,
     required: [true, 'You must confirm the password'],
-  },
-
-  passwordChangedAt: {
-    type: Date || undefined,
-  },
-
-  passwordResetToken: {
-    type: String || undefined,
-  },
-
-  passwordResetExpires: {
-    type: Date || undefined,
   },
 
   joinedAt: {
@@ -79,32 +64,12 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-//  SET THE DATE ON PASSWORD CHANGED PROPERTY
-userSchema.pre('save', function (next) {
-  if (!this.isModified('password') || this.isNew) return next();
-
-  this.passwordChangedAt = new Date(Date.now() - 1000);
-  next();
-});
-
 // PASS VERIFICATION
 userSchema.methods.correctPassword = async function (
   canditatePassword: string,
   userPassword: string
 ) {
   return await bcrypt.compare(canditatePassword, userPassword);
-};
-
-// CHECK IF USER CHANGED PASSWORD
-userSchema.methods.changedPasswordAfter = function (jwtTimestamp: number) {
-  const changedPassword = this.get('passwordChangedAt');
-
-  if (changedPassword) {
-    const changedTimestamp = Number(changedPassword.getTime() / 1000);
-
-    // if true password was changed after the token was issued
-    return changedTimestamp > jwtTimestamp;
-  }
 };
 
 const User = mongoose.model<userType>('User', userSchema);

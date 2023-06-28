@@ -7,9 +7,6 @@ export type userType = Document & {
   role: string;
   password: string;
   passwordConfirm: string | undefined;
-  passwordChangedAt: Date;
-  passwordResetToken: string | undefined;
-  passwordResetExpires: Date | undefined;
   joinedAt: Date;
   active: boolean;
   correctPassword: (

@@ -19,7 +19,10 @@ const { setIsReviewModalOpen, currentProduct, setCurrentProduct, updateAllProduc
 
 const jwtToken = localStorage.getItem('jwt')
 
-if (!jwtToken) toast.error('Could not get your session! Please log in.')
+if (!jwtToken) {
+  toast.error('Could not get your session! Please log in.')
+  router.push('/')
+}
 
 async function submitReviewHandler() {
   try {
@@ -64,6 +67,7 @@ async function submitReviewHandler() {
       return toast.success('Review sucessfully submited. Thank you!')
     }
   } catch (error) {
+    toast.error('Oops, something went wrong!')
     console.log(error)
   }
 }

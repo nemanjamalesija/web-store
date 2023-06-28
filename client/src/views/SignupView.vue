@@ -1,26 +1,33 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import useAppNavigation from '@/composables/useAppNavigation'
+import { signUpUserSchema } from '@/types/signUpUserType'
+import type { SignUpUserType } from '@/types/signUpUserType'
+import { z } from 'zod'
 
 const { toast, router } = useAppNavigation()
 
-const signUpUser = ref({
+const signUpUser = ref<SignUpUserType>({
   name: '',
   email: '',
   password: '',
   passwordConfirm: ''
 })
 
-async function signUpHandler() {
-  const tryUser = {
-    name: signUpUser.value.name,
-    email: signUpUser.value.email,
-    password: signUpUser.value.password,
-    passwordConfirm: signUpUser.value.passwordConfirm
-  }
+const allFieldsCompleted = computed(() => {
+  return signUpUserSchema.safeParse(signUpUser.value).success
+})
 
+async function signUpHandler() {
   try {
+    const tryUser = signUpUserSchema.parse({
+      name: signUpUser.value.name,
+      email: signUpUser.value.email,
+      password: signUpUser.value.password,
+      passwordConfirm: signUpUser.value.passwordConfirm
+    })
+
     const response = await fetch(`${baseUrl}/api/v1/users/signup`, {
       method: 'POST',
       headers: {
@@ -42,7 +49,11 @@ async function signUpHandler() {
     signUpUser.value.password = ''
     signUpUser.value.passwordConfirm = ''
   } catch (error) {
-    toast.error('Oop, something went wrong!')
+    if (error instanceof z.ZodError) {
+      toast.error(error.message)
+    } else {
+      toast.error('Oop, something went wrong!')
+    }
   }
 }
 </script>
@@ -104,8 +115,9 @@ async function signUpHandler() {
         </div>
         <div class="form__group">
           <button
-            class="btn btn--signup py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60"
+            class="btn btn--signup py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60 disabled:bg-gray-500"
             type="submit"
+            :disabled="!allFieldsCompleted"
             @click.prevent="signUpHandler"
           >
             Sign up

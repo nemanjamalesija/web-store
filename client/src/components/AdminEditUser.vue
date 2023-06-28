@@ -10,6 +10,10 @@ const { toast, router } = useAppNavigation()
 async function patchUserHandler() {
   // No need to usegetSession because of protect middleware on the backend
   const jwtToken = localStorage.getItem('jwt')
+  if (!jwtToken) {
+    toast.error('Could not get your session! Please log in.')
+    router.push('/')
+  }
 
   try {
     const response = await fetch(`${baseUrl}/api/v1/users/${userToEdit.value._id}`, {

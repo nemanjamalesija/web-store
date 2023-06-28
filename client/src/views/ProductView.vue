@@ -15,11 +15,15 @@ import ModalCustom from '@/components/ui/ModalCustom.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
 
 const { route, router, toast } = useAppNavigation()
-const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen, currentProduct } =
-  useGetProductsStore()
+const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen } = useGetProductsStore()
 
 async function fetchCurrentProduct() {
   const jwtToken = localStorage.getItem('jwt')
+
+  if (!jwtToken) {
+    toast.error('Could not get your session! Please log in.')
+    router.push('/')
+  }
   setLoading(true)
 
   try {

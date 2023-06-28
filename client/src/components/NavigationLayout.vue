@@ -7,7 +7,7 @@ import { onMounted, ref } from 'vue'
 import useAppNavigation from '@/composables/useAppNavigation'
 
 const { currentUser, setCurrentUser } = useGetUserStore()
-const { router } = useAppNavigation()
+const { router, toast } = useAppNavigation()
 
 async function logoutHandler() {
   try {
@@ -25,6 +25,7 @@ async function logoutHandler() {
       active: false
     })
   } catch (error) {
+    toast.error('Oops, something went wrong!')
     console.log(error)
   }
 }

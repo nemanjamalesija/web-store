@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema<userType>({
   password: {
     type: String,
     required: [true, 'User must have a password'],
-    minlength: 8,
+    minlength: 1,
     select: false,
   },
 

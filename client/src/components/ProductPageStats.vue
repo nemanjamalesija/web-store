@@ -2,7 +2,6 @@
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { cardIcons } from '@/assets/icons/cardIcons'
 import calculateAverageRating from '@/helpers/calculateAverageRating'
-import LoadingSpinner from './LoadingSpinner.vue'
 
 const { currentProduct } = useGetProductsStore()
 </script>

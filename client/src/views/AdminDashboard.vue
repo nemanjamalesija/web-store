@@ -27,6 +27,10 @@ const { toast, router } = useAppNavigation()
 
 async function fetchAllUsers() {
   const jwtToken = localStorage.getItem('jwt')
+  if (!jwtToken) {
+    toast.error('Could not get your session! Please log in.')
+    router.push('/')
+  }
 
   setLoading(true)
   try {

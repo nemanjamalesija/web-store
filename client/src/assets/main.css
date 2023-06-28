@@ -52,9 +52,6 @@ body,
   padding-bottom: 1rem;
 }
 
-.header-nav.sticky .nav .nav__user .nav__user-control .account .btn-signup:last-child {
-}
-
 .header-nav.sticky .btn-signup {
   background-color: #f9791f;
   color: #fff;
@@ -111,7 +108,8 @@ body,
 .user-account,
 .admin-dashboard,
 .login,
-.singup .not-found {
+.singup,
+.not-found {
   animation: moveInTop;
   animation-duration: 0.5s;
   animation-delay: 0.5s;

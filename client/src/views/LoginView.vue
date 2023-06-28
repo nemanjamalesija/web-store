@@ -119,6 +119,3 @@ onMounted(() => {
     </div>
   </section>
 </template>
-
-<style></style>
-../hooks/useGetUserStore

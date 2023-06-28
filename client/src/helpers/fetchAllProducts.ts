@@ -2,12 +2,18 @@ import { baseUrl } from '../constants/baseUrl'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { ProductType } from '../types/productType'
 import { useToast } from 'vue-toastification'
+import { useRouter } from 'vue-router'
 
 export default async function fetchAllProducts() {
   const { setLoading, setProducts } = useGetProductsStore()
   const toast = useToast()
+  const router = useRouter()
 
   const jwtToken = localStorage.getItem('jwt')
+  if (!jwtToken) {
+    toast.error('Could not get your session! Please log in.')
+    router.push('/')
+  }
 
   setLoading(true)
   try {

@@ -1,21 +1,35 @@
 <script setup lang="ts">
 import useGetUserStore from '../hooks/useGetUserStore'
 import formatDate from '../helpers/formatDate'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { baseUrl } from '@/constants/baseUrl'
 import acceptUser from '@/helpers/acceptUser'
 import useAppNavigation from '@/composables/useAppNavigation'
+import type { ChangeUserType } from '@/types/changeUserType'
+import { changeUserSchema } from '@/types/changeUserType'
+import DisableUserModal from '../components/DisableUserModal.vue'
+import ModalCustom from '@/components/ui/ModalCustom.vue'
 
-const changeUser = ref({
+const changeUser = ref<ChangeUserType>({
   name: '',
   email: ''
+})
+
+const showDisableAccModal = ref<boolean>(false)
+
+// for disable state of the submit button in the form
+const allFieldsCompleted = computed(() => {
+  return changeUserSchema.safeParse(changeUser.value).success
 })
 
 const { currentUser, setCurrentUser } = useGetUserStore()
 const { toast, router } = useAppNavigation()
 
 async function updateUserHandler() {
-  // No need to usegetSession because of protect middleware on the backend
+  // if no input return
+  if (!changeUser.value.name && !changeUser.value.email)
+    return toast.error('Provide at least name or password for update')
+
   const jwtToken = localStorage.getItem('jwt')
   if (!jwtToken) {
     toast.error('Could not get your session! Please log in.')
@@ -52,6 +66,9 @@ async function updateUserHandler() {
   } catch (error) {
     toast.error('Oop, something went wrong!')
     console.log(error)
+  } finally {
+    changeUser.value.name = ''
+    changeUser.value.email = ''
   }
 }
 </script>
@@ -111,16 +128,27 @@ async function updateUserHandler() {
               v-model="changeUser.email"
             />
           </div>
-          <div class="form__group">
+          <div class="flex items-center gap-5">
             <button
               type="submit"
-              class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 active:bg-orange-800"
+              class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 disabled:bg-gray-500"
+              :disabled="!allFieldsCompleted"
               @click.prevent="updateUserHandler"
             >
               Change settings
             </button>
+            <button
+              type="button"
+              class="btn py-3 px-6 bg-red-500 text-sm lg:text-base hover:bg-red-600 disabled:bg-gray-500"
+              @click="showDisableAccModal = true"
+            >
+              Disable account
+            </button>
           </div>
         </form>
+        <ModalCustom :isVisible="showDisableAccModal">
+          <DisableUserModal @close-modal="showDisableAccModal = false" />
+        </ModalCustom>
       </div>
     </div>
   </section>

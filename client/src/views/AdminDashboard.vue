@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import useGetSession from '@/hooks/useGetSession'
 import { baseUrl } from '@/constants/baseUrl'
 import type { UserType } from '@/types/userType'
 import { onMounted } from 'vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import SingleUser from '@/components/SingleUser.vue'
-import AdminEditUser from '@/components/AdminEditUser.vue'
+import AdminEditUserModal from '@/components/AdminEditUserModal.vue'
 import useGetAdminStore from '@/hooks/useGetAdminStore'
 import ModalCustom from '@/components/ui/ModalCustom.vue'
 import useAppNavigation from '@/composables/useAppNavigation'
 import DeleteUserModal from '@/components/DeleteUserModal.vue'
-import useGetUserStore from '@/hooks/useGetUserStore'
+
 const {
   loading,
   setLoading,
@@ -122,7 +121,7 @@ onMounted(async () => {
 
       <!-- edit form -->
       <ModalCustom :isVisible="isEditing">
-        <AdminEditUser />
+        <AdminEditUserModal />
       </ModalCustom>
 
       <!-- delete modal -->

@@ -1,38 +1,14 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import { baseUrl } from '../constants/baseUrl'
 import logo from '../assets/img/logo.png'
 import useGetUserStore from '@/hooks/useGetUserStore'
 import { onMounted, ref } from 'vue'
 import useAppNavigation from '@/composables/useAppNavigation'
+import logoutHandler from '@/helpers/logoutHandler'
 
 const { currentUser, setCurrentUser } = useGetUserStore()
 const { router, toast } = useAppNavigation()
 
-async function logoutHandler() {
-  try {
-    await fetch(`${baseUrl}/api/v1/users/logout`)
-
-    router.push('/')
-    localStorage.removeItem('jwt')
-    setCurrentUser({
-      id: '',
-      name: '',
-      email: '',
-      photo: '',
-      role: '',
-      joinedAt: '',
-      active: false
-    })
-  } catch (error) {
-    toast.error('Oops, something went wrong!')
-    console.log(error)
-  }
-}
-
 onMounted(async () => {
-  console.log(currentUser.value)
-
   const navRef = ref(document.querySelector('.header-nav'))
 
   const handleStickyNav = function () {
@@ -86,9 +62,9 @@ onMounted(async () => {
               :src="currentUser.photo"
               :alt="currentUser.photo + ' image'"
             />
-            <span class="username inline-block font-semibold cursor-pointer">{{
-              currentUser.name
-            }}</span>
+            <p class="username inline-block font-semibold cursor-pointer">
+              {{ currentUser.name }}
+            </p>
           </div>
 
           <!-- Drop down modal -->
@@ -97,14 +73,14 @@ onMounted(async () => {
               >Dashboard</RouterLink
             >
             <RouterLink class="nav__link" to="/me"> Account </RouterLink>
-            <RouterLink class="nav__link" to="/reviews"> My reviews </RouterLink>
+            <RouterLink class="nav__link" to="/products"> My reviews </RouterLink>
             <RouterLink class="nav__link" to="/products"> Help & support </RouterLink>
             <RouterLink class="nav__link" to="/products"> Display & accesibility </RouterLink>
             <RouterLink class="nav__link" to="/products"> Give feedback</RouterLink>
             <button
               v-if="currentUser.name"
               class="nav__link text-start"
-              @click.prevent="logoutHandler"
+              @click.prevent="logoutHandler(router, toast, setCurrentUser)"
             >
               Log out
             </button>

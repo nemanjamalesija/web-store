@@ -4,31 +4,43 @@ import { ref, watch } from 'vue'
 import useGetUserStore from '@/hooks/useGetUserStore'
 import acceptUser from '@/helpers/acceptUser'
 import useAppNavigation from '@/composables/useAppNavigation'
-import { onMounted, computed } from 'vue'
+import { loginSchema } from '@/types/loginUserType'
+import type { LoginUserType } from '@/types/loginUserType'
+import { computed } from 'vue'
+import { z } from 'zod'
+import formatZodErrors from '@/helpers/formatZodErrors'
 
 const { setCurrentUser, currentUser } = useGetUserStore()
 const { toast, router } = useAppNavigation()
 
-const loginUser = ref({
+const loginUser = ref<LoginUserType>({
   email: '',
   password: ''
 })
 
+// for disable state of the submit button in the form
 const allFieldsCompleted = computed(() => {
-  return loginUser.value.email.trim() !== '' && loginUser.value.password.trim() !== ''
+  return loginSchema.safeParse(loginUser.value).success
 })
 
 async function loginUserHandler() {
+  // if email or password missing
+  if (!loginUser.value.email || !loginUser.value.password)
+    return toast.error('Please provide both email and password')
+
   try {
+    // zod validation
+    const tryUser = loginSchema.parse({
+      email: loginUser.value.email,
+      password: loginUser.value.password
+    })
+
     const response = await fetch(`${baseUrl}/api/v1/users/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email: loginUser.value.email,
-        password: loginUser.value.password
-      })
+      body: JSON.stringify(tryUser)
     })
 
     const data = await response.json()
@@ -54,8 +66,11 @@ async function loginUserHandler() {
       router.push('/products')
     }
   } catch (error) {
-    console.log(error)
-    toast.error('Oops, something went wrong!')
+    if (error instanceof z.ZodError) {
+      return toast.error(formatZodErrors(error))
+    } else {
+      toast.error('Oop, something went wrong!')
+    }
   } finally {
     // clear input form
     loginUser.value.email = ''
@@ -65,11 +80,6 @@ async function loginUserHandler() {
 
 watch(currentUser, (newValue) => {
   if (newValue.name) router.push('/products')
-})
-
-onMounted(() => {
-  // if (currentUser.value.name) router.push('/products')
-  console.log(currentUser.value.name)
 })
 </script>
 
@@ -100,8 +110,8 @@ onMounted(() => {
             class="form__input"
             type="password"
             placeholder="••••••••"
-            required
             minlength="8"
+            required
             v-model="loginUser.password"
           />
         </div>

@@ -8,7 +8,7 @@ export const signUpUserSchema = z
     passwordConfirm: z.string()
   })
   .refine((data) => data.password.length >= 8, {
-    message: 'Passwords must be at least 8 characters long.',
+    message: 'Password must be at least 8 characters long.',
     path: ['passTooShort']
   })
   .refine((data) => data.password === data.passwordConfirm, {

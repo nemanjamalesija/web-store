@@ -4,6 +4,7 @@ import { baseUrl } from '@/constants/baseUrl'
 import useAppNavigation from '@/composables/useAppNavigation'
 import { signUpUserSchema } from '@/types/signUpUserType'
 import type { SignUpUserType } from '@/types/signUpUserType'
+import formatZodErrors from '@/helpers/formatZodErrors'
 import { z } from 'zod'
 
 const { toast, router } = useAppNavigation()
@@ -15,6 +16,7 @@ const signUpUser = ref<SignUpUserType>({
   passwordConfirm: ''
 })
 
+// for disable state of the submit button in the form
 const allFieldsCompleted = computed(() => {
   return signUpUserSchema.safeParse(signUpUser.value).success
 })
@@ -50,7 +52,7 @@ async function signUpHandler() {
     signUpUser.value.passwordConfirm = ''
   } catch (error) {
     if (error instanceof z.ZodError) {
-      toast.error(error.message)
+      toast.error(formatZodErrors(error))
     } else {
       toast.error('Oop, something went wrong!')
     }
@@ -117,7 +119,6 @@ async function signUpHandler() {
           <button
             class="btn btn--signup py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60 disabled:bg-gray-500"
             type="submit"
-            :disabled="!allFieldsCompleted"
             @click.prevent="signUpHandler"
           >
             Sign up

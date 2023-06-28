@@ -10,7 +10,7 @@ const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
 
 const allFieldsCompleted = computed(() => {
-  return reviewMessage.value.trim() !== ''
+  return reviewMessage.value !== ''
 })
 
 const { route, router, toast } = useAppNavigation()

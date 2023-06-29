@@ -120,6 +120,7 @@ async function signUpHandler() {
             class="btn btn--signup py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60 disabled:bg-gray-500"
             type="submit"
             @click.prevent="signUpHandler"
+            :disabled="!allFieldsCompleted"
           >
             Sign up
           </button>

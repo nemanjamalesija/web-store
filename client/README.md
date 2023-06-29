@@ -1,68 +1,19 @@
-# web-store
+Jumbo Bowls poke bowl online store.
 
-This template should help get you started developing with Vue 3 in Vite.
+Full stack application with express backend, MongoDB database and Vue 3 frontend. Typescript supported both on the front and the back. Tailwind CSS on the front.
 
-## Recommended IDE Setup
+For use authentication I used jason web token workflow. Token is saved in local storage, sent from the client and then decoded on the backend on authentication and particular requests.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+For state managment on the front I used Pinia. Stores are to be find in stores folder, and hooks relevant to the state data are in hooks folder.
 
-## Type Support for `.vue` Imports in TS
+MODELS:
+Users / Products / Reviews
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+FEATURES:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Signup / login / logut / deactivate account.
+- Overview of the products on the /products page (GET request).
+- Single product page where more info about the particular product is displayed (GET request).
+- Write a review and add a rating for a product (POST request, real time updates on the client).
+- Users can edit or deactivate their accounts (PATCH and DELETE requests, real time updates on the client).
+- Admin dashboard: control user information. Deactivate their accounts or update relevant information. (PATCH request, Authorization middleware running on the backend preventing non admin users from reaching /dashobard page).

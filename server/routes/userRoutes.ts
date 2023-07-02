@@ -1,6 +1,6 @@
 import express from 'express';
 import authController from '../controllers/authController.ts';
-import userController from '../controllers/userController.ts';
+import userController, { upload } from '../controllers/userController.ts';
 
 const router = express.Router();
 
@@ -13,10 +13,12 @@ router.get('/logout', authController.logout);
 router.use(authController.protect);
 
 router.get('/me', userController.getMe);
-router.patch(
-  '/updateMe',
+router.patch('/updateMe', userController.updateMe);
 
-  userController.updateMe
+router.patch(
+  '/updatePhoto',
+  upload.single('photo'),
+  userController.updateUserPhoto
 );
 
 router.delete('/deleteMe', userController.deleteMe);

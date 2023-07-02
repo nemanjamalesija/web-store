@@ -5,6 +5,8 @@ import catchAsync from '../helpers/catchAsync.ts';
 import AppError from '../helpers/appError.ts';
 import filterObj from '../helpers/filterObj.ts';
 
+import multer from 'multer';
+
 const getMe = (req: Request, res: Response, next: NextFunction) => {
   req.params.id = req.body.currentUser.id;
 
@@ -13,6 +15,10 @@ const getMe = (req: Request, res: Response, next: NextFunction) => {
 
 const updateMe = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    console.log('aaa');
+    console.log(req.body.file + ' this is req file');
+    console.log(req.body + ' this is req body');
+
     //1. Check if no input
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
@@ -23,7 +29,7 @@ const updateMe = catchAsync(
     // 3. Update user document
     const updatedUser = await User.findByIdAndUpdate(
       req.body.currentUser.id,
-      filteredBody,
+
       {
         new: true,
         runValidators: true,
@@ -39,6 +45,43 @@ const updateMe = catchAsync(
     });
   }
 );
+
+const multerStorage = multer.diskStorage({
+  destination: (req: any, file: any, cb: any) => {
+    console.log(file + 'this is multer here');
+
+    cb(null, 'public/images/users');
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split('/')[1];
+    cb(null, `user-${Date.now()}.${ext}`);
+  },
+});
+
+const multerFilter = (req: any, file: any, cb: any) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only images.', 400), false);
+  }
+};
+
+export const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+export const updateUserPhoto = catchAsync(async function (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  console.log(req.file, JSON.stringify(req.body));
+
+  res.status(201).json({
+    status: 'sucess',
+  });
+});
 
 const deleteMe = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -66,4 +109,5 @@ export default {
   getMe,
   updateMe,
   deleteMe,
+  updateUserPhoto,
 };

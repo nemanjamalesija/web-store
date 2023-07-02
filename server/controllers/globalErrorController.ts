@@ -12,6 +12,8 @@ const sendError = (res: Response, err: any) => {
     });
   } else {
     console.log(err);
+    console.log(err.stack);
+    console.log(err.message);
     res.status(err.statusCode || 500).json({
       status: err.status,
       error: err,

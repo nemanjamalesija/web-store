@@ -71,6 +71,49 @@ async function updateUserHandler() {
     changeUser.value.email = ''
   }
 }
+
+async function updatePhoto() {
+  const jwtToken = localStorage.getItem('jwt')
+  if (!jwtToken) {
+    toast.error('Could not get your session! Please log in.')
+    router.push('/')
+  }
+
+  try {
+    const response = await fetch(`${baseUrl}/api/v1/users/updateMe`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: 'Bearer ' + jwtToken
+      },
+      body: JSON.stringify({
+        name: changeUser.value.name || undefined,
+        email: changeUser.value.email || undefined
+      })
+    })
+
+    if (!response.ok) {
+      const data = await response.json()
+      return toast.error(data.message)
+    }
+
+    const newCurrentUser = {
+      ...currentUser.value,
+      name: changeUser.value.name ? changeUser.value.name : currentUser.value.name,
+      email: changeUser.value.email ? changeUser.value.email : currentUser.value.email
+    }
+
+    setCurrentUser(acceptUser(newCurrentUser))
+
+    toast.success('Your account information has been sucessfully updated!')
+  } catch (error) {
+    toast.error('Oop, something went wrong!')
+    console.log(error)
+  } finally {
+    changeUser.value.name = ''
+    changeUser.value.email = ''
+  }
+}
 </script>
 <template>
   <section
@@ -145,6 +188,10 @@ async function updateUserHandler() {
               Disable account
             </button>
           </div>
+        </form>
+        <form enctype="multipart/form-data">
+          <input type="file" name="photo" />
+          <button type="submit" @click.prevent="updatePhoto">submit</button>
         </form>
         <ModalCustom :isVisible="showDisableAccModal">
           <DisableUserModal @close-modal="showDisableAccModal = false" />

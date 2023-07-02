@@ -42,16 +42,12 @@ const reviewSchema = new mongoose.Schema<reviewType>(
 );
 
 reviewSchema.pre('save', function (next) {
-  console.log('save middleware running');
-
   this.populate({ path: 'product' });
   this.populate({ path: 'user' });
   next();
 });
 
 reviewSchema.pre(/^find/, function (next) {
-  console.log('find middleware running');
-
   //@ts-ignore
   this.populate({
     path: 'user',

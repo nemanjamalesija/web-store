@@ -76,10 +76,32 @@ export const updateUserPhoto = catchAsync(async function (
   res: Response,
   next: NextFunction
 ) {
-  console.log(req.file, JSON.stringify(req.body));
+  console.log(
+    req.file,
+    JSON.stringify(req.body + 'this is the body in the route')
+  );
 
-  res.status(201).json({
+  if (!req.file)
+    return next(new AppError('Please provide the photo to update!', 400));
+
+  const photoRefernce = `http://127.0.0.1:3001/public/images/users/${req.file.filename}`;
+
+  const updatedUser = await User.findByIdAndUpdate(
+    req.body.currentUser.id,
+    { photo: photoRefernce },
+
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  //4. Send response to the client
+  res.status(200).json({
     status: 'sucess',
+    data: {
+      updatedUser,
+    },
   });
 });
 

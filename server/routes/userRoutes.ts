@@ -10,16 +10,17 @@ router.post('/login', authController.login);
 router.get('/getUserWithToken', authController.getUserWithToken);
 router.get('/logout', authController.logout);
 
+router.patch(
+  '/updatePhoto',
+  upload.single('photo'),
+  authController.protect,
+  userController.updateUserPhoto
+);
+
 router.use(authController.protect);
 
 router.get('/me', userController.getMe);
 router.patch('/updateMe', userController.updateMe);
-
-router.patch(
-  '/updatePhoto',
-  upload.single('photo'),
-  userController.updateUserPhoto
-);
 
 router.delete('/deleteMe', userController.deleteMe);
 

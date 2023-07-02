@@ -17,7 +17,9 @@ const userSchema = new mongoose.Schema<userType>({
 
   photo: {
     type: String,
-    default: 'http://127.0.0.1:3001/public/images/users/defaultUser.webp',
+    default: () => {
+      return 'http://127.0.0.1:3001/public/images/users/defaultUser.webp';
+    },
   },
 
   role: {

@@ -18,6 +18,7 @@ FEATURES:
 - Single product page where more info about the particular product is displayed (GET request).
 - Write a review and add a rating for a product (POST request, real time updates on the client).
 - Users can edit or deactivate their accounts (PATCH & DELETE requests, real time updates on the client).
+- Users can update their profile photo. (A default photo is provided from the backend initially). This is PATCH request, processed with multer middleware on the backend.
 - Admin dashboard: control user information. Deactivate, delete their accounts or update relevant information. (PATCH & DELETE requests, Authorization middleware running on the backend preventing non admin users from reaching /dashobard page).
 
 TECHNOLOGIES USED:

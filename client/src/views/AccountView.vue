@@ -15,11 +15,11 @@ const changeUser = ref<ChangeUserType>({
   email: ''
 })
 
-const file = ref<File | null>()
+const photoFile = ref<File | null>()
 
 const showDisableAccModal = ref<boolean>(false)
 
-// for disable state of the submit button in the form
+// For isable state of the submit button in the form
 const allFieldsCompleted = computed(() => {
   return changeUserSchema.safeParse(changeUser.value).success
 })
@@ -75,17 +75,17 @@ async function updateUserHandler() {
   }
 }
 
-// store new user photo from input type="file"
+// Store new user photo from input type="file"
 const onChange = (e: Event) => {
   const target = e.target as HTMLInputElement | null
 
   if (!target) return
   if (!target.files) return
 
-  file.value = target.files[0]
+  photoFile.value = target.files[0]
 }
 
-// update photo handler
+// Update photo handler
 async function updatePhoto() {
   const jwtToken = localStorage.getItem('jwt')
   if (!jwtToken) {
@@ -93,9 +93,9 @@ async function updatePhoto() {
     router.push('/')
   }
 
-  if (!file.value) return
+  if (!photoFile.value) return
   const dataInput = new FormData()
-  dataInput.append('photo', file.value)
+  dataInput.append('photo', photoFile.value)
 
   try {
     const response = await fetch(`${baseUrl}/api/v1/users/updatePhoto`, {
@@ -127,6 +127,7 @@ async function updatePhoto() {
   <section
     class="user-account mt-36 mx-auto max-w-6xl flex flex-col gap-12 lg:gap-32 lg:grid rounded-md"
   >
+    <!-- About the user -->
     <div class="user">
       <img
         class="block h-40 w- object-cover rounded-sm mb-6"
@@ -153,6 +154,7 @@ async function updatePhoto() {
       </div>
     </div>
 
+    <!-- Update user info  -->
     <div class="user-settings mx-auto w-full">
       <div class="user-settings__forms">
         <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-9">
@@ -198,7 +200,7 @@ async function updatePhoto() {
           </div>
         </form>
 
-        <!-- change photo -->
+        <!-- Change user photo -->
         <div>
           <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-9">
             Update photo
@@ -223,7 +225,7 @@ async function updatePhoto() {
               <button
                 class="block py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60 cursor-pointer rounded-full text-white uppercase font-semibold disabled:bg-gray-500"
                 @click.prevent="updatePhoto"
-                :disabled="!file"
+                :disabled="!photoFile"
               >
                 submit
               </button>

@@ -15,6 +15,8 @@ const changeUser = ref<ChangeUserType>({
   email: ''
 })
 
+const file = ref<File | null>()
+
 const showDisableAccModal = ref<boolean>(false)
 
 // for disable state of the submit button in the form
@@ -51,6 +53,7 @@ async function updateUserHandler() {
 
     if (!response.ok) {
       const data = await response.json()
+
       return toast.error(data.message)
     }
 
@@ -72,6 +75,17 @@ async function updateUserHandler() {
   }
 }
 
+// store new user photo from input type="file"
+const onChange = (e: Event) => {
+  const target = e.target as HTMLInputElement | null
+
+  if (!target) return
+  if (!target.files) return
+
+  file.value = target.files[0]
+}
+
+// update photo handler
 async function updatePhoto() {
   const jwtToken = localStorage.getItem('jwt')
   if (!jwtToken) {
@@ -79,39 +93,33 @@ async function updatePhoto() {
     router.push('/')
   }
 
+  if (!file.value) return
+  const dataInput = new FormData()
+  dataInput.append('photo', file.value)
+
   try {
-    const response = await fetch(`${baseUrl}/api/v1/users/updateMe`, {
+    const response = await fetch(`${baseUrl}/api/v1/users/updatePhoto`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'multipart/form-data',
+        Accept: 'application/json',
         Authorization: 'Bearer ' + jwtToken
       },
-      body: JSON.stringify({
-        name: changeUser.value.name || undefined,
-        email: changeUser.value.email || undefined
-      })
+      body: dataInput
     })
 
     if (!response.ok) {
-      const data = await response.json()
-      return toast.error(data.message)
+      return toast.error('Could not upload your image! Please try again.')
+    } else {
+      toast.success('Your account information has been sucessfully updated!')
+      const {
+        data: { updatedUser }
+      } = await response.json()
+
+      setCurrentUser({ ...currentUser.value, photo: updatedUser.photo })
     }
-
-    const newCurrentUser = {
-      ...currentUser.value,
-      name: changeUser.value.name ? changeUser.value.name : currentUser.value.name,
-      email: changeUser.value.email ? changeUser.value.email : currentUser.value.email
-    }
-
-    setCurrentUser(acceptUser(newCurrentUser))
-
-    toast.success('Your account information has been sucessfully updated!')
   } catch (error) {
     toast.error('Oop, something went wrong!')
     console.log(error)
-  } finally {
-    changeUser.value.name = ''
-    changeUser.value.email = ''
   }
 }
 </script>
@@ -189,9 +197,11 @@ async function updatePhoto() {
             </button>
           </div>
         </form>
-        <form enctype="multipart/form-data">
-          <input type="file" name="photo" />
-          <button type="submit" @click.prevent="updatePhoto">submit</button>
+        <form enctype="multipart/form-data" method="post">
+          <div class="form-group">
+            <input type="file" name="photo" class="form-control-file" @change="onChange" />
+            <button @click.prevent="updatePhoto">Update Photo</button>
+          </div>
         </form>
         <ModalCustom :isVisible="showDisableAccModal">
           <DisableUserModal @close-modal="showDisableAccModal = false" />

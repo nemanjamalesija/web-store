@@ -197,12 +197,39 @@ async function updatePhoto() {
             </button>
           </div>
         </form>
-        <form enctype="multipart/form-data" method="post">
-          <div class="form-group">
-            <input type="file" name="photo" class="form-control-file" @change="onChange" />
-            <button @click.prevent="updatePhoto">Update Photo</button>
-          </div>
-        </form>
+
+        <!-- change photo -->
+        <div>
+          <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-9">
+            Update photo
+          </h2>
+          <form enctype="multipart/form-data" method="post">
+            <div class="form-group">
+              <input
+                id="photo"
+                type="file"
+                name="photo"
+                class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 cursor-pointer bg-gray-50"
+                @change="onChange"
+              />
+
+              <p
+                class="mt-2 ml-2 mb-7 inline-block text-sm text-gray-500 dark:text-gray-300"
+                id="file_input_help"
+              >
+                SVG, PNG, JPG or GIF.
+              </p>
+
+              <button
+                class="block py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60 cursor-pointer rounded-full text-white uppercase font-semibold disabled:bg-gray-500"
+                @click.prevent="updatePhoto"
+                :disabled="!file"
+              >
+                submit
+              </button>
+            </div>
+          </form>
+        </div>
         <ModalCustom :isVisible="showDisableAccModal">
           <DisableUserModal @close-modal="showDisableAccModal = false" />
         </ModalCustom>
@@ -229,5 +256,15 @@ async function updatePhoto() {
 .user-account {
   grid-template-columns: auto 1fr;
 }
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.hidden-file {
+  display: none;
+}
 </style>
-../hooks/useGetUserStore

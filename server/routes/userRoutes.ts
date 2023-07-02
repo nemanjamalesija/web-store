@@ -10,7 +10,7 @@ router.post('/login', authController.login);
 router.get('/getUserWithToken', authController.getUserWithToken);
 router.get('/logout', authController.logout);
 
-router.post(
+router.patch(
   '/updatePhoto',
   upload.single('photo'),
   authController.protect,

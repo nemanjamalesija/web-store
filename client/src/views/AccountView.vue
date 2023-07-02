@@ -99,7 +99,7 @@ async function updatePhoto() {
 
   try {
     const response = await fetch(`${baseUrl}/api/v1/users/updatePhoto`, {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         Accept: 'application/json',
         Authorization: 'Bearer ' + jwtToken
@@ -205,7 +205,7 @@ async function updatePhoto() {
           <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-9">
             Update photo
           </h2>
-          <form enctype="multipart/form-data" method="post">
+          <form enctype="multipart/form-data">
             <div class="form-group">
               <input
                 id="photo"

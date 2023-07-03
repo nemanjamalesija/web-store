@@ -162,7 +162,7 @@ async function updatePhoto() {
         </h2>
         <form class="form form--signup mb-16">
           <div class="form__group">
-            <label class="form__label" for="name">Your name</label>
+            <label class="form__label" for="name">Your new name</label>
             <input
               id="name"
               class="form__input"
@@ -172,7 +172,7 @@ async function updatePhoto() {
             />
           </div>
           <div class="form__group">
-            <label class="form__label" for="email">Email address</label>
+            <label class="form__label" for="email">Your new email address</label>
             <input
               id="email"
               class="form__input"

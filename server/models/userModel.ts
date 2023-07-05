@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema<userType>({
   photo: {
     type: String,
     default: () => {
-      return 'http://127.0.0.1:3001/public/images/users/defaultUser.webp';
+      return 'https://jumbo-bowls.onrender.com/public/images/users/defaultUser.webp';
     },
   },
 

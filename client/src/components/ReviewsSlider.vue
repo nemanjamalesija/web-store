@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { starIconsReview } from '../assets/icons/stars'
-import formatDate from '@/helpers/formatDate'
+import formatDate from '../helpers/formatDate'
 
 const currentSlideIndex = ref(0)
 

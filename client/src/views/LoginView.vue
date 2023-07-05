@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { baseUrl } from '@/constants/baseUrl'
+import { baseUrl } from '../constants/baseUrl'
 import { ref, watch } from 'vue'
-import useGetUserStore from '@/hooks/useGetUserStore'
-import acceptUser from '@/helpers/acceptUser'
-import useAppNavigation from '@/composables/useAppNavigation'
-import { loginSchema } from '@/types/loginUserType'
-import type { LoginUserType } from '@/types/loginUserType'
+import useGetUserStore from '../hooks/useGetUserStore'
+import acceptUser from '../helpers/acceptUser'
+import useAppNavigation from '../composables/useAppNavigation'
+import { loginSchema } from '../types/loginUserType'
+import type { LoginUserType } from '../types/loginUserType'
 import { computed } from 'vue'
 import { z } from 'zod'
-import formatZodErrors from '@/helpers/formatZodErrors'
+import formatZodErrors from '../helpers/formatZodErrors'
 
 const { setCurrentUser, currentUser } = useGetUserStore()
 const { toast, router } = useAppNavigation()

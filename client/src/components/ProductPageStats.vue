@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useGetProductsStore from '../hooks/useGetProductsStore'
-import { cardIcons } from '@/assets/icons/cardIcons'
-import calculateAverageRating from '@/helpers/calculateAverageRating'
+import { cardIcons } from '../assets/icons/cardIcons'
+import calculateAverageRating from '../helpers/calculateAverageRating'
 
 const { currentProduct } = useGetProductsStore()
 </script>

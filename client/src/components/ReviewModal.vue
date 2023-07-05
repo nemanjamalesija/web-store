@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import useGetProductsStore from '../hooks/useGetProductsStore'
 import { ref, computed } from 'vue'
-import { baseUrl } from '@/constants/baseUrl'
+import { baseUrl } from '../constants/baseUrl'
 import CloseModalButton from './ui/CloseModalButton.vue'
-import useAppNavigation from '@/composables/useAppNavigation'
-import type { ReviewType } from '@/types/productType'
+import useAppNavigation from '../composables/useAppNavigation'
+import type { ReviewType } from '../types/productType'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')

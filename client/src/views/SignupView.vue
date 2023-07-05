@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { baseUrl } from '@/constants/baseUrl'
-import useAppNavigation from '@/composables/useAppNavigation'
-import { signUpUserSchema } from '@/types/signUpUserType'
-import type { SignUpUserType } from '@/types/signUpUserType'
-import formatZodErrors from '@/helpers/formatZodErrors'
+import { baseUrl } from '../constants/baseUrl'
+import useAppNavigation from '../composables/useAppNavigation'
+import { signUpUserSchema } from '../types/signUpUserType'
+import type { SignUpUserType } from '../types/signUpUserType'
+import formatZodErrors from '../helpers/formatZodErrors'
 import { z } from 'zod'
 
 const { toast, router } = useAppNavigation()

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import formatDate from '@/helpers/formatDate'
-import type { UserType } from '@/types/userType'
-import useGetAdminStore from '@/hooks/useGetAdminStore'
+import formatDate from '../helpers/formatDate'
+import type { UserType } from '../types/userType'
+import useGetAdminStore from '../hooks/useGetAdminStore'
 
 type singleProductPropsType = {
   user: UserType

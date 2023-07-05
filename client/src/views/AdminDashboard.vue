@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { baseUrl } from '@/constants/baseUrl'
-import type { UserType } from '@/types/userType'
+import { baseUrl } from '../constants/baseUrl'
+import type { UserType } from '../types/userType'
 import { onMounted } from 'vue'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
-import SingleUser from '@/components/SingleUser.vue'
-import AdminEditUserModal from '@/components/AdminEditUserModal.vue'
-import useGetAdminStore from '@/hooks/useGetAdminStore'
-import ModalCustom from '@/components/ui/ModalCustom.vue'
-import useAppNavigation from '@/composables/useAppNavigation'
-import DeleteUserModal from '@/components/DeleteUserModal.vue'
+import LoadingSpinner from '../components/LoadingSpinner.vue'
+import SingleUser from '../components/SingleUser.vue'
+import AdminEditUserModal from '../components/AdminEditUserModal.vue'
+import useGetAdminStore from '../hooks/useGetAdminStore'
+import ModalCustom from '../components/ui/ModalCustom.vue'
+import useAppNavigation from '../composables/useAppNavigation'
+import DeleteUserModal from '../components/DeleteUserModal.vue'
 
 const {
   loading,

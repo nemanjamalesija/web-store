@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useGetProductsStore from '@/hooks/useGetProductsStore'
+import useGetProductsStore from '../hooks/useGetProductsStore'
 
 const { currentProduct } = useGetProductsStore()
 </script>

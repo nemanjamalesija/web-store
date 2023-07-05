@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import useGetAdminStore from '@/hooks/useGetAdminStore'
+import useGetAdminStore from '../hooks/useGetAdminStore'
 import CloseModalButton from './ui/CloseModalButton.vue'
-import useAppNavigation from '@/composables/useAppNavigation'
-import { baseUrl } from '@/constants/baseUrl'
+import useAppNavigation from '../composables/useAppNavigation'
+import { baseUrl } from '../constants/baseUrl'
 
 const { users, setIsDeleting, userToEdit } = useGetAdminStore()
 const { toast, router } = useAppNavigation()

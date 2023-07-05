@@ -1,8 +1,10 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "src/constants/**/*", "src/hooks/**/*"],
+  "include": ["src/env.d.ts", "src/**/*", "src/**/*.vue", "src/constants/**/*", "src/hooks/**/*"],
   "exclude": [],
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "Node",
     "composite": true,
     "baseUrl": ".",
     "paths": {

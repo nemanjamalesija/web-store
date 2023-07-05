@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ProductType } from '@/types/productType'
+import type { ProductType } from '../types/productType'
 import { cardIcons } from '../assets/icons/cardIcons'
-import calculateAverageRating from '@/helpers/calculateAverageRating'
+import calculateAverageRating from '../helpers/calculateAverageRating'
 
 type SingleProductPropsType = {
   product: ProductType

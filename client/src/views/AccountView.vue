@@ -2,13 +2,13 @@
 import useGetUserStore from '../hooks/useGetUserStore'
 import formatDate from '../helpers/formatDate'
 import { ref, computed } from 'vue'
-import { baseUrl } from '@/constants/baseUrl'
-import acceptUser from '@/helpers/acceptUser'
-import useAppNavigation from '@/composables/useAppNavigation'
-import type { ChangeUserType } from '@/types/changeUserType'
-import { changeUserSchema } from '@/types/changeUserType'
+import { baseUrl } from '../constants/baseUrl'
+import acceptUser from '../helpers/acceptUser'
+import useAppNavigation from '../composables/useAppNavigation'
+import type { ChangeUserType } from '../types/changeUserType'
+import { changeUserSchema } from '../types/changeUserType'
 import DisableUserModal from '../components/DisableUserModal.vue'
-import ModalCustom from '@/components/ui/ModalCustom.vue'
+import ModalCustom from '../components/ui/ModalCustom.vue'
 
 const changeUser = ref<ChangeUserType>({
   name: '',

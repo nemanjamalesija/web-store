@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import SingleProduct from '@/components/SingleProduct.vue'
-import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import SingleProduct from '../components/SingleProduct.vue'
+import LoadingSpinner from '../components/LoadingSpinner.vue'
 import useGetProductsStore from '../hooks/useGetProductsStore'
-import fetchAllProducts from '@/helpers/fetchAllProducts'
+import fetchAllProducts from '../helpers/fetchAllProducts'
 
 const { products, loading } = useGetProductsStore()
 

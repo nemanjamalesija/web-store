@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.json());
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
+app.use('/images', express.static(path.join(__dirName, 'public/images')));
 
 // ROUTES
 app.use('/api/v1/products', productsRouter);

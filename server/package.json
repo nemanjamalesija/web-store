@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "ts-node-esm server.ts",
-    "start:prod": "set NODE_ENV=production & nodemon --exec ts-node-esm server.ts"
+    "start:prod": "set NODE_ENV=production & nodemon --exec ts-node-esm server.ts",
+    "build": "tsc && npm run copy",
+    "copy": "cpy 'src/static/**/*' 'dist/static'"
   },
   "keywords": [],
   "author": "",

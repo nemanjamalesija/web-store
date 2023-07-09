@@ -9,8 +9,9 @@ import type { LoginUserType } from '../types/loginUserType'
 import { computed } from 'vue'
 import { z } from 'zod'
 import formatZodErrors from '../helpers/formatZodErrors'
+import LoadingSpinner from '../components/LoadingSpinner.vue'
 
-const { setCurrentUser, currentUser } = useGetUserStore()
+const { setCurrentUser, currentUser, loading, setLoading } = useGetUserStore()
 const { toast, router } = useAppNavigation()
 
 const loginUser = ref<LoginUserType>({
@@ -29,6 +30,8 @@ async function loginUserHandler() {
     return toast.error('Please provide both email and password')
 
   try {
+    setLoading(true)
+
     // zod validation
     const tryUser = loginSchema.parse({
       email: loginUser.value.email,
@@ -50,6 +53,7 @@ async function loginUserHandler() {
       toast.error(data.message)
       return
     } else {
+      setLoading(false)
       // get token and current user from the response
       const { token } = data
       const {
@@ -69,12 +73,14 @@ async function loginUserHandler() {
     if (error instanceof z.ZodError) {
       return toast.error(formatZodErrors(error))
     } else {
+      setLoading(false)
       toast.error('Oop, something went wrong!')
     }
   } finally {
     // clear input form
     loginUser.value.email = ''
     loginUser.value.password = ''
+    setLoading(false)
   }
 }
 
@@ -84,7 +90,8 @@ watch(currentUser, (newValue) => {
 </script>
 
 <template>
-  <section class="mt-28 px-5 lg:px-0 login">
+  <LoadingSpinner v-if="loading" />
+  <section v-else class="mt-28 px-5 lg:px-0 login">
     <div class="login-form">
       <h2
         class="heading-secondary heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-8 font-semibold text-center"

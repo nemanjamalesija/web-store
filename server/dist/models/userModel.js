@@ -47,9 +47,10 @@ const userSchema = new mongoose.Schema({
   photo: {
     type: String,
     default: () => {
-      return 'https://jumbo-bowls.onrender.com/dist/public/images/users/defaultUser.webp';
+      return 'users/defaultUser.webp';
     },
   },
+
   role: {
     type: String,
     enum: ['user', 'guide', 'Lead-guide', 'admin'],

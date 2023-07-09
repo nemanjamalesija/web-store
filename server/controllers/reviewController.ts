@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { Review } from '../models/reviewModel.ts';
-import controllerFactory from './controllerFactory.ts';
+import { Review } from '../models/reviewModel';
+import controllerFactory from './controllerFactory';
 
 const setProductUserIds = (req: Request, res: Response, next: NextFunction) => {
   // Allow nested routes

@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import User from '../models/userModel.ts';
-import controllerFactory from './controllerFactory.ts';
-import catchAsync from '../helpers/catchAsync.ts';
-import AppError from '../helpers/appError.ts';
-import filterObj from '../helpers/filterObj.ts';
+import User from '../models/userModel';
+import controllerFactory from './controllerFactory';
+import catchAsync from '../helpers/catchAsync';
+import AppError from '../helpers/appError';
+import filterObj from '../helpers/filterObj';
 
 import multer from 'multer';
 

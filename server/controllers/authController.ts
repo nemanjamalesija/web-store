@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 import { NextFunction, Request, Response } from 'express';
-import catchAsync from '../helpers/catchAsync.ts';
-import User from '../models/userModel.ts';
-import AppError from '../helpers/appError.ts';
-import { userType } from '../types/userType.ts';
+import catchAsync from '../helpers/catchAsync';
+import User from '../models/userModel';
+import AppError from '../helpers/appError';
+import { userType } from '../types/userType';
 
 const signToken = (id: string) => {
   return jwt.sign({ id }, process.env.JWT_SECRET_STRING as string, {

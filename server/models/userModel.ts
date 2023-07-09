@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { userType } from '../types/userType.ts';
+import { userType } from '../types/userType';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema<userType>({

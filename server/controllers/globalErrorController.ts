@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import AppError from '../helpers/appError.ts';
-import { castErrorDB } from '../types/castError.ts';
-import { duplicateErrorDB } from '../types/duplicateError.ts';
-import { validatorErrorDB } from '../types/validatorError.ts';
+import AppError from '../helpers/appError';
+import { castErrorDB } from '../types/castError';
+import { duplicateErrorDB } from '../types/duplicateError';
+import { validatorErrorDB } from '../types/validatorError';
 
 const sendError = (res: Response, err: any) => {
   if (err.isOperational) {

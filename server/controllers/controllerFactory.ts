@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { Document, Model } from 'mongoose';
-import catchAsync from '../helpers/catchAsync.ts';
-import AppError from '../helpers/appError.ts';
+import catchAsync from '../helpers/catchAsync';
+import AppError from '../helpers/appError';
 
 const getAll = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {

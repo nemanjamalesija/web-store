@@ -53,21 +53,22 @@ async function loginUserHandler() {
       toast.error(data.message)
       return
     } else {
-      setLoading(false)
       // get token and current user from the response
       const { token } = data
       const {
         data: { user }
       } = data
 
+      // grant access
+      router.push('/products')
+
       // set user in the state
       setCurrentUser(acceptUser(user))
 
+      setLoading(false)
+
       // set jwt in the local storage
       localStorage.setItem('jwt', token)
-
-      // grant access
-      router.push('/products')
     }
   } catch (error) {
     if (error instanceof z.ZodError) {

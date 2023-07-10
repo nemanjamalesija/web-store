@@ -6,8 +6,11 @@ import { signUpUserSchema } from '../types/signUpUserType'
 import type { SignUpUserType } from '../types/signUpUserType'
 import formatZodErrors from '../helpers/formatZodErrors'
 import { z } from 'zod'
+import useGetUserStore from '../hooks/useGetUserStore'
+import LoadingSpinner from '../components/LoadingSpinner.vue'
 
 const { toast, router } = useAppNavigation()
+const { loading, setLoading } = useGetUserStore()
 
 const signUpUser = ref<SignUpUserType>({
   name: '',
@@ -30,6 +33,8 @@ async function signUpHandler() {
       passwordConfirm: signUpUser.value.passwordConfirm
     })
 
+    setLoading(true)
+
     const response = await fetch(`${baseUrl}/api/v1/users/signup`, {
       method: 'POST',
       headers: {
@@ -42,6 +47,7 @@ async function signUpHandler() {
 
     if (!response.ok) toast.error(data.message)
     else {
+      setLoading(false)
       toast.success('Account created! Feel free to log in')
       router.push('/')
     }
@@ -56,13 +62,16 @@ async function signUpHandler() {
     } else {
       toast.error('Oop, something went wrong!')
     }
+  } finally {
+    setLoading(false)
   }
 }
 </script>
 
 <template>
   <section class="mt-24 singup">
-    <div class="singup-form">
+    <LoadingSpinner v-if="loading" />
+    <div v-else class="singup-form">
       <h2
         class="heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-5 font-semibold text-center"
       >

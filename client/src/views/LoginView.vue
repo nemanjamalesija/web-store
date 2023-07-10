@@ -90,9 +90,9 @@ watch(currentUser, (newValue) => {
 </script>
 
 <template>
-  <LoadingSpinner v-if="loading" />
-  <section v-else class="mt-28 px-5 lg:px-0 login">
-    <div class="login-form">
+  <section class="mt-28 px-5 lg:px-0 login">
+    <LoadingSpinner v-if="loading" />
+    <div v-else class="login-form">
       <h2
         class="heading-secondary heading-secondary heading-gradient text-text-lg lg:text-2xl uppercase mb-8 font-semibold text-center"
       >

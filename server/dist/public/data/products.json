@@ -2,7 +2,7 @@
   {
     "name": "Over the rainbow",
     "price": 9.97,
-    "image": "/dist/public/images/covers/bowl8.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl8.avif",
     "calories": 500,
     "nutriScore": 77,
     "summary": "Discovers a burst of colorful flavors that will leave you craving more, one bite at a time.",
@@ -16,20 +16,22 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
       "proteins": [
-        "/dist/public/images/ingredients/proteins/tuna.png",
-        "/dist/public/images/ingredients/proteins/krab.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/tuna.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/krab.png"
       ],
-      "sauces": ["/dist/public/images/ingredients/sauces/sweetYuzu.png"],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/sweetYuzu.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/cucumbers.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png",
-        "/dist/public/images/ingredients/toppings/wontonCrisps.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cucumbers.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/wontonCrisps.png"
       ]
     },
     "labels": ["High-protein", "Spicey"],
@@ -39,7 +41,7 @@
   {
     "name": "The O.G. 1997",
     "price": 8.99,
-    "image": "/dist/public/images/covers/bowl3.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl3.avif",
 
     "calories": 650,
     "nutriScore": 75,
@@ -54,18 +56,22 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
-      "proteins": ["/dist/public/images/ingredients/proteins/bbqChicken.png"],
-      "sauces": ["/dist/public/images/ingredients/sauces/pokeClassic.png"],
+      "proteins": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/bbqChicken.png"
+      ],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/pokeClassic.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/avocado.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png",
-        "/dist/public/images/ingredients/toppings/scallions.png",
-        "/dist/public/images/ingredients/toppings/sesameSeeds.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/avocado.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/scallions.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/sesameSeeds.png"
       ]
     },
     "labels": ["Fiber-rich"],
@@ -74,7 +80,7 @@
   {
     "name": "Island BBQ",
     "price": 9.39,
-    "image": "/dist/public/images/covers/bowl2.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl2.avif",
     "calories": 820,
     "nutriScore": 68,
     "summary": "Spice up your palate with an island-inspired poke bowl that will transport you to tropical bliss.",
@@ -88,18 +94,22 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
-      "proteins": ["/dist/public/images/ingredients/proteins/tuna.png"],
-      "sauces": ["/dist/public/images/ingredients/sauces/avocadoLime.png"],
+      "proteins": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/tuna.png"
+      ],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/avocadoLime.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/corn.png",
-        "/dist/public/images/ingredients/toppings/carrots.png",
-        "/dist/public/images/ingredients/toppings/salsa.png",
-        "/dist/public/images/ingredients/toppings/sesameSeeds.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/corn.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/carrots.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/salsa.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/sesameSeeds.png"
       ]
     },
     "labels": ["Classic", "Spicey"],
@@ -108,7 +118,7 @@
   {
     "name": "Golden Hour",
     "price": 9.99,
-    "image": "/dist/public/images/covers/bowl5.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl5.avif",
     "calories": 600,
     "nutriScore": 80,
     "summary": "Elevate your dining experience with the golden flavors of this exquisite poke bowl.",
@@ -122,21 +132,23 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
       "proteins": [
-        "/dist/public/images/ingredients/proteins/salmon.png",
-        "/dist/public/images/ingredients/proteins/krab.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/salmon.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/krab.png"
       ],
-      "sauces": ["/dist/public/images/ingredients/sauces/counterSauce.png"],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/counterSauce.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/scallions.png",
-        "/dist/public/images/ingredients/toppings/radishSprouts.png",
-        "/dist/public/images/ingredients/toppings/cucumbers.png",
-        "/dist/public/images/ingredients/toppings/massago.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/scallions.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/radishSprouts.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cucumbers.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/massago.png"
       ]
     },
     "labels": ["Fiber-rich", "Gluten-free"],
@@ -145,7 +157,7 @@
   {
     "name": "Trippy",
     "price": 7.99,
-    "image": "/dist/public/images/covers/bowl4.webp",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl4.webp",
     "calories": 480,
     "nutriScore": 81,
     "summary": "Take a flavorful trip into the world of vegetarian delights with this vibrant poke bowl.",
@@ -159,18 +171,22 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
-      "proteins": ["/dist/public/images/ingredients/proteins/tofu.webp"],
-      "sauces": ["/dist/public/images/ingredients/sauces/citrusPonzu.png"],
+      "proteins": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/tofu.webp"
+      ],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/citrusPonzu.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/carrots.png",
-        "/dist/public/images/ingredients/toppings/edamme.png",
-        "/dist/public/images/ingredients/toppings/cucumbers.png",
-        "/dist/public/images/ingredients/toppings/furikake.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/carrots.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/edamme.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cucumbers.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/furikake.png"
       ]
     },
     "labels": ["Vegetarian", "Gluten-free"],
@@ -180,7 +196,7 @@
   {
     "name": "Hold the chicken",
     "price": 9.97,
-    "image": "/dist/public/images/covers/bowl6.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl6.avif",
     "calories": 500,
     "nutriScore": 77,
     "summary": "Enjoy a protein-packed delight that's perfect for both kids and adults alike.",
@@ -194,17 +210,21 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png"
       ],
-      "proteins": ["/dist/public/images/ingredients/proteins/chicken.png"],
-      "sauces": ["/dist/public/images/ingredients/sauces/sweetYuzu.png"],
+      "proteins": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/chicken.png"
+      ],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/sweetYuzu.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/cucumbers.png",
-        "/dist/public/images/ingredients/toppings/carrots.png",
-        "/dist/public/images/ingredients/toppings/corn.png",
-        "/dist/public/images/ingredients/toppings/cilantro.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cucumbers.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/carrots.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/corn.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cilantro.png"
       ]
     },
     "labels": ["Classic", "High-protein"],
@@ -213,7 +233,7 @@
   {
     "name": "Grazer",
     "price": 8.97,
-    "image": "/dist/public/images/covers/bowl7.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl7.avif",
     "calories": 460,
     "nutriScore": 74,
     "summary": "Embrace the freshest vegetarian ingredients in a bowl that satisfies your cravings guilt-free.",
@@ -227,19 +247,23 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
-      "proteins": ["/dist/public/images/ingredients/proteins/tofu.webp"],
-      "sauces": ["/dist/public/images/ingredients/sauces/sesameWaina.png"],
+      "proteins": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/tofu.webp"
+      ],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/sesameWaina.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/cucumbers.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cucumbers.png",
 
-        "/dist/public/images/ingredients/toppings/mango.png",
-        "/dist/public/images/ingredients/toppings/pineaple.png",
-        "/dist/public/images/ingredients/toppings/sesameSeeds.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/mango.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/pineaple.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/sesameSeeds.png"
       ]
     },
     "labels": ["Vegetarian", "Gluten-free"],
@@ -248,7 +272,7 @@
   {
     "name": "Green panther",
     "price": 9.97,
-    "image": "/dist/public/images/covers/bowl1.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl1.avif",
     "calories": 80,
     "nutriScore": 81,
     "summary": "Unleash your taste buds with a vegetarian poke bowl that packs a fiery punch.",
@@ -268,19 +292,23 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
-      "proteins": ["/dist/public/images/ingredients/proteins/tofu.webp"],
-      "sauces": ["/dist/public/images/ingredients/sauces/sesameWaina.png"],
+      "proteins": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/tofu.webp"
+      ],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/sesameWaina.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/bases/mixedGreens.png",
-        "/dist/public/images/ingredients/toppings/cucumbers.png",
-        "/dist/public/images/ingredients/toppings/radishSprouts.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/cucumbers.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/radishSprouts.png",
 
-        "/dist/public/images/ingredients/toppings/sesameSeeds.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/sesameSeeds.png"
       ]
     },
     "labels": ["Vegetarian", "Spicy"],
@@ -289,7 +317,7 @@
   {
     "name": "Cali Classic",
     "price": 9.99,
-    "image": "/dist/public/images/covers/bowl9.avif",
+    "image": "https://jumbo-bowls.onrender.com/public/images/covers/bowl9.avif",
     "calories": 93,
     "nutriScore": 81,
     "summary": "Dive into a coastal culinary adventure with this high-protein poke bowl inspired by California.",
@@ -308,21 +336,23 @@
     },
     "ingredientsImages": {
       "bases": [
-        "/dist/public/images/ingredients/bases/whiteRice.png",
-        "/dist/public/images/ingredients/bases/brownRice.png",
-        "/dist/public/images/ingredients/bases/noodles.png",
-        "/dist/public/images/ingredients/bases/mixedGreens.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/whiteRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/brownRice.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/noodles.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/bases/mixedGreens.png"
       ],
       "proteins": [
-        "/dist/public/images/ingredients/proteins/krab.png",
-        "/dist/public/images/ingredients/proteins/tuna.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/krab.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/proteins/tuna.png"
       ],
-      "sauces": ["/dist/public/images/ingredients/sauces/avocadoLime.png"],
+      "sauces": [
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/sauces/avocadoLime.png"
+      ],
       "mixinsAndToppings": [
-        "/dist/public/images/ingredients/toppings/avocado.png",
-        "/dist/public/images/ingredients/toppings/radishSprouts.png",
-        "/dist/public/images/ingredients/toppings/sesameSeeds.png",
-        "/dist/public/images/ingredients/toppings/massago.png"
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/avocado.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/radishSprouts.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/sesameSeeds.png",
+        "https://jumbo-bowls.onrender.com/public/images/ingredients/toppings/massago.png"
       ]
     },
     "labels": ["High-protein"],

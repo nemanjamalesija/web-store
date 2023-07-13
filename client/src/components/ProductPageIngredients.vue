@@ -17,7 +17,7 @@ const { currentProduct } = useGetProductsStore()
             v-for="(image, index) in currentProduct.ingredientsImages?.bases"
             :key="index"
             :src="image"
-            alt="aaaa"
+            alt="Ingredient bases images not avaliable"
             class="h-full w-full inline-block object-cover p-4"
           />
         </div>
@@ -38,7 +38,7 @@ const { currentProduct } = useGetProductsStore()
             v-for="(image, index) in currentProduct.ingredientsImages?.proteins"
             :key="index"
             :src="image"
-            alt="aaaa"
+            alt="Proteins images not avaliable"
             class="h-full w-full inline-block object-cover p-4"
           />
         </div>
@@ -59,7 +59,7 @@ const { currentProduct } = useGetProductsStore()
             v-for="(image, index) in currentProduct.ingredientsImages?.mixinsAndToppings"
             :key="index"
             :src="image"
-            alt="aaaa"
+            alt="Ingredient toppings images not avaliable"
             class="h-full w-full inline-block object-cover p-4"
           />
         </div>
@@ -80,7 +80,7 @@ const { currentProduct } = useGetProductsStore()
             v-for="(image, index) in currentProduct.ingredientsImages?.sauces"
             :key="index"
             :src="image"
-            alt="aaaa"
+            alt="Sauces images not avaliable"
             class="h-full w-full inline-block object-cover p-4"
           />
         </div>

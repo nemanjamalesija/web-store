@@ -35,7 +35,6 @@ import User from '../models/userModel.js';
 import controllerFactory from './controllerFactory.js';
 import catchAsync from '../helpers/catchAsync.js';
 import AppError from '../helpers/appError.js';
-import filterObj from '../helpers/filterObj.js';
 import multer from 'multer';
 const getMe = (req, res, next) => {
   req.params.id = req.body.currentUser.id;
@@ -49,14 +48,13 @@ const updateMe = catchAsync((req, res, next) =>
     //1. Check if no input
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
-    // 2. Filter out fields that are not allowed
-    const filteredBody = filterObj(req.body, 'name', 'email');
-    // 3. Update user document
+
+    // 2. Update user document
     const updatedUser = yield User.findByIdAndUpdate(req.body.currentUser.id, {
       new: true,
       runValidators: true,
     });
-    //4. Send response to the client
+    //3. Send response to the client
     res.status(200).json({
       status: 'sucess',
       data: {
@@ -67,7 +65,6 @@ const updateMe = catchAsync((req, res, next) =>
 );
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    console.log(file + 'this is multer here');
     cb(null, 'public/images/users');
   },
   filename: (req, file, cb) => {
@@ -94,7 +91,7 @@ export const updateUserPhoto = catchAsync(function (req, res, next) {
     );
     if (!req.file)
       return next(new AppError('Please provide the photo to update!', 400));
-    const photoRefernce = `http://127.0.0.1:3001/public/images/users/${req.file.filename}`;
+    const photoRefernce = `https://jumbo-bowls.onrender.com/public/images/users/${req.file.filename}`;
     const updatedUser = yield User.findByIdAndUpdate(
       req.body.currentUser.id,
       { photo: photoRefernce },

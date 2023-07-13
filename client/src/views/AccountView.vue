@@ -158,7 +158,7 @@ async function updatePhoto() {
     <div class="user-settings mx-auto w-full">
       <div class="user-settings__forms">
         <h2 class="heading-gradient text-lg lg:text-xl uppercase font-semibold mb-9">
-          Your account settings
+          Update your account settings
         </h2>
         <form class="form form--signup mb-16">
           <div class="form__group">

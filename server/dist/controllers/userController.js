@@ -42,9 +42,6 @@ const getMe = (req, res, next) => {
 };
 const updateMe = catchAsync((req, res, next) =>
   __awaiter(void 0, void 0, void 0, function* () {
-    console.log('aaa');
-    console.log(req.body.file + ' this is req file');
-    console.log(req.body + ' this is req body');
     //1. Check if no input
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
@@ -85,10 +82,6 @@ export const upload = multer({
 });
 export const updateUserPhoto = catchAsync(function (req, res, next) {
   return __awaiter(this, void 0, void 0, function* () {
-    console.log(
-      req.file,
-      JSON.stringify(req.body + 'this is the body in the route')
-    );
     if (!req.file)
       return next(new AppError('Please provide the photo to update!', 400));
     const photoRefernce = `https://jumbo-bowls.onrender.com/public/images/users/${req.file.filename}`;
@@ -100,7 +93,7 @@ export const updateUserPhoto = catchAsync(function (req, res, next) {
         runValidators: true,
       }
     );
-    //4. Send response to the client
+
     res.status(200).json({
       status: 'sucess',
       data: {

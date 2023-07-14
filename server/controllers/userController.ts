@@ -3,6 +3,7 @@ import User from '../models/userModel';
 import controllerFactory from './controllerFactory';
 import catchAsync from '../helpers/catchAsync';
 import AppError from '../helpers/appError';
+import filterObj from '../helpers/filterObj';
 
 import multer from 'multer';
 
@@ -14,11 +15,18 @@ const getMe = (req: Request, res: Response, next: NextFunction) => {
 
 const updateMe = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
+    console.log('aaa');
+    console.log(req.body.file + ' this is req file');
+    console.log(req.body + ' this is req body');
+
     //1. Check if no input
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
 
-    // 2. Update user document
+    // 2. Filter out fields that are not allowed
+    const filteredBody = filterObj(req.body, 'name', 'email');
+
+    // 3. Update user document
     const updatedUser = await User.findByIdAndUpdate(
       req.body.currentUser.id,
 
@@ -28,7 +36,7 @@ const updateMe = catchAsync(
       }
     );
 
-    //3. Send response to the client
+    //4. Send response to the client
     res.status(200).json({
       status: 'sucess',
       data: {
@@ -68,6 +76,11 @@ export const updateUserPhoto = catchAsync(async function (
   res: Response,
   next: NextFunction
 ) {
+  console.log(
+    req.file,
+    JSON.stringify(req.body + 'this is the body in the route')
+  );
+
   if (!req.file)
     return next(new AppError('Please provide the photo to update!', 400));
 

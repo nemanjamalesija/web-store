@@ -15,10 +15,6 @@ const getMe = (req: Request, res: Response, next: NextFunction) => {
 
 const updateMe = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    console.log('aaa');
-    console.log(req.body.file + ' this is req file');
-    console.log(req.body + ' this is req body');
-
     //1. Check if no input
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
@@ -54,7 +50,7 @@ const multerStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `user-${Date.now()}.${ext}`);
+    cb(null, `user-${req.body.currentUser.id}-${Date.now()}.${ext}`);
   },
 });
 
@@ -76,11 +72,6 @@ export const updateUserPhoto = catchAsync(async function (
   res: Response,
   next: NextFunction
 ) {
-  console.log(
-    req.file,
-    JSON.stringify(req.body + 'this is the body in the route')
-  );
-
   if (!req.file)
     return next(new AppError('Please provide the photo to update!', 400));
 

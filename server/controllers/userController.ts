@@ -3,7 +3,6 @@ import User from '../models/userModel';
 import controllerFactory from './controllerFactory';
 import catchAsync from '../helpers/catchAsync';
 import AppError from '../helpers/appError';
-import filterObj from '../helpers/filterObj';
 
 import multer from 'multer';
 
@@ -19,10 +18,7 @@ const updateMe = catchAsync(
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
 
-    // 2. Filter out fields that are not allowed
-    const filteredBody = filterObj(req.body, 'name', 'email');
-
-    // 3. Update user document
+    // 2. Update user document
     const updatedUser = await User.findByIdAndUpdate(
       req.body.currentUser.id,
 
@@ -32,7 +28,7 @@ const updateMe = catchAsync(
       }
     );
 
-    //4. Send response to the client
+    //3. Send response to the client
     res.status(200).json({
       status: 'sucess',
       data: {
@@ -50,7 +46,7 @@ const multerStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `user-${req.body.currentUser.id}-${Date.now()}.${ext}`);
+    cb(null, `user-${Date.now()}.${ext}`);
   },
 });
 

@@ -63,16 +63,15 @@ const updateMe = catchAsync((req, res, next) =>
     });
   })
 );
-// const multerStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'public/images/users');
-//   },
-//   filename: (req, file, cb) => {
-//     const ext = file.mimetype.split('/')[1];
-//     cb(null, `user-${Date.now()}.${ext}`);
-//   },
-// });
-const multerStorage = multer.memoryStorage();
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/users');
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split('/')[1];
+    cb(null, `user-${Date.now()}.${ext}`);
+  },
+});
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true);
@@ -88,7 +87,7 @@ export const updateUserPhoto = catchAsync(function (req, res, next) {
   return __awaiter(this, void 0, void 0, function* () {
     if (!req.file)
       return next(new AppError('Please provide the photo to update!', 400));
-    const photoRefernce = `${req.file.filename}`;
+    const photoRefernce = `https://jumbo-bowls.onrender.com/public/images/users/${req.file.filename}`;
     const updatedUser = yield User.findByIdAndUpdate(
       req.body.currentUser.id,
       { photo: photoRefernce },

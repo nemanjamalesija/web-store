@@ -42,9 +42,6 @@ const getMe = (req, res, next) => {
 };
 const updateMe = catchAsync((req, res, next) =>
   __awaiter(void 0, void 0, void 0, function* () {
-    console.log('aaa');
-    console.log(req.body.file + ' this is req file');
-    console.log(req.body + ' this is req body');
     //1. Check if no input
     if (!req.body.name && !req.body.email)
       return next(new AppError('Please provide name or email to update', 400));
@@ -69,7 +66,7 @@ const multerStorage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];
-    cb(null, `user-${Date.now()}.${ext}`);
+    cb(null, `user-${req.body.currentUser._id}-${Date.now()}.${ext}`);
   },
 });
 const multerFilter = (req, file, cb) => {

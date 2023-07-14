@@ -72,7 +72,7 @@ const updateMe = catchAsync((req, res, next) =>
 //     cb(null, `user-${Date.now()}.${ext}`);
 //   },
 // });
-const multerStorage = multer.memoryStorage();
+
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true);
@@ -86,13 +86,9 @@ export const upload = multer({
 });
 export const updateUserPhoto = catchAsync(function (req, res, next) {
   return __awaiter(this, void 0, void 0, function* () {
-    console.log(
-      req.file,
-      JSON.stringify(req.body + 'this is the body in the route')
-    );
     if (!req.file)
       return next(new AppError('Please provide the photo to update!', 400));
-    const photoRefernce = `https://jumbo-bowls.onrender.com/public/images/users/${req.file.filename}`;
+    const photoRefernce = `${req.file.filename}`;
     const updatedUser = yield User.findByIdAndUpdate(
       req.body.currentUser.id,
       { photo: photoRefernce },

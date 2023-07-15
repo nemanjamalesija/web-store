@@ -62,7 +62,7 @@ const updateMe = catchAsync((req, res, next) =>
 );
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/images/users');
+    cb(null, 'https://jumbo-bowls.onrender.com/public/images/users');
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split('/')[1];

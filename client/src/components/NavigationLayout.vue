@@ -35,10 +35,9 @@ onMounted(async () => {
           <h1 class="capitalize font-bold mr-20 text-xl lg:text-2xl">jumbo bowls</h1>
         </div>
         <div v-if="currentUser.name" class="flex gap-10">
-          <RouterLink class="inline-block" to="/products"> Products</RouterLink>
-          <RouterLink class="inline-block" to="/products"> About us</RouterLink>
-          <RouterLink class="inline-block" to="/products"> How it works</RouterLink>
-          <RouterLink class="inline-block" to="/products"> Bowls and pricing</RouterLink>
+          <RouterLink class="inline-block font-medium hover:text-[#2222]" to="/products">
+            Products</RouterLink
+          >
         </div>
       </div>
 

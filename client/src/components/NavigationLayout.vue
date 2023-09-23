@@ -26,18 +26,20 @@ onMounted(async () => {
 <template>
   <header class="header-nav absolute top-0 left-0 w-full z-40">
     <nav
-      class="nav pb-3 relative h-full px-14 flex items-center justify-between text-base lg:text-lg font-medium"
+      class="nav pb-3 relative h-full px-7 lg:px-14 flex items-center justify-between text-base lg:text-lg font-medium"
     >
       <!-- Logo and page navigation -->
       <div class="flex items-center">
-        <div class="logo flex items-center gap-2">
+        <RouterLink v-if="currentUser.name" to="/products">
+          <div class="logo flex items-center gap-2">
+            <img :src="logo" alt="jumbo bowls logo" class="inline-block h-12 w-12 object-cover" />
+            <h1 class="capitalize font-bold mr-4 text-lg lg:text-2xl">jumbo bowls</h1>
+          </div>
+        </RouterLink>
+
+        <div v-else class="logo flex items-center gap-2">
           <img :src="logo" alt="jumbo bowls logo" class="inline-block h-10 w-10 object-cover" />
-          <h1 class="capitalize font-bold mr-20 text-xl lg:text-2xl">jumbo bowls</h1>
-        </div>
-        <div v-if="currentUser.name" class="flex gap-10">
-          <RouterLink class="inline-block font-medium hover:text-[#2222]" to="/products">
-            Products</RouterLink
-          >
+          <h1 class="capitalize font-bold mr-4 text-lg lg:text-2xl">jumbo bowls</h1>
         </div>
       </div>
 
@@ -61,7 +63,7 @@ onMounted(async () => {
               :src="currentUser.photo"
               :alt="currentUser.photo + ' image'"
             />
-            <p class="username inline-block font-semibold cursor-pointer">
+            <p class="username inline-block font-semibold cursor-pointer text-lg">
               {{ currentUser.name }}
             </p>
           </div>
@@ -94,7 +96,7 @@ onMounted(async () => {
 .user {
   position: absolute;
   right: 5%;
-  top: 6.5%;
+  top: 0;
   padding-bottom: 2rem;
 }
 

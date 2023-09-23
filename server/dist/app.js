@@ -15,20 +15,21 @@ const __fileName = fileURLToPath(import.meta.url);
 const __dirName = path.dirname(__fileName);
 // MIDDLEWARE
 app.use(morgan('dev'));
-app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
-  })
-);
-app.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:5173'];
-  const { origin } = req.headers;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  next();
-});
+// app.use(
+//   cors({
+//     origin: 'http://localhost:5173',
+//     credentials: true,
+//   })
+// );
+// app.use((req, res, next) => {
+//   const allowedOrigins = ['http://localhost:5173'];
+//   const { origin } = req.headers;
+//   if (allowedOrigins.includes(origin)) {
+//     res.setHeader('Access-Control-Allow-Origin', origin);
+//   }
+//   next();
+// });
+app.use(cors());
 app.use(express.json());
 app.use(
   '/public/images',

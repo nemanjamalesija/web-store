@@ -21,22 +21,23 @@ app.use(morgan('dev'));
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://web-store-nemanjamalesija.vercel.app',
     credentials: true,
   })
 );
 
-app.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:5173'];
-  const { origin } = req.headers;
+// app.use((req, res, next) => {
+//   const allowedOrigins = ['https://web-store-nemanjamalesija.vercel.app'];
+//   const { origin } = req.headers;
 
-  if (allowedOrigins.includes(origin as string)) {
-    res.setHeader('Access-Control-Allow-Origin', origin as string);
-  }
+//   if (allowedOrigins.includes(origin as string)) {
+//     res.setHeader('Access-Control-Allow-Origin', origin as string);
+//   }
 
-  next();
-});
+//   next();
+// });
 
+app.use(cors());
 app.use(express.json());
 
 app.use(

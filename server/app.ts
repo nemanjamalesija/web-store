@@ -21,13 +21,13 @@ app.use(morgan('dev'));
 
 app.use(
   cors({
-    origin: 'https://web-store-nemanjamalesija.vercel.app',
+    origin: 'http://localhost:5173',
     credentials: true,
   })
 );
 
 app.use((req, res, next) => {
-  const allowedOrigins = ['https://web-store-nemanjamalesija.vercel.app'];
+  const allowedOrigins = ['http://localhost:5173'];
   const { origin } = req.headers;
 
   if (allowedOrigins.includes(origin as string)) {

@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import http from 'http';
+import app from './app';
 
 process.on('uncaughtException', (err: Error) => {
   console.log('UNCAUGHT EXCEPTION! 🔥  Shutting down...');
@@ -8,8 +9,6 @@ process.on('uncaughtException', (err: Error) => {
 
   process.exit(1);
 });
-
-import app from './app';
 
 dotenv.config({ path: './config.env' });
 

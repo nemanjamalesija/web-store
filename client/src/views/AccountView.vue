@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import useGetUserStore from '../composables/useGetUserStore'
 import formatDate from '../helpers/formatDate'
-import { ref, computed } from 'vue'
-import { baseUrl } from '../constants/baseUrl'
+import { ref } from 'vue'
 import acceptUser from '../helpers/acceptUser'
 import useAppNavigation from '../composables/useAppNavigation'
 import type { ChangeUserType } from '../types/changeUserType'
-import { changeUserSchema } from '../types/changeUserType'
 import DisableUserModal from '../components/DisableUserModal.vue'
 import ModalCustom from '../components/ui/ModalCustom.vue'
+import updateAccount from '../api/updateAccount'
+import updatePhoto from '../api/updatePhoto'
 
 const changeUser = ref<ChangeUserType>({
   name: '',
@@ -19,44 +19,17 @@ const photoFile = ref<File | null>()
 
 const showDisableAccModal = ref<boolean>(false)
 
-// For isable state of the submit button in the form
-const allFieldsCompleted = computed(() => {
-  return changeUserSchema.safeParse(changeUser.value).success
-})
-
 const { currentUser, setCurrentUser } = useGetUserStore()
-const { toast, router } = useAppNavigation()
+const { toast } = useAppNavigation()
 
-async function updateUserHandler() {
+async function updateAccountHandler() {
   // if no input return
   if (!changeUser.value.name && !changeUser.value.email)
     return toast.error('Provide at least name or password for update')
 
-  const jwtToken = localStorage.getItem('jwt')
-  if (!jwtToken) {
-    toast.error('Could not get your session! Please log in.')
-    router.push('/')
-  }
+  const res = await updateAccount(changeUser.value)
 
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/users/updateMe`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      },
-      body: JSON.stringify({
-        name: changeUser.value.name || undefined,
-        email: changeUser.value.email || undefined
-      })
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-
-      return toast.error(data.message)
-    }
-
+  if (res == 'success') {
     const newCurrentUser = {
       ...currentUser.value,
       name: changeUser.value.name ? changeUser.value.name : currentUser.value.name,
@@ -64,14 +37,6 @@ async function updateUserHandler() {
     }
 
     setCurrentUser(acceptUser(newCurrentUser))
-
-    toast.success('Your account information has been sucessfully updated!')
-  } catch (error) {
-    toast.error('Oop, something went wrong!')
-    console.log(error)
-  } finally {
-    changeUser.value.name = ''
-    changeUser.value.email = ''
   }
 }
 
@@ -86,41 +51,16 @@ const onChange = (e: Event) => {
 }
 
 // Update photo handler
-async function updatePhoto() {
-  const jwtToken = localStorage.getItem('jwt')
-  if (!jwtToken) {
-    toast.error('Could not get your session! Please log in.')
-    router.push('/')
-  }
-
+async function updatePhotoHandler() {
   if (!photoFile.value) return
   const dataInput = new FormData()
   dataInput.append('photo', photoFile.value)
 
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/users/updatePhoto`, {
-      method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      },
-      body: dataInput
-    })
+  const updatedUser = await updatePhoto(dataInput)
 
-    if (!response.ok) {
-      return toast.error('Could not upload your image! Please try again.')
-    } else {
-      toast.success('Your account information has been sucessfully updated!')
-      const {
-        data: { updatedUser }
-      } = await response.json()
+  if (!updatedUser) return
 
-      setCurrentUser({ ...currentUser.value, photo: updatedUser.photo })
-    }
-  } catch (error) {
-    toast.error('Oop, something went wrong!')
-    console.log(error)
-  }
+  setCurrentUser({ ...currentUser.value, photo: updatedUser.photo })
 }
 </script>
 <template>
@@ -185,8 +125,8 @@ async function updatePhoto() {
             <button
               type="submit"
               class="btn py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-600 disabled:bg-gray-500"
-              :disabled="!allFieldsCompleted"
-              @click.prevent="updateUserHandler"
+              :disabled="changeUser.name === '' && changeUser.email === ''"
+              @click.prevent="updateAccountHandler"
             >
               Change settings
             </button>
@@ -224,7 +164,7 @@ async function updatePhoto() {
 
               <button
                 class="block py-3 px-6 bg-orange-500 text-sm lg:text-base hover:bg-orange-60 cursor-pointer rounded-full text-white uppercase font-semibold disabled:bg-gray-500"
-                @click.prevent="updatePhoto"
+                @click.prevent="updatePhotoHandler"
                 :disabled="!photoFile"
               >
                 submit

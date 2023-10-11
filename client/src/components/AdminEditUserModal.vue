@@ -1,45 +1,13 @@
 <script setup lang="ts">
 import CloseModalButton from './ui/CloseModalButton.vue'
 import useGetAdminStore from '../composables/useGetAdminStore'
-import { baseUrl } from '../constants/baseUrl'
-import useAppNavigation from '../composables/useAppNavigation'
+import patchUser from '../api/patchUser'
 
 const { setIsEditing, userToEdit } = useGetAdminStore()
-const { toast, router } = useAppNavigation()
 
 async function patchUserHandler() {
-  // No need to usegetSession because of protect middleware on the backend
-  const jwtToken = localStorage.getItem('jwt')
-  if (!jwtToken) {
-    toast.error('Could not get your session! Please log in.')
-    router.push('/')
-  }
-
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/users/${userToEdit.value._id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      },
-      body: JSON.stringify({
-        ...userToEdit.value
-      })
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-      toast.error(data.message)
-      setIsEditing(false)
-      router.push('/products')
-    } else {
-      toast.success('User sucessfully updated')
-      setIsEditing(false)
-    }
-  } catch (error) {
-    toast.error('Oop, something went wrong!')
-    console.log(error)
-  }
+  await patchUser(userToEdit.value, userToEdit.value._id as string)
+  setIsEditing(false)
 }
 </script>
 <template>

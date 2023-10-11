@@ -9,56 +9,29 @@ import ProductPageIngredients from '../components/ProductPageIngredients.vue'
 import ProductPageAbout from '../components/ProductPageAbout.vue'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import LeaveReview from '../components/LeaveReview.vue'
-import useGetProductsStore from '../hooks/useGetProductsStore'
+import useGetProductsStore from '../composables/useGetProductsStore'
 import ReviewModal from '../components/ReviewModal.vue'
 import ModalCustom from '../components/ui/ModalCustom.vue'
 import useAppNavigation from '../composables/useAppNavigation'
+import fetchProduct from '../api/fetchProduct'
 
-const { route, router, toast } = useAppNavigation()
+const { route, router } = useAppNavigation()
 const { loading, setLoading, setCurrentProduct, isProductReviewModalOpen } = useGetProductsStore()
 
-async function fetchCurrentProduct() {
-  const jwtToken = localStorage.getItem('jwt')
-
-  if (!jwtToken) {
-    toast.error('Could not get your session! Please log in.')
-    router.push('/')
-  }
+async function fetchProductHandler() {
   setLoading(true)
 
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/products/${route.params.id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      }
-    })
+  const product = await fetchProduct(route.params.id as string)
 
-    if (!response.ok) {
-      const error = await response.json()
-      toast.error(error.message)
-      router.push('/products')
-      return
-    } else {
-      const {
-        data: { doc }
-      } = await response.json()
-
-      setCurrentProduct(doc as ProductType)
-      setLoading(false)
-    }
-  } catch (error) {
-    toast.error('Oop, something went wrong!')
-    console.log(error)
-    setLoading(false)
-  } finally {
-    setLoading(false)
+  if (!product) {
+    return router.push('/products')
   }
+  setCurrentProduct(product)
+  setLoading(false)
 }
 
 onMounted(async () => {
-  await fetchCurrentProduct()
+  await fetchProductHandler()
 })
 </script>
 <template>

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import useGetProductsStore from '../composables/useGetProductsStore'
 import { ref, computed } from 'vue'
-import { baseUrl } from '../constants/baseUrl'
 import CloseModalButton from './ui/CloseModalButton.vue'
 import useAppNavigation from '../composables/useAppNavigation'
-import type { ReviewType } from '../types/productType'
+import submitReview from '../api/submitReview'
 
 const reviewRating = ref<number>(5)
 const reviewMessage = ref<string>('')
@@ -13,63 +12,23 @@ const allFieldsCompleted = computed(() => {
   return reviewMessage.value !== ''
 })
 
-const { route, router, toast } = useAppNavigation()
+const { route } = useAppNavigation()
 const { setIsReviewModalOpen, currentProduct, setCurrentProduct, updateAllProducts } =
   useGetProductsStore()
 
-const jwtToken = localStorage.getItem('jwt')
-
-if (!jwtToken) {
-  toast.error('Could not get your session! Please log in.')
-  router.push('/')
-}
-
 async function submitReviewHandler() {
-  try {
-    const response = await fetch(`${baseUrl}/api/v1${route.fullPath}/reviews`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      },
-      body: JSON.stringify({
-        rating: reviewRating.value,
-        review: reviewMessage.value
-      })
-    })
+  const review = await submitReview(route.fullPath, reviewRating.value, reviewMessage.value)
 
-    if (!response.ok) {
-      // if token manipulated
-      if (response.status === 400) {
-        router.push('/')
-        setIsReviewModalOpen(false)
-      }
+  if (!review) return
 
-      const error = await response.json()
-      toast.error(error.message)
-      return
-    } else {
-      setIsReviewModalOpen(false)
-
-      const {
-        data: { doc }
-      } = await response.json()
-
-      const updatedProduct = {
-        ...currentProduct.value,
-        reviews: [...currentProduct.value.reviews, doc as ReviewType]
-      }
-
-      setCurrentProduct(updatedProduct)
-
-      updateAllProducts(updatedProduct)
-
-      return toast.success('Review sucessfully submited. Thank you!')
-    }
-  } catch (error) {
-    toast.error('Oops, something went wrong!')
-    console.log(error)
+  const updatedProduct = {
+    ...currentProduct.value,
+    reviews: [...currentProduct.value.reviews, review]
   }
+
+  setIsReviewModalOpen(false)
+  setCurrentProduct(updatedProduct)
+  updateAllProducts(updatedProduct)
 }
 </script>
 <template>

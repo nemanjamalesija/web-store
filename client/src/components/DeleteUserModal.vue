@@ -1,49 +1,16 @@
 <script setup lang="ts">
 import useGetAdminStore from '../composables/useGetAdminStore'
 import CloseModalButton from './ui/CloseModalButton.vue'
-import useAppNavigation from '../composables/useAppNavigation'
-import { baseUrl } from '../constants/baseUrl'
+import deleteUserAPI from '../api/deleteUser'
 
-const { users, setIsDeleting, userToEdit } = useGetAdminStore()
-const { toast, router } = useAppNavigation()
+const { setIsDeleting, userToEdit, deleteUser } = useGetAdminStore()
 
 async function deleteUserHandler() {
-  const jwtToken = localStorage.getItem('jwt')
+  const res = await deleteUserAPI(userToEdit.value._id as string)
+  if (res == 'fail') return
 
-  if (!jwtToken) {
-    toast.error('Could not get your session! Please log in.')
-    router.push('/')
-  }
-
-  try {
-    const response = await fetch(`${baseUrl}/api/v1/users/${userToEdit.value._id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + jwtToken
-      }
-    })
-
-    if (!response.ok) {
-      const data = await response.json()
-      toast.error(data.message)
-      setIsDeleting(false)
-    } else {
-      console.log(userToEdit.value._id)
-      const indexToUpdate = users.value.findIndex((user) => user._id === userToEdit.value._id)
-
-      if (indexToUpdate !== -1) {
-        // Remove the old object
-        users.value.splice(indexToUpdate, 1)
-      }
-      toast.success('You have successfully deleted a user')
-    }
-  } catch (error) {
-    toast.error('Oops, something went wrong!')
-    console.log(error)
-  } finally {
-    setIsDeleting(false)
-  }
+  deleteUser(userToEdit.value._id as string)
+  setIsDeleting(false)
 }
 </script>
 

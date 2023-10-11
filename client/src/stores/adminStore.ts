@@ -62,6 +62,15 @@ export const useAdminStore = defineStore('admin', () => {
     userToEdit.value = currentUser
   }
 
+  function deleteUser(id: string) {
+    const indexToUpdate = users.value.findIndex((user) => user._id === id)
+
+    if (indexToUpdate !== -1) {
+      // Remove the old object
+      users.value.splice(indexToUpdate, 1)
+    }
+  }
+
   return {
     loading,
     setLoading,
@@ -76,6 +85,7 @@ export const useAdminStore = defineStore('admin', () => {
     userToEdit,
     connectUserToTheFormHandler,
     isDeleting,
-    setIsDeleting
+    setIsDeleting,
+    deleteUser
   }
 })

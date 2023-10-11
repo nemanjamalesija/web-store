@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 import SingleProduct from '../components/SingleProduct.vue'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
 import useGetProductsStore from '../composables/useGetProductsStore'
-import fetchAllProducts from '../helpers/fetchAllProducts'
+import fetchAllProducts from '../api/fetchAllProducts'
 
 const { products, loading } = useGetProductsStore()
 

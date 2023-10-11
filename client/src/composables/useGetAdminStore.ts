@@ -19,7 +19,8 @@ export default function useGetAdminStore() {
     sortUsersHandler,
     setIsEditing,
     connectUserToTheFormHandler,
-    setIsDeleting
+    setIsDeleting,
+    deleteUser
   } = useAdminStore()
 
   return {
@@ -37,6 +38,7 @@ export default function useGetAdminStore() {
     userToEdit,
     connectUserToTheFormHandler,
     isDeleting,
-    setIsDeleting
+    setIsDeleting,
+    deleteUser
   }
 }

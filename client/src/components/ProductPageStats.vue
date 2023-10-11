@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useGetProductsStore from '../hooks/useGetProductsStore'
+import useGetProductsStore from '../composables/useGetProductsStore'
 import { cardIcons } from '../assets/icons/cardIcons'
 import calculateAverageRating from '../helpers/calculateAverageRating'
 

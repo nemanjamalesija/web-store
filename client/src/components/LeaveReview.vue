@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import useGetUserStore from '../hooks/useGetUserStore'
-import useGetProductsStore from '../hooks/useGetProductsStore'
+import useGetUserStore from '../composables/useGetUserStore'
+import useGetProductsStore from '../composables/useGetProductsStore'
 
 const { currentUser } = useGetUserStore()
 const { setIsReviewModalOpen } = useGetProductsStore()

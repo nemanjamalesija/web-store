@@ -3,7 +3,7 @@ import CloseModalButton from '../components/ui/CloseModalButton.vue'
 import useAppNavigation from '../composables/useAppNavigation'
 import { baseUrl } from '../constants/baseUrl'
 import logoutHandler from '../helpers/logoutHandler'
-import useGetUserStore from '../hooks/useGetUserStore'
+import useGetUserStore from '../composables/useGetUserStore'
 
 const { setCurrentUser } = useGetUserStore()
 const { toast, router } = useAppNavigation()

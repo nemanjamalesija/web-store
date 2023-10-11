@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { baseUrl } from '../constants/baseUrl'
 import useAppNavigation from '../composables/useAppNavigation'
 import { signUpUserSchema } from '../types/signUpUserType'
 import type { SignUpUserType } from '../types/signUpUserType'
-import formatZodErrors from '../helpers/formatZodErrors'
-import { z } from 'zod'
-import useGetUserStore from '../hooks/useGetUserStore'
+import useGetUserStore from '../composables/useGetUserStore'
 import LoadingSpinner from '../components/LoadingSpinner.vue'
+import signUp from '../api/signUp'
 
 const { toast, router } = useAppNavigation()
 const { loading, setLoading } = useGetUserStore()
@@ -25,46 +23,28 @@ const allFieldsCompleted = computed(() => {
 })
 
 async function signUpHandler() {
-  try {
-    const tryUser = signUpUserSchema.parse({
-      name: signUpUser.value.name,
-      email: signUpUser.value.email,
-      password: signUpUser.value.password,
-      passwordConfirm: signUpUser.value.passwordConfirm
-    })
+  const tryUser = signUpUserSchema.parse({
+    name: signUpUser.value.name,
+    email: signUpUser.value.email,
+    password: signUpUser.value.password,
+    passwordConfirm: signUpUser.value.passwordConfirm
+  })
 
-    setLoading(true)
+  setLoading(true)
 
-    const response = await fetch(`${baseUrl}/api/v1/users/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(tryUser)
-    })
+  const res = await signUp(tryUser)
 
-    const data = await response.json()
-
-    if (!response.ok) toast.error(data.message)
-    else {
-      setLoading(false)
-      toast.success('Account created! Feel free to log in')
-      router.push('/')
-    }
-
-    signUpUser.value.name = ''
-    signUpUser.value.email = ''
-    signUpUser.value.password = ''
-    signUpUser.value.passwordConfirm = ''
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      toast.error(formatZodErrors(error))
-    } else {
-      toast.error('Oop, something went wrong!')
-    }
-  } finally {
-    setLoading(false)
+  if (res == 'success') {
+    toast.success('Account created! Feel free to log in')
+    router.push('/')
   }
+
+  setLoading(false)
+
+  signUpUser.value.name = ''
+  signUpUser.value.email = ''
+  signUpUser.value.password = ''
+  signUpUser.value.passwordConfirm = ''
 }
 </script>
 

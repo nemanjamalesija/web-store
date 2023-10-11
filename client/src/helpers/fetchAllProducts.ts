@@ -1,5 +1,5 @@
 import { baseUrl } from '../constants/baseUrl'
-import useGetProductsStore from '../hooks/useGetProductsStore'
+import useGetProductsStore from '../composables/useGetProductsStore'
 import { ProductType } from '../types/productType'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'

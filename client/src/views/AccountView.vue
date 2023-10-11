@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useGetUserStore from '../hooks/useGetUserStore'
+import useGetUserStore from '../composables/useGetUserStore'
 import formatDate from '../helpers/formatDate'
 import { ref, computed } from 'vue'
 import { baseUrl } from '../constants/baseUrl'

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CloseModalButton from './ui/CloseModalButton.vue'
-import useGetAdminStore from '../hooks/useGetAdminStore'
+import useGetAdminStore from '../composables/useGetAdminStore'
 import { baseUrl } from '../constants/baseUrl'
 import useAppNavigation from '../composables/useAppNavigation'
 

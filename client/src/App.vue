@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import NavigationLayout from './components/NavigationLayout.vue'
 import { onMounted } from 'vue'
-import useGetSession from './hooks/useGetSession'
+import useGetSession from './composables/useGetSession'
 
 // controls redirecting when manually changing routes
 onMounted(async () => {

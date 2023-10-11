@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import logo from '../assets/img/logo.png'
-import useGetUserStore from '../hooks/useGetUserStore'
+import useGetUserStore from '../composables/useGetUserStore'
 import { onMounted, ref } from 'vue'
 import useAppNavigation from '../composables/useAppNavigation'
 import logoutHandler from '../helpers/logoutHandler'

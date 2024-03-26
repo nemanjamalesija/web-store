@@ -1,4 +1,4 @@
-Jumbo Bowls poke bowl online store.
+Jumbo Bowls poke bowl online store
 
 Full stack application with express backend, MongoDB database and Vue 3 frontend. Typescript supported both on the front and the back. Tailwind CSS on the front.
 
